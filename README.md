@@ -1,6 +1,6 @@
 # Project Name
 
-> Project description
+> FEC Project description
 
 ## Table of Contents
 
