@@ -47,6 +47,7 @@ const App = () => {
             <h4 className="mt-0 mb-2 text-3xl font-medium leading-tight text-primary">{productDetails.name}</h4>
             <p>${productDetails.default_price}</p>
             <p className='category mt-10'>Style</p>
+            {/* The index from styles can go to gallery for the onClick change */}
             <Styles />
             <div className='mb-5'>
               <select className='select w-full max-w-xs bg-white mt-5'>
@@ -63,6 +64,20 @@ const App = () => {
             </div>
           <button className='btn w-52'>Add to Bag</button>
         </div>
+      </div>
+      <div className='flex items-center'>
+        <div>
+          <h2 className='text-teal-700 text-2xl ml-5'>{productDetails.slogan && productDetails.slogan}</h2>
+          <p className='mr-96 ml-5'>{productDetails.description && productDetails.description}</p>
+        </div>
+        {/* <div>
+          {productDetails.features && productDetails.features.map(feature => {
+            return (
+            <>
+              <p className=''>{feature.feature} : {feature.value}</p>
+            </>)
+          })}
+        </div> */}
       </div>
     </>
   )
