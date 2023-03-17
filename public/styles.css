@@ -41,10 +41,11 @@
   flex-direction: column;
   overflow: hidden;
   position: absolute;
+  background-color: lightgrey;
   margin-top: 40px;
   left: 50px;
   width: 70px;
-  height: 400px;
+  height: 370px;
   z-index: 10;
 }
 

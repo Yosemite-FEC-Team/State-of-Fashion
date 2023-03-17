@@ -3784,8 +3784,8 @@ html {
      object-fit: contain;
 }
 
-.p-2 {
-  padding: 0.5rem;
+.p-1 {
+  padding: 0.25rem;
 }
 
 .text-2xl {
@@ -3906,10 +3906,11 @@ html {
   flex-direction: column;
   overflow: hidden;
   position: absolute;
+  background-color: lightgrey;
   margin-top: 40px;
   left: 50px;
   width: 70px;
-  height: 400px;
+  height: 370px;
   z-index: 10;
 }
 

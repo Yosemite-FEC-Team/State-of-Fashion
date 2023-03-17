@@ -39,20 +39,20 @@ const Gallery = () => {
   })
 
   let galleryThumbnails = galleryList.map(image => {
-    return (<img className='mini-thumbnail object-contain p-2' src={image.thumbnail_url}></img>)
+    return (<img className='mini-thumbnail object-contain p-1' src={image.thumbnail_url}></img>)
   })
 
   // ideas:
   // use index of the response data (in array) to determine which picture and format it into the carousel format below
   return (
-    <>
+    <div>
       <div className='mini-thumbnail-flex'>
         {galleryThumbnails}
       </div>
       <div className="carousel-container bg-white">
         {galleryCarousel}
       </div>
-    </>
+    </div>
   )
 }
 
