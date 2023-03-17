@@ -29,7 +29,7 @@ const App = () => {
   return (
     <>
       <h1 className='flex items-center justify-between flex-wrap bg-white' >
-        <p id='title' className='ml-10'>@Modal</p>
+        <p id='title' className='ml-10'>@Fetch</p>
         <input placeholder='Search...' className="input input-bordered input-success mr-10"></input>
       </h1>
         <div className='flex flex-row w-4/5 mt-5'>
@@ -46,7 +46,7 @@ const App = () => {
             <p className='category mt-10'>{productDetails.category}</p>
             <h4 className="mt-0 mb-2 text-3xl font-medium leading-tight text-primary">{productDetails.name}</h4>
             <p>${productDetails.default_price}</p>
-            <p className='category mt-10'>Style</p>
+            <p className='category mt-10'>Style >></p>
             {/* The index from styles can go to gallery for the onClick change */}
             <Styles />
             <div className='mb-5'>
@@ -67,7 +67,7 @@ const App = () => {
       </div>
       <div className='flex items-center'>
         <div>
-          <h2 className='text-teal-700 text-2xl ml-5'>{productDetails.slogan && productDetails.slogan}</h2>
+          <h2 className='text-teal-700 text-2xl font-bold ml-5'>{productDetails.slogan && productDetails.slogan}</h2>
           <p className='mr-96 ml-5'>{productDetails.description && productDetails.description}</p>
         </div>
         {/* <div>

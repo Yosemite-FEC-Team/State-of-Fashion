@@ -29,7 +29,7 @@ const Gallery = () => {
     let slideNext = `#slide${index + 1}`;
     let slidePrevious = `#slide${index -1}`;
     return (
-      <div id={imageID} className="carousel-card card mt-5">
+      <div id={imageID} className="carousel-card card">
         <img className='object-contain w-full h-550' src={image.url}></img>
           <div className="absolute flex justify-between transform -translate-y-1/2 left-1 right-1 top-1/2">
             <a href={slidePrevious} className="btn btn-ghost">❮</a>
@@ -39,7 +39,7 @@ const Gallery = () => {
   })
 
   let galleryThumbnails = galleryList.map(image => {
-    return (<img className=' object-contain w-12 h-12' src={image.thumbnail_url}></img>)
+    return (<img className='mini-thumbnail object-contain p-2' src={image.thumbnail_url}></img>)
   })
 
   // ideas:

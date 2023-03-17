@@ -3633,20 +3633,28 @@ html {
   top: 50%;
 }
 
-.mb-10 {
-  margin-bottom: 2.5rem;
-}
-
 .mb-2 {
   margin-bottom: 0.5rem;
+}
+
+.mb-5 {
+  margin-bottom: 1.25rem;
 }
 
 .ml-10 {
   margin-left: 2.5rem;
 }
 
+.ml-5 {
+  margin-left: 1.25rem;
+}
+
 .mr-10 {
   margin-right: 2.5rem;
+}
+
+.mr-96 {
+  margin-right: 24rem;
 }
 
 .mt-0 {
@@ -3659,38 +3667,6 @@ html {
 
 .mt-5 {
   margin-top: 1.25rem;
-}
-
-.mb-5 {
-  margin-bottom: 1.25rem;
-}
-
-.mt-2 {
-  margin-top: 0.5rem;
-}
-
-.ml-20 {
-  margin-left: 5rem;
-}
-
-.ml-96 {
-  margin-left: 24rem;
-}
-
-.mr-96 {
-  margin-right: 24rem;
-}
-
-.ml-36 {
-  margin-left: 9rem;
-}
-
-.mr-36 {
-  margin-right: 9rem;
-}
-
-.ml-5 {
-  margin-left: 1.25rem;
 }
 
 .block {
@@ -3725,20 +3701,12 @@ html {
   height: 2.5rem;
 }
 
-.h-12 {
-  height: 3rem;
-}
-
 .min-h-screen {
   min-height: 100vh;
 }
 
 .w-10 {
   width: 2.5rem;
-}
-
-.w-12 {
-  width: 3rem;
 }
 
 .w-4\/5 {
@@ -3790,10 +3758,6 @@ html {
   flex-wrap: wrap;
 }
 
-.place-content-center {
-  place-content: center;
-}
-
 .items-center {
   align-items: center;
 }
@@ -3824,8 +3788,9 @@ html {
   padding: 0.5rem;
 }
 
-.pb-2 {
-  padding-bottom: 0.5rem;
+.text-2xl {
+  font-size: 1.5rem;
+  line-height: 2rem;
 }
 
 .text-3xl {
@@ -3833,19 +3798,8 @@ html {
   line-height: 2.25rem;
 }
 
-.text-lg {
-  font-size: 1.125rem;
-  line-height: 1.75rem;
-}
-
-.text-xl {
-  font-size: 1.25rem;
-  line-height: 1.75rem;
-}
-
-.text-2xl {
-  font-size: 1.5rem;
-  line-height: 2rem;
+.font-bold {
+  font-weight: 700;
 }
 
 .font-medium {
@@ -3925,25 +3879,23 @@ html {
   height: 550px;
 }
 
-.mycard {
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-  transition: 0.3s;
-}
-
 /* This contains the carousel and just had all of the images in a flex row where, in the individual card section, the overflow will be hidden and only the width of that card will be shown*/
 
 .carousel-container {
   display: flex;
   flex-wrap: nowrap;
   overflow: hidden;
+  width: 900px;
+  padding-top: 20px;
+  padding-bottom: 20px;
   z-index: 9;
 }
 
 .carousel-card {
-  padding: 20px;
   height: 550px;
   min-width: 900px;
-  width: 900px;
+  width: -moz-fit-content;
+  width: fit-content;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -3954,6 +3906,13 @@ html {
   flex-direction: column;
   overflow: hidden;
   position: absolute;
+  margin-top: 40px;
   left: 50px;
+  width: 70px;
+  height: 400px;
   z-index: 10;
+}
+
+.mini-thumbnail {
+  height: 70px;
 }

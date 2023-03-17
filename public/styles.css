@@ -16,23 +16,21 @@
   height: 550px;
 }
 
-.mycard {
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-  transition: 0.3s;
-}
 /* This contains the carousel and just had all of the images in a flex row where, in the individual card section, the overflow will be hidden and only the width of that card will be shown*/
 .carousel-container {
   display: flex;
   flex-wrap: nowrap;
   overflow: hidden;
+  width: 900px;
+  padding-top: 20px;
+  padding-bottom: 20px;
   z-index: 9;
 }
 
 .carousel-card {
-  padding: 20px;
   height: 550px;
   min-width: 900px;
-  width: 900px;
+  width: fit-content;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -43,6 +41,13 @@
   flex-direction: column;
   overflow: hidden;
   position: absolute;
+  margin-top: 40px;
   left: 50px;
+  width: 70px;
+  height: 400px;
   z-index: 10;
+}
+
+.mini-thumbnail {
+  height: 70px;
 }
