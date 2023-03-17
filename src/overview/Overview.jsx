@@ -64,19 +64,19 @@ const Overview = () => {
           <button className='btn w-52'>Add to Bag</button>
         </div>
       </div>
-      <div className='flex items-center'>
+      <div className='flex w-full items-center mt-5'>
         <div>
-          <h2 className='text-teal-700 text-2xl font-bold ml-5'>{productDetails.slogan && productDetails.slogan}</h2>
-          <p className='mr-96 ml-5'>{productDetails.description && productDetails.description}</p>
+          <h2 className='text-teal-700 text-2xl font-bold ml-5 pb-5'>{productDetails.slogan && productDetails.slogan}</h2>
+          <p className='mr-14 ml-5'>{productDetails.description && productDetails.description}</p>
         </div>
-        {/* <div>
+        <div className='w-full'>
           {productDetails.features && productDetails.features.map(feature => {
             return (
             <>
               <p className=''>{feature.feature} : {feature.value}</p>
             </>)
           })}
-        </div> */}
+        </div>
       </div>
     </>
   )

@@ -39,7 +39,6 @@
 .mini-thumbnail-flex {
   display: flex;
   flex-direction: column;
-  overflow: hidden;
   position: absolute;
   background-color: lightgrey;
   margin-top: 40px;
@@ -47,6 +46,7 @@
   width: 70px;
   height: 370px;
   z-index: 10;
+  overflow-y: scroll;
 }
 
 .mini-thumbnail {

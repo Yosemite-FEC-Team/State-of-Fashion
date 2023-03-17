@@ -3653,8 +3653,8 @@ html {
   margin-right: 2.5rem;
 }
 
-.mr-96 {
-  margin-right: 24rem;
+.mr-14 {
+  margin-right: 3.5rem;
 }
 
 .mt-0 {
@@ -3788,6 +3788,10 @@ html {
   padding: 0.25rem;
 }
 
+.pb-5 {
+  padding-bottom: 1.25rem;
+}
+
 .text-2xl {
   font-size: 1.5rem;
   line-height: 2rem;
@@ -3904,7 +3908,6 @@ html {
 .mini-thumbnail-flex {
   display: flex;
   flex-direction: column;
-  overflow: hidden;
   position: absolute;
   background-color: lightgrey;
   margin-top: 40px;
@@ -3912,6 +3915,7 @@ html {
   width: 70px;
   height: 370px;
   z-index: 10;
+  overflow-y: scroll;
 }
 
 .mini-thumbnail {
