@@ -13,9 +13,9 @@ const Gallery = () => {
   let getGallery = () => {
     axios.get('/products/styles')
       .then(data => {
-      console.log(data.data.results[1].photos);
+      console.log(data.data.results[0].photos);
       // this has all the styles and the photos for those styles
-      setGalleryList(data.data.results[1].photos);
+      setGalleryList(data.data.results[0].photos);
       })
       .catch(err => {
       console.log(err, 'Error getting products from server');
@@ -31,11 +31,11 @@ const Gallery = () => {
     return (
       <div id={imageID} className="carousel-card card">
         <img className='object-contain w-full h-550' src={image.url}></img>
-          <div className="absolute flex justify-between transform -translate-y-1/2 left-1 right-1 top-1/2">
-            <a href={slidePrevious} className="btn btn-ghost">❮</a>
-            <a href={slideNext} className="btn btn-ghost">❯</a>
-          </div>
-        </div>)
+        <div className="absolute flex justify-between transform -translate-y-1/2 left-1 right-1 top-1/2">
+          <a href={slidePrevious} className="btn btn-ghost">❮</a>
+          <a href={slideNext} className="btn btn-ghost">❯</a>
+        </div>
+      </div>)
   })
 
   let galleryThumbnails = galleryList.map(image => {

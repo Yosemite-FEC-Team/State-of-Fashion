@@ -15,7 +15,7 @@ const Overview = () => {
   let getProductDetails = () => {
     axios.get('/products')
       .then(data => {
-      //console.log(data.data);
+      console.log(data.data, 'product data');
       setProductDetails(data.data);
       // this has all the styles and the photos for those styles
       })
@@ -29,7 +29,7 @@ const Overview = () => {
     <>
       <h1 className='flex items-center justify-between flex-wrap bg-white' >
         <p id='title' className='ml-10'>@Fetch</p>
-        <input placeholder='Search...' className="input input-bordered input-success mr-10"></input>
+        <input placeholder='Search...' className="input input-bordered input-success h-10 m-2"></input>
       </h1>
         <div className='flex flex-row w-4/5 mt-5'>
           <Gallery />
@@ -48,19 +48,6 @@ const Overview = () => {
             <p className='category mt-10'>Style >></p>
             {/* The index from styles can go to gallery for the onClick change */}
             <Styles />
-            <div className='mb-5'>
-              <select className='select w-full max-w-xs bg-white mt-5'>
-                <option defaultValue>Pick a size</option>
-                <option>Size 1</option>
-                <option>Size 2</option>
-                <option>Size 3</option>
-              </select>
-              <select className='select w-full max-w-xs bg-white mt-5'>
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-              </select>
-            </div>
           <button className='btn w-52'>Add to Bag</button>
         </div>
       </div>

@@ -3633,6 +3633,14 @@ html {
   top: 50%;
 }
 
+.m-10 {
+  margin: 2.5rem;
+}
+
+.m-2 {
+  margin: 0.5rem;
+}
+
 .mb-2 {
   margin-bottom: 0.5rem;
 }
@@ -3905,9 +3913,15 @@ html {
   justify-content: center;
 }
 
+::-webkit-scrollbar {
+  width: 0px;
+  background: transparent;
+}
+
 .mini-thumbnail-flex {
   display: flex;
   flex-direction: column;
+  border-radius: 10px;
   position: absolute;
   background-color: lightgrey;
   margin-top: 40px;
