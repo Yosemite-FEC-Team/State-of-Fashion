@@ -11,9 +11,10 @@ const Gallery = () => {
   const currentStyle = React.useContext(StyleContext);
 
   // Rerender with the new information every time a different style is clicked
-  // Current problem: The mini carousel overlay does not update back to the first picture as default
+  // Current problem: The mini carousel overlay does not update back to the first picture as default, solved by setting the image index back to 0 on new style pick
   React.useEffect(() => {
     getGallery();
+    setMainImage(0);
   }, [currentStyle]);
 
   let getGallery = () => {
