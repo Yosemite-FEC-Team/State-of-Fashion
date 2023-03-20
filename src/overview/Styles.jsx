@@ -36,7 +36,7 @@ const Styles = () => {
 
   let styleList = styles.map(style => {
     let index = styles.indexOf(style);
-    return(<img id='style-image' className=' h-10 w-10 rounded-full' onClick={()=> {handleStyleClick(index)}} src={style.photos[0].thumbnail_url}></img>)
+    return(<img id='style-image' className={currentStyle === index ?  'selectedStyle h-10 w-10 rounded-full' :' h-10 w-10 rounded-full'} onClick={()=> {handleStyleClick(index)}} src={style.photos[0].thumbnail_url}></img>)
   })
 
   //console.log(sizes);

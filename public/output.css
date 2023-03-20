@@ -3931,3 +3931,7 @@ html {
 .isSelected {
   border-bottom: 5px solid #639d80;
 }
+
+.selectedStyle {
+  border: 5px solid goldenrod;
+}
