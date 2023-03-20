@@ -51,7 +51,6 @@ const Overview = () => {
             <p className='category mt-10'>{productDetails.category}</p>
             <h4 className="mt-0 mb-2 text-3xl font-medium leading-tight text-primary">{productDetails.name}</h4>
             <p>${productDetails.default_price}</p>
-            <p className='category mt-10'>Style >></p>
             {/* The index from styles can go to gallery for the onClick change */}
             <StyleContext.Provider value={{currentStyle, setCurrentStyle}}>
               <Styles />

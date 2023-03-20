@@ -10,7 +10,6 @@ const Styles = () => {
     getGallery();
   }, []);
 
-  const [style, setStyle] = React.useState({});
   const [sizes, setSizes] = React.useState([]);
 
   const {currentStyle, setCurrentStyle} = React.useContext(StyleContext);
@@ -23,7 +22,6 @@ const Styles = () => {
       // this has all the styles and the photos for those styles
       setStyles(data.data.results);
       // replaced the basic 0 with currentStyle from Overview
-      setStyle(data.data.results[currentStyle]);
       setSizes(Object.values(data.data.results[currentStyle].skus))
       })
       .catch(err => {
@@ -48,6 +46,7 @@ const Styles = () => {
 
   return (
     <>
+    <p className='category mt-10'>Style >> {styles[currentStyle] && styles[currentStyle].name}</p>
   <div className='flex flex-row mt-5'>
     {styleList}
   </div>
