@@ -1,4 +1,5 @@
 import React from 'react';
+import { StyleContext } from './Overview.jsx'
 const axios = require('axios');
 
 const Gallery = () => {
@@ -7,16 +8,20 @@ const Gallery = () => {
   const [galleryList, setGalleryList] = React.useState([]);
   const [mainImage, setMainImage] = React.useState(0);
 
+  const currentStyle = React.useContext(StyleContext);
+
+  // Rerender with the new information every time a different style is clicked
+  // Current problem: The mini carousel overlay does not update back to the first picture as default
   React.useEffect(() => {
     getGallery();
-  }, []);
+  }, [currentStyle]);
 
   let getGallery = () => {
     axios.get('/products/styles')
       .then(data => {
-      console.log(data.data.results[0].photos);
+      console.log(data.data.results[currentStyle].photos);
       // this has all the styles and the photos for those styles
-      setGalleryList(data.data.results[0].photos);
+      setGalleryList(data.data.results[currentStyle].photos);
       })
       .catch(err => {
       console.log(err, 'Error getting products from server');

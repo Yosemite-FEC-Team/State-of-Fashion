@@ -3,10 +3,14 @@ import Gallery from './Gallery.jsx';
 import Styles from './Styles.jsx';
 const axios = require('axios');
 
-// Huzzah for jsx!
+const StyleContext = React.createContext(0);
+
 const Overview = () => {
 
   const [productDetails, setProductDetails] = React.useState({});
+
+  // Can pass this context down
+  const [currentStyle, setCurrentStyle] = React.useState(0);
 
   React.useEffect(() => {
     getProductDetails();
@@ -32,7 +36,9 @@ const Overview = () => {
         <input placeholder='Search...' className="input input-bordered input-success h-10 m-2"></input>
       </h1>
         <div className='flex flex-row w-4/5 mt-5'>
-          <Gallery />
+          <StyleContext.Provider value={currentStyle}>
+            <Gallery />
+          </StyleContext.Provider>
           <div className='flex flex-col ml-10 mt-5'>
             <div>
             <span className="fa fa-star checked"></span>
@@ -47,7 +53,9 @@ const Overview = () => {
             <p>${productDetails.default_price}</p>
             <p className='category mt-10'>Style >></p>
             {/* The index from styles can go to gallery for the onClick change */}
-            <Styles />
+            <StyleContext.Provider value={{currentStyle, setCurrentStyle}}>
+              <Styles />
+            </StyleContext.Provider>
           <button className='btn w-52'>Add to Bag</button>
         </div>
       </div>
@@ -69,4 +77,4 @@ const Overview = () => {
   )
 }
 
-export default Overview;
+export {Overview , StyleContext};
