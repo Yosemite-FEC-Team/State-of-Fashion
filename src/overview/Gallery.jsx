@@ -5,6 +5,7 @@ const Gallery = () => {
   // lets make a state for the incoming gallery list
   // Might move this to an overarching components since the styles need this as well
   const [galleryList, setGalleryList] = React.useState([]);
+  const [mainImage, setMainImage] = React.useState(0);
 
   React.useEffect(() => {
     getGallery();
@@ -20,6 +21,10 @@ const Gallery = () => {
       .catch(err => {
       console.log(err, 'Error getting products from server');
       });
+  }
+
+  let handleMiniClick = (index) => {
+    setMainImage(index);
   }
 
   // Took a long time to get a hang of the sizing of the pictures and making them fit into the contraints of the carousel
@@ -42,7 +47,7 @@ const Gallery = () => {
     let index = galleryList.indexOf(image);
     let ref = `#slide${index}`;
     return (
-    <a href={ref}><img className='mini-thumbnail object-contain p-1' src={image.thumbnail_url}></img>
+    <a href={ref}><img onClick={() => {handleMiniClick(index);}} className={index === mainImage ? 'mini-thumbnail object-contain p-1 isSelected' : 'mini-thumbnail object-contain p-1'} src={image.thumbnail_url} ></img>
     </a>)
   })
 

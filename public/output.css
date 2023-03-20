@@ -3633,10 +3633,6 @@ html {
   top: 50%;
 }
 
-.m-10 {
-  margin: 2.5rem;
-}
-
 .m-2 {
   margin: 0.5rem;
 }
@@ -3655,10 +3651,6 @@ html {
 
 .ml-5 {
   margin-left: 1.25rem;
-}
-
-.mr-10 {
-  margin-right: 2.5rem;
 }
 
 .mr-14 {
@@ -3933,5 +3925,9 @@ html {
 }
 
 .mini-thumbnail {
-  height: 70px;
+  width: 65px;
+}
+
+.isSelected {
+  border-bottom: 5px solid #639d80;
 }

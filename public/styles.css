@@ -56,5 +56,9 @@
 }
 
 .mini-thumbnail {
-  height: 70px;
+  width: 65px;
+}
+
+.isSelected {
+  border-bottom: 5px solid #639d80;
 }
