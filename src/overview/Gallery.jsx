@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleContext } from './Overview.jsx'
+import { StyleContext } from './Overview.jsx';
 const axios = require('axios');
 
 const Gallery = () => {
@@ -36,38 +36,46 @@ const Gallery = () => {
   // Took a long time to get a hang of the sizing of the pictures and making them fit into the contraints of the carousel
   let galleryCarousel = galleryList.map(image => {
     let index = galleryList.indexOf(image);
+
+    const nextSlide = () => {
+      setMainImage(index === galleryList.length -1 ? index : index + 1);
+    }
+
+    const prevSlide = () => {
+      setMainImage(index === 0 ? 0 : index - 1);
+    }
+
     let imageID = `slide${index}`;
     let slideNext = `#slide${index + 1}`;
     let slidePrevious = `#slide${index -1}`;
     return (
-      <div id={imageID} className="carousel-card card">
-        <img className='object-contain w-full h-550' src={image.url}></img>
-        <div className="absolute flex justify-between transform -translate-y-1/2 left-1 right-1 top-1/2">
-          <a href={slidePrevious} className="btn btn-ghost">❮</a>
-          <a href={slideNext} className="btn btn-ghost">❯</a>
-        </div>
+      <div id={imageID} className={ index === mainImage ? 'carousel-card' : 'inactive-card'}>
+          <button className="right-arrow btn btn-ghost" onClick={nextSlide}>{mainImage === galleryList.length - 1 ? '' : '❯'}</button>
+          <button className="left-arrow btn btn-ghost" onClick={prevSlide}>{mainImage === 0 ? '' : '❮'}</button>
+          {index === mainImage && (<img className='object-contain w-full h-550' src={image.url}></img>)}
       </div>)
   })
+
 
   let galleryThumbnails = galleryList.map(image => {
     let index = galleryList.indexOf(image);
     let ref = `#slide${index}`;
     return (
-    <a href={ref}><img onClick={() => {handleMiniClick(index);}} className={index === mainImage ? 'mini-thumbnail object-contain p-1 isSelected' : 'mini-thumbnail object-contain p-1'} src={image.thumbnail_url} ></img>
-    </a>)
+    <span><img onClick={() => {handleMiniClick(index);}} className={index === mainImage ? 'mini-thumbnail object-contain p-1 isSelected' : 'mini-thumbnail object-contain p-1'} src={image.thumbnail_url} ></img>
+    </span>)
   })
 
   // ideas:
   // use index of the response data (in array) to determine which picture and format it into the carousel format below
   return (
-    <div>
-      <nav className='mini-thumbnail-flex items-center'>
+    <>
+      <div className='mini-thumbnail-flex items-center'>
         {galleryThumbnails}
-      </nav>
+      </div>
       <div className="carousel-container bg-white">
         {galleryCarousel}
       </div>
-    </div>
+    </>
   )
 }
 

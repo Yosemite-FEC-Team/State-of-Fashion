@@ -24,16 +24,38 @@
   width: 900px;
   padding-top: 20px;
   padding-bottom: 20px;
+  align-items: center;
   z-index: 9;
 }
 
 .carousel-card {
+  position: relative;
+  opacity: 1;
   height: 550px;
   min-width: 900px;
   width: fit-content;
   display: flex;
   align-items: center;
   justify-content: center;
+  cursor: -webkit-zoom-in;
+}
+
+.inactive-card {
+  opacity: 0;
+}
+
+.right-arrow {
+  position: absolute;
+  top: 50%;
+  right: 2px;
+  z-index: 10;
+}
+
+.left-arrow {
+  position: absolute;
+  top: 50%;
+  left: 2px;
+  z-index: 10;
 }
 
 ::-webkit-scrollbar {

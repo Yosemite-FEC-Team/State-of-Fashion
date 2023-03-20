@@ -43,7 +43,7 @@ const Overview = () => {
             <div>
             <span className="fa fa-star checked"></span>
             <span className="fa fa-star checked"></span>
-            <span className="fa fa-star checked"></span>
+            <span className="fa fa-star"></span>
             <span className="fa fa-star"></span>
             <span className="fa fa-star"></span>
             <p>All reviews </p>
