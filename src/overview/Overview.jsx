@@ -35,13 +35,13 @@ const Overview = () => {
   let getReviews = () => {
     axios.get('/products/reviews')
     .then(data => {
-      console.log(data.data);
+      //console.log(data.data);
       let total = (data.data[1] * 1) + (data.data[2] * 2) + (data.data[3] * 3) + (data.data[4] * 4) + (data.data[5] * 5);
       let reviews = Number(data.data[1])  + Number(data.data[2]) + Number(data.data[3]) + Number(data.data[4]) + Number(data.data[5]);
       let averageReview = total/reviews;
       setTotal(reviews);
       setAverage(averageReview);
-      console.log(averageReview, 'total');
+      //console.log(averageReview, 'total');
     })
     .catch(err => {
       console.log(err, 'error getting reviews');
@@ -71,7 +71,6 @@ const Overview = () => {
             </div>
             <p className='category mt-10'>{productDetails.category}</p>
             <h4 className="mt-0 mb-2 text-3xl font-medium leading-tight text-primary">{productDetails.name}</h4>
-            <p>${productDetails.default_price}</p>
             {/* The index from styles can go to gallery for the onClick change */}
             <StyleContext.Provider value={{currentStyle, setCurrentStyle}}>
               <Styles />

@@ -7,6 +7,7 @@ let app = express();
 app.use(express.static(path.join(__dirname, '../public/')));
 app.use(express.json());
 
+
 app.get('/products/styles', (req, res) => {
   axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/products/37315/styles', { headers: {'Authorization': `${config.TOKEN}` } })
     .then(data => {
@@ -32,7 +33,7 @@ app.get('/products', (req, res) => {
 app.get('/products/reviews', (req, res) => {
   axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/reviews/meta', { params: {product_id: '37315' }, headers: {'Authorization': `${config.TOKEN}` } })
     .then(data => {
-      console.log(data.data);
+     //console.log(data.data);
       res.send(data.data.ratings);
     })
     .catch(err => {

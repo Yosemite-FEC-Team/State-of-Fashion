@@ -18,7 +18,7 @@ const Styles = () => {
   let getGallery = () => {
     axios.get('/products/styles')
       .then(data => {
-      //console.log(data.data.results,'For styles');
+      console.log(data.data.results,'For styles');
       // this has all the styles and the photos for those styles
       setStyles(data.data.results);
       // replaced the basic 0 with currentStyle from Overview
@@ -46,7 +46,8 @@ const Styles = () => {
 
   return (
     <>
-    <p className='category mt-10'>Style >> {styles[currentStyle] && styles[currentStyle].name}</p>
+    <p>${styles[currentStyle] && styles[currentStyle].original_price}</p>
+    <p className='category mt-10'>Style > {styles[currentStyle] && styles[currentStyle].name}</p>
   <div className='flex flex-row mt-5'>
     {styleList}
   </div>
