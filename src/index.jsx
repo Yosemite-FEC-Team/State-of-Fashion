@@ -10,7 +10,6 @@ const App = () => {
   return (
     <>
     <RatingsReviews />
-    <div>HELLO</div>
     </>
   )
 }

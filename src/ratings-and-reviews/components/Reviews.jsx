@@ -5,10 +5,16 @@ import axios from 'axios';
 // console.log(process.env.REACT_APP_API_TOKEN);
 let token = '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'
 import SingleReview from './SingleReview.jsx'
+import Modal from 'react-modal';
+import ReviewForm from './ReviewForm.jsx';
+
+
 
 const Reviews = () => {
 
   const [results, setResults] = useState([]);
+  //this state variable will show whether the review form is open or not
+  const [formIsOpen, setFormIsOpen] = useState(false);
   useEffect(() => {
     axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/reviews/', {params: {product_id: '37315'}, headers: {'Authorization': `${token}`}})
     .then(data => {
@@ -19,7 +25,10 @@ const Reviews = () => {
       console.log(err, 'Error getting reviews from the API')
     })
   }, []);
-
+  //clickHandlerFunction for when the Add Review button is clicked
+  const handleClick = () => {
+    setFormIsOpen(true);
+  }
   console.log('results array inside reviews', results);
   return (
     <>
@@ -27,12 +36,11 @@ const Reviews = () => {
 
     <h3>248 reviews; Reviews sorted by relavance drop down menu</h3>
        {/* we will have to map over each SingleReview component */}
-    <h3>Single Review</h3>
-    <h3>Single Review</h3>
     {results.map((object, i) => {
       return <SingleReview key={i} result={object}/>
     })}
-
+    <button>MORE REVIEWS</button>
+    <button onClick={handleClick}>ADD REVIEW</button>
 
 
 
