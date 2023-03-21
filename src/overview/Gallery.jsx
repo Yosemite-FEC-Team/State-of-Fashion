@@ -17,6 +17,10 @@ const Gallery = () => {
     setMainImage(0);
   }, [currentStyle]);
 
+  React.useEffect(() => {
+
+  });
+
   let getGallery = () => {
     axios.get('/products/styles')
       .then(data => {
@@ -29,9 +33,6 @@ const Gallery = () => {
       });
   }
 
-  let handleMiniClick = (index) => {
-    setMainImage(index);
-  }
 
   // Took a long time to get a hang of the sizing of the pictures and making them fit into the contraints of the carousel
   let galleryCarousel = galleryList.map(image => {
@@ -46,8 +47,6 @@ const Gallery = () => {
     }
 
     let imageID = `slide${index}`;
-    let slideNext = `#slide${index + 1}`;
-    let slidePrevious = `#slide${index -1}`;
     return (
       <div id={imageID} className={ index === mainImage ? 'carousel-card' : 'inactive-card'}>
           <button className="right-arrow btn btn-ghost" onClick={nextSlide}>{mainImage === galleryList.length - 1 ? '' : '❯'}</button>

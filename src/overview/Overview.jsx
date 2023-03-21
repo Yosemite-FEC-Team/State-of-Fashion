@@ -1,6 +1,7 @@
 import React from 'react';
 import Gallery from './Gallery.jsx';
 import Styles from './Styles.jsx';
+import {AiOutlineStar} from 'react-icons/Ai';
 const axios = require('axios');
 
 const StyleContext = React.createContext(0);
@@ -11,9 +12,12 @@ const Overview = () => {
 
   // Can pass this context down
   const [currentStyle, setCurrentStyle] = React.useState(0);
+  const [average, setAverage] = React.useState(0);
+  const [total, setTotal] = React.useState(0);
 
   React.useEffect(() => {
     getProductDetails();
+    getReviews();
   }, []);
 
   let getProductDetails = () => {
@@ -28,6 +32,27 @@ const Overview = () => {
       });
   }
 
+  let getReviews = () => {
+    axios.get('/products/reviews')
+    .then(data => {
+      console.log(data.data);
+      let total = (data.data[1] * 1) + (data.data[2] * 2) + (data.data[3] * 3) + (data.data[4] * 4) + (data.data[5] * 5);
+      let reviews = Number(data.data[1])  + Number(data.data[2]) + Number(data.data[3]) + Number(data.data[4]) + Number(data.data[5]);
+      let averageReview = total/reviews;
+      setTotal(reviews);
+      setAverage(averageReview);
+      console.log(averageReview, 'total');
+    })
+    .catch(err => {
+      console.log(err, 'error getting reviews');
+    })
+  }
+
+  let handleMiniClick = (index) => {
+    setMainImage(index);
+  }
+
+  // likely going to use an <a href=#reviews> for the All reviews
 
   return (
     <>
@@ -41,12 +66,12 @@ const Overview = () => {
           </StyleContext.Provider>
           <div className='flex flex-col ml-10 mt-5'>
             <div>
-            <span className="fa fa-star checked"></span>
-            <span className="fa fa-star checked"></span>
             <span className="fa fa-star"></span>
             <span className="fa fa-star"></span>
             <span className="fa fa-star"></span>
-            <p>All reviews </p>
+            <span className="fa fa-star-o"></span>
+            <span className="fa fa-star-o"></span>
+            <p className='underline'>See all {total} reviews </p>
             </div>
             <p className='category mt-10'>{productDetails.category}</p>
             <h4 className="mt-0 mb-2 text-3xl font-medium leading-tight text-primary">{productDetails.name}</h4>
