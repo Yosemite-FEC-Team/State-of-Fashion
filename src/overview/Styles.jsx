@@ -41,7 +41,7 @@ const Styles = () => {
 
   //console.log(sizes);
   let sizeList = sizes.map(size => {
-    return (<option>{size.quantity !== 0 ? size.size : ''}</option>)
+    return (<option>{size.quantity !== 0 ? size.size : size.size + ' OUT OF STOCK'}</option>)
   })
 
   return (
