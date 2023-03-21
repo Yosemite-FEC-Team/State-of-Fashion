@@ -1,6 +1,8 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 let token = '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'
+import Stars from './Stars.jsx'
+import Characteristics from './Characteristics.jsx'
 
 const Ratings = () => {
 
@@ -20,6 +22,7 @@ const Ratings = () => {
     <>
     <h1>Ratings & Reviews</h1>
     <Stars />
+    <Characteristics />
 
 
 
