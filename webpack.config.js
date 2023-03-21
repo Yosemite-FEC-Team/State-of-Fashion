@@ -1,5 +1,5 @@
 const path = require("path");
-const dotenv = require('dotenv');
+const dotenv = require('dotenv-webpack');
 const isDevelopment = process.env.NODE_ENV !== 'production';
 const webpack = require('webpack');
 
