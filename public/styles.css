@@ -108,14 +108,12 @@
   position: relative;
   opacity: 1;
   display: flex;
-  align-items: center;
   justify-content: center;
 }
 
 .expanded-image {
-  max-width: 90%;
-  max-height: 90%;
   object-fit: contain;
+  height: 100vh;
 }
 
 .expanded-button {
