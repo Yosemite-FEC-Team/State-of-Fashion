@@ -3,10 +3,16 @@ import React from "react";
 // Import from react-dom the ability to create a root render
 import { createRoot } from "react-dom/client";
 const root = createRoot(document.getElementById("root"));
+import RatingsReviews from './ratings-and-reviews/components/RatingsReviews.jsx'
 
 // Huzzah for jsx!
 const App = () => {
-  return <h1>Hello World</h1>
+  return (
+    <>
+    <RatingsReviews />
+    <div>HELLO</div>
+    </>
+  )
 }
 
 root.render(<App />);
