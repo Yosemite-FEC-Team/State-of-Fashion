@@ -33,6 +33,9 @@ const Gallery = () => {
       });
   }
 
+  const handleMiniClick = (index) => {
+    setMainImage(index);
+  }
 
   // Took a long time to get a hang of the sizing of the pictures and making them fit into the contraints of the carousel
   let galleryCarousel = galleryList.map(image => {
@@ -45,6 +48,7 @@ const Gallery = () => {
     const prevSlide = () => {
       setMainImage(index === 0 ? 0 : index - 1);
     }
+
 
     let imageID = `slide${index}`;
     return (
@@ -60,7 +64,7 @@ const Gallery = () => {
     let index = galleryList.indexOf(image);
     let ref = `#slide${index}`;
     return (
-    <span><img onClick={() => {handleMiniClick(index);}} className={index === mainImage ? 'mini-thumbnail object-contain p-1 isSelected' : 'mini-thumbnail object-contain p-1'} src={image.thumbnail_url} ></img>
+    <span><img onClick={() => {handleMiniClick(index)}} className={index === mainImage ? 'mini-thumbnail object-contain p-1 isSelected' : 'mini-thumbnail object-contain p-1'} src={image.thumbnail_url} ></img>
     </span>)
   })
 

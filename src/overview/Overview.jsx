@@ -48,10 +48,6 @@ const Overview = () => {
     })
   }
 
-  let handleMiniClick = (index) => {
-    setMainImage(index);
-  }
-
   // likely going to use an <a href=#reviews> for the All reviews
 
   return (
