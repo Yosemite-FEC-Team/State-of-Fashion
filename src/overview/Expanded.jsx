@@ -17,7 +17,7 @@ const Expanded = ({revert, galleryList, mainImage, setMainImage}) => {
     let imageID = `slide${index}`;
     return (
       <div id={imageID} className={ index === mainImage ? 'expanded-card' : 'inactive-card'}>
-          {mainImage !== galleryList.length ? <button className="right-arrow btn btn-accent" onClick={nextSlide}>❯</button> : ''}
+          {mainImage !== galleryList.length - 1 ? <button className="right-arrow btn btn-accent" onClick={nextSlide}>❯</button> : ''}
           {mainImage !== 0 ? <button className="left-arrow btn btn-accent" onClick={prevSlide}>❮</button> : ''}
           {index === mainImage && (<img className='expanded-image' src={image.url}></img>)}
       </div>)

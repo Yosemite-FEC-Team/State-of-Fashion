@@ -1,7 +1,10 @@
 import React from 'react';
 import Gallery from './Gallery.jsx';
 import Styles from './Styles.jsx';
-import {AiOutlineStar} from 'react-icons/Ai';
+import { AiOutlineStar } from 'react-icons/Ai';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faFacebookF, faTwitter, faPinterestP } from '@fortawesome/free-brands-svg-icons';
+import { FacebookShareButton, TwitterShareButton, PinterestShareButton } from 'react-share';
 const axios = require('axios');
 
 const StyleContext = React.createContext(0);
@@ -92,6 +95,17 @@ const Overview = () => {
           })}
         </div>
       </div>
+      <div className='mt-2 pt-2 ml-5'>
+        <FacebookShareButton url={'window.location.href'} quote='Check out this cool product I found on Fetch!'>
+          <button className='gap-2 text-white bg-[#3b5998] hover:bg-[#3b5998]/90 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center mr-4 mb-2' href='https://www.facebook.com/'><FontAwesomeIcon icon={faFacebookF} size="lg" style={{color: "#ffffff",}} />Share to Facebook</button>
+        </FacebookShareButton>
+        <TwitterShareButton url={'window.location.href'} hashtags={['#fetch']}>
+          <button className='gap-2 text-white bg-[#1da1f2] hover:bg-[#1da1f2]/90 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center mr-4 mb-2'><FontAwesomeIcon icon={faTwitter} size="lg" style={{color: "#ffffff",}} />Share to Twitter</button>
+        </TwitterShareButton>
+        <PinterestShareButton url={'window.location.href'} media={'window.location.href'} description={'Check out this cool product I found on Fetch!'}>
+          <button className='gap-2 text-white bg-[#E02222] hover:bg-[#E02222]/90 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center mr-4 mb-2'><FontAwesomeIcon icon={faPinterestP} size="lg" style={{color: "#ffffff",}} />Share to Pinterest</button>
+        </PinterestShareButton>
+        </div>
     </>
   )
 }
