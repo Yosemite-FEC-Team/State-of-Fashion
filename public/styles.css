@@ -109,11 +109,23 @@
   opacity: 1;
   display: flex;
   justify-content: center;
+  overflow: auto;
 }
 
 .expanded-image {
-  object-fit: contain;
-  height: 100vh;
+  object-fit: cover;
+}
+
+.zoom-select {
+  position: absolute;
+  border: 2px solid black;
+  width: 100px;
+  height: 100px;
+}
+
+.zoom-window {
+  width: 500px;
+  height: 500px;
 }
 
 .expanded-button {
