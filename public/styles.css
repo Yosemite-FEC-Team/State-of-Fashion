@@ -96,8 +96,8 @@
 .expanded-view {
   display: flex;
   z-index: 5;
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   align-items: center;
   justify-content: center;
   position: absolute;
@@ -109,23 +109,22 @@
   opacity: 1;
   display: flex;
   justify-content: center;
-  overflow: auto;
+  align-items: center;
 }
 
 .expanded-image {
-  object-fit: cover;
+  zoom:2.5;
+  pointer-events: none;
 }
 
-.zoom-select {
-  position: absolute;
-  border: 2px solid black;
-  width: 100px;
-  height: 100px;
-}
 
 .zoom-window {
-  width: 500px;
-  height: 500px;
+  width: 1500px;
+  background-repeat: no-repeat;
+}
+
+.zoom-window:hover img {
+  opacity: 0;
 }
 
 .expanded-button {
