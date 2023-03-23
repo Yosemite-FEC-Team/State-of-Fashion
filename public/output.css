@@ -4360,11 +4360,12 @@ html {
 .expanded-view {
   display: flex;
   z-index: 5;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 1000px;
   align-items: center;
   justify-content: center;
   position: absolute;
+  overflow: hidden;
   background-color: white;
 }
 
@@ -4373,16 +4374,17 @@ html {
   opacity: 1;
   display: flex;
   justify-content: center;
+  width: 1200px;
   align-items: center;
-}
-
-.expanded-image {
-  zoom:2.5;
-  pointer-events: none;
+  -o-object-fit: contain;
+     object-fit: contain;
 }
 
 .zoom-window {
-  width: 1500px;
+  width: -moz-fit-content;
+  width: fit-content;
+  -o-object-fit: contain;
+     object-fit: contain;
   background-repeat: no-repeat;
 }
 

@@ -32,7 +32,7 @@ const Expanded = ({revert, galleryList, mainImage, setMainImage}) => {
       <div id={imageID} className={ index === mainImage ? 'expanded-card' : 'inactive-card'}>
           {mainImage !== galleryList.length - 1 ? <button className="right-arrow btn btn-accent" onClick={nextSlide}>❯</button> : ''}
           {mainImage !== 0 ? <button className="left-arrow btn btn-accent" onClick={prevSlide}>❮</button> : ''}
-          {index === mainImage && (<div className='zoom-window' style={imageStyle} onMouseMove={handleMouseEvent}><img className='expanded-image' src={image.url}></img></div>)}
+          {index === mainImage && (<div className='zoom-window' style={imageStyle} onMouseMove={handleMouseEvent}><img src={image.url}></img></div>)}
       </div>)
   })
 
