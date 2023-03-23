@@ -8,7 +8,7 @@ const RatingsReviews = () => {
 
   return (
     <div>
-    <h1>Ratings and Reviews</h1>
+
    <Ratings />
    <Reviews />
 
