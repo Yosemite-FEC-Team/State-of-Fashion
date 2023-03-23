@@ -36,4 +36,42 @@ app.get('/products/37311/related', (req, res) => {
   // .catch(err => console.log('failed to get results from testFunction', err));
 })
 
-app.listen(3000, () => console.log(`listening on port 3000`));
+
+app.get('/products/styles', (req, res) => {
+  axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/products/37315/styles', { headers: {'Authorization': `${config.TOKEN}` } })
+    .then(data => {
+     //console.log(data.data);
+      res.send(data.data);
+    })
+    .catch(err => {
+      console.log(err, 'Error getting products from API');
+    })
+})
+
+app.get('/products', (req, res) => {
+  axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/products/37315', { headers: {'Authorization': `${config.TOKEN}` } })
+    .then(data => {
+      //console.log(data.data);
+      res.send(data.data);
+    })
+    .catch(err => {
+      console.log(err, 'Error getting products from API');
+    })
+})
+
+app.get('/products/reviews', (req, res) => {
+  axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/reviews/meta', { params: {product_id: '37315' }, headers: {'Authorization': `${config.TOKEN}` } })
+    .then(data => {
+     //console.log(data.data);
+      res.send(data.data.ratings);
+    })
+    .catch(err => {
+      console.log(err, 'error making call for reviews');
+      res.end();
+    })
+})
+
+
+app.listen(config.PORT, function() {
+  console.log(`listening on port ${config.PORT}`);
+});

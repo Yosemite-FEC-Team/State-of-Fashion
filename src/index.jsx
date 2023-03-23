@@ -4,6 +4,7 @@ import React, {useEffect} from "react";
 import { createRoot } from "react-dom/client";
 import axios from 'axios';
 import RelatedAndCompModule from './related/components/RelatedAndCompModule.jsx';
+import { Overview } from './overview/Overview.jsx'
 const root = createRoot(document.getElementById("root"));
 
 // Huzzah for jsx!
@@ -11,6 +12,7 @@ const App = () => {
   return (
     <div>
       <h1>Hello World</h1>
+      <Overview />
       <RelatedAndCompModule />
     </div>
     )
@@ -23,3 +25,4 @@ root.render(<App />);
 //   .then(result => console.log('result from react axios call', result.data))
 //   .catch(err => console.log(err));
 // }, [])
+
