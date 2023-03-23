@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-
+import SizeButtons from './SizeButtons.jsx'
 const ReviewForm = ({formIsOpen, handleCloseForm}) => {
 //I will need different data here that gives me the product name
 
@@ -45,6 +45,7 @@ const ReviewForm = ({formIsOpen, handleCloseForm}) => {
     </label>
     <h3>Characteristics</h3>
     {/*I'm going to need the data from the /reviews/meta endpoint here to see what characteristics are being gathered for a given product*/}
+    <SizeButtons />
     <label>Review summary</label>
       <input
       type="text"
