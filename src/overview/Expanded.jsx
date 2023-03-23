@@ -3,6 +3,7 @@ import React from 'react';
 const Expanded = ({revert, galleryList, mainImage, setMainImage}) => {
 
   const [position, setPosition] = React.useState('0% 0%');
+  const [zoom, setZoom] = React.useState(false);
 
 
   const handleMouseEvent = (event) => {
@@ -24,6 +25,10 @@ const Expanded = ({revert, galleryList, mainImage, setMainImage}) => {
       setMainImage(index === 0 ? 0 : index - 1);
     }
 
+    const handleZoomClick = () => {
+      setZoom(!zoom);
+    }
+
 
 
     let imageID = `slide${index}`;
@@ -32,7 +37,7 @@ const Expanded = ({revert, galleryList, mainImage, setMainImage}) => {
       <div id={imageID} className={ index === mainImage ? 'expanded-card' : 'inactive-card'}>
           {mainImage !== galleryList.length - 1 ? <button className="right-arrow btn btn-accent" onClick={nextSlide}>❯</button> : ''}
           {mainImage !== 0 ? <button className="left-arrow btn btn-accent" onClick={prevSlide}>❮</button> : ''}
-          {index === mainImage && (<div className='zoom-window' style={imageStyle} onMouseMove={handleMouseEvent}><img src={image.url}></img></div>)}
+          {index === mainImage && (zoom ? <div className='zoom-window' style={imageStyle} onMouseMove={handleMouseEvent}><img onClick={handleZoomClick} src={image.url}></img></div> : <img onClick={handleZoomClick} src={image.url}></img>)}
       </div>)
   })
 
