@@ -12,7 +12,7 @@ function SizeButtons() {
     <>
     <h5>Size</h5>
     <div>
-      {options.map((option) => (
+      {options.map((option, i) => (
         <>
         <label key={option}>
           <input
@@ -22,7 +22,7 @@ function SizeButtons() {
           onChange={handleSizeChange}
           />
         </label>
-        <span>{option}</span>
+        <span key={i}>{option}</span>
         </>
       ))}
     </div>
