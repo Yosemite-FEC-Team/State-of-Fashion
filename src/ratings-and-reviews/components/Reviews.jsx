@@ -1,9 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import axios from 'axios';
-// require('dotenv').config();
-// const dotenv = require('dotenv');
-// console.log(process.env.REACT_APP_API_TOKEN);
-let token = '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'
+const axios = require('axios');
 import SingleReview from './SingleReview.jsx'
 import Modal from 'react-modal';
 import ReviewForm from './ReviewForm.jsx';
@@ -24,10 +20,10 @@ const Reviews = () => {
     setFormIsOpen(false);
   }
   useEffect(() => {
-    axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/reviews/', {params: {count: 1000, product_id: '37315'}, headers: {'Authorization': `${token}`}})
+    axios.get('/products/review')
     .then(data => {
       console.log('data from axios call in reviews', data);
-      setResults(data.data.results);
+      setResults(data.data);
     })
     .catch(err => {
       console.log(err, 'Error getting reviews from the API')
