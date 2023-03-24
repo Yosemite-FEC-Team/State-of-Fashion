@@ -14,7 +14,7 @@ const ReviewForm = ({formIsOpen, handleCloseForm}) => {
   const [reviewBody, setReviewBody] = useState('');
   const [nickname, setNickname] = useState('');
   const [email, setEmail] = useState('');
-  const [charsNeeded, setCharsNeeded] = useState(0);
+  const [charsNeeded, setCharsNeeded] = useState(50);
   //create eventHandlers for various parts of the form
   const reviewSummaryChange = (event) => {
     setReviewSummary(event.target.value);

@@ -12,17 +12,25 @@ const SingleReview = ({result}) => {
   }
   //for photos, if result.photos.length > 0, map that array to a photo component
   return (
-   <>
-   <h3>{result.rating}</h3>
-   <h3>{`${result.reviewer_name},`} {formatDate(result.date)}</h3>
-   <h3>{result.summary}</h3>
-   <h3>{result.body}</h3>
-   { result.photos.length === 0 ? null : result.photos.map((photo, id) => <ReviewPhoto key={id} photo={photo} />)}
-   <h3>{result.recommend}</h3>
-   <h3>{result.response}</h3>
-   <h3>Helpful? {result.helpfulness}</h3>
-   <h3>Report Button</h3>
-   </>
+   <div className='single-review'>
+   <div className="rating-user-date">
+     <p>{result.rating}</p>
+     <p id="user-date">{`${result.reviewer_name},`} {formatDate(result.date)}</p>
+   </div>
+
+    <p id="review-summary">{result.summary}</p>
+   <p>{result.body}</p>
+   <div className='review-photos'>
+     { result.photos.length === 0 ? null : result.photos.map((photo, id) => <ReviewPhoto key={id} photo={photo} />)}
+   </div>
+   <p className='recommend'>{result.recommend ? '✔️ I recommend this product' : null }</p>
+   <p>{result.response}</p>
+   <div className='review-bottom'>
+   <p>Helpful? <u>Yes</u> {result.helpfulness} </p>
+   <p><u>  | Report</u></p>
+   </div>
+
+   </div>
   )
 }
 

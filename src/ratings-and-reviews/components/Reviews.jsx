@@ -30,15 +30,11 @@ const Reviews = () => {
     })
   }, []);
   //this state variable will dictate the reviews that are shown and be used in conjunction
-  //make an array that is just 2 objects
-  //make an array that is the next 2 ones.
-  //CURRENTLY THIS IS ONLY SET UP WITH ONE PAGE OF REVIEWS, could I use useEffect to trigger additional axios calls when we run out??
   //Create state where we set the number of visible reviews
   const [numberOfReviews, setNumberOfReviews] = useState(2);
 
   return (
     <>
-    <h1>Reviews</h1>
 
     <h3>{results.length} reviews, Reviews sorted by</h3><select>
       <option>Relevance</option>
@@ -49,8 +45,8 @@ const Reviews = () => {
     {results.slice(0, numberOfReviews).map((object, i) => {
       return <SingleReview key={i} result={object}/>
     })}
-    <button onClick={()=> setNumberOfReviews(numberOfReviews + 2)}>MORE REVIEWS</button>
-    <button onClick={handleOpenForm}>ADD REVIEW</button>
+    <button className ='review-btn' onClick={()=> setNumberOfReviews(numberOfReviews + 2)}> MORE REVIEWS </button>
+    <button className ='review-btn' onClick={handleOpenForm}> ADD REVIEW  + </button>
     <Modal isOpen={formIsOpen} onRequestClose={handleCloseForm}>
       <ReviewForm />
     </Modal>

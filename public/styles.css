@@ -123,3 +123,50 @@
   top:0;
   right:0;
 }
+
+.single-review {
+  padding: 5px;
+}
+.review-photos {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.reviewPhoto {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 10px;
+  width: 100px;
+  height: auto;
+}
+
+.rating-user-date {
+  padding-top: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+#user-date, .review-bottom, .recommend {
+  font-size: small
+}
+
+#review-summary {
+  font-weight: bold;
+  font-size: large;
+}
+
+.review-bottom {
+  display: flex;
+  justify-content: flex-start;
+  border-bottom: 1px solid #CCC;
+  padding-bottom: 5px;
+}
+
+.review-btn {
+  display: inline-block;
+  padding: 20px;
+  margin: 20px;
+  text-align: center;
+  border: 2px solid black;
+}
