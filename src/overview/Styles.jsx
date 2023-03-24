@@ -7,6 +7,8 @@ const Styles = () => {
 
   const [styles, setStyles] = React.useState([]);
   const [added, setAdded] = React.useState(false);
+  const [pickedSize, setPickedSize] = React.useState('Pick a size');
+  const [noSize, setNoSize] = React.useState(false);
 
   React.useEffect(() => {
     getGallery();
@@ -36,21 +38,30 @@ const Styles = () => {
     setCurrentStyle(index);
   }
 
+  const handleStyleSelectChange = (event) => {
+    setPickedSize(event.target.value);
+    setNoSize(false);
+  }
+
   let handleAddToBagClick = (event) => {
     event.preventDefault();
-    let productToAdd = styles[currentStyle].name;
-    let currentItems = JSON.parse(localStorage.getItem('products')) || {};
-    if (currentItems[productToAdd] === undefined) {
-      currentItems[productToAdd] = 1;
+    if (pickedSize !== 'Pick a size') {
+      let productToAdd = styles[currentStyle].name;
+      let currentItems = JSON.parse(localStorage.getItem('products')) || {};
+      if (currentItems[productToAdd] === undefined) {
+        currentItems[productToAdd] = 1;
+      } else {
+        currentItems[productToAdd]++;
+      }
+      console.log(currentItems);
+      localStorage.setItem('products', JSON.stringify(currentItems));
+      setAdded(true);
+      setTimeout(() => {
+        setAdded(false);
+      }, 3000);
     } else {
-      currentItems[productToAdd]++;
+      setNoSize(true);
     }
-    console.log(currentItems);
-    localStorage.setItem('products', JSON.stringify(currentItems));
-    setAdded(true);
-    setTimeout(() => {
-      setAdded(false);
-    }, 3000);
   }
 
   let styleList = styles.map(style => {
@@ -73,10 +84,11 @@ const Styles = () => {
     {styleList}
   </div>
   <div className='mb-5'>
-  <select className='select w-full max-w-xs bg-white mt-5'>
+  <select className='select w-full max-w-xs bg-white mt-5' onChange={handleStyleSelectChange}>
     <option defaultValue>Pick a size</option>
     {sizeList}
   </select>
+  {noSize && <p className='text-red-600'>Please pick a size!</p>}
   <select className='select w-full max-w-xs bg-white mt-5'>
     <option>1</option>
     <option>2</option>
@@ -84,7 +96,7 @@ const Styles = () => {
   </select>
 </div>
 <div><button className='btn w-52' onClick={handleAddToBagClick}>Add to Bag</button>
-  {added && <p className='added-message'>Added to cart!</p>}
+  {added && <p className='text-red-600'>Added to cart!</p>}
   </div>
 </>)
 }
