@@ -84,19 +84,24 @@ const Styles = () => {
     {styleList}
   </div>
   <div className='mb-5'>
-  <select className='select w-full max-w-xs bg-white mt-5' onChange={handleStyleSelectChange}>
-    <option defaultValue>Pick a size</option>
-    {sizeList}
-  </select>
-  {noSize && <p className='text-red-600'>Please pick a size!</p>}
-  <select className='select w-full max-w-xs bg-white mt-5'>
-    <option>1</option>
-    <option>2</option>
-    <option>3</option>
-  </select>
-</div>
-<div><button className='btn w-52' onClick={handleAddToBagClick}>Add to Bag</button>
-  {added && <p className='text-red-600'>Added to cart!</p>}
+    <div>
+      <select className='select w-32 max-w-xs bg-white mt-5' onChange={handleStyleSelectChange}>
+        <option defaultValue>Pick a size</option>
+        {sizeList}
+      </select>
+      {noSize && <a className='ml-5 text-sm text-red-600'>Please pick a size!</a>}
+    </div>
+    <div >
+      <select className='select w-40 max-w-xs bg-white mt-5'>
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+      </select>
+    </div>
+  </div>
+  <div>
+    <button className='btn w-52' onClick={handleAddToBagClick}>Add to Bag</button>
+    {added && <p className='text-sm text-red-600'>Added to cart!</p>}
   </div>
 </>)
 }
