@@ -4,6 +4,7 @@ import Styles from './Styles.jsx';
 import { AiOutlineStar } from 'react-icons/Ai';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebookF, faTwitter, faPinterestP } from '@fortawesome/free-brands-svg-icons';
+import { faCartShopping } from '@fortawesome/free-solid-svg-icons';
 import { FacebookShareButton, TwitterShareButton, PinterestShareButton } from 'react-share';
 const axios = require('axios');
 
@@ -57,7 +58,7 @@ const Overview = () => {
     <>
       <h1 className='flex items-center justify-between flex-wrap bg-white' >
         <p id='title' className='ml-10'>@Fetch</p>
-        <input placeholder='Search...' className="input input-bordered input-success h-10 m-2"></input>
+        <p ><FontAwesomeIcon classname='mr-5' icon={faCartShopping} style={{color: "#5d8452",}} /><input placeholder='Search...' className="input input-bordered input-success h-10 m-2"></input></p>
       </h1>
         <div className='flex flex-row w-4/5 mt-5'>
           <StyleContext.Provider value={currentStyle}>

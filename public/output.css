@@ -1976,15 +1976,6 @@ html {
   text-decoration-line: underline;
 }
 
-.\!mask {
-  -webkit-mask-size: contain !important;
-  mask-size: contain !important;
-  -webkit-mask-repeat: no-repeat !important;
-  mask-repeat: no-repeat !important;
-  -webkit-mask-position: center !important;
-  mask-position: center !important;
-}
-
 .mask {
   -webkit-mask-size: contain;
   mask-size: contain;
@@ -1992,6 +1983,15 @@ html {
   mask-repeat: no-repeat;
   -webkit-mask-position: center;
   mask-position: center;
+}
+
+.\!mask {
+  -webkit-mask-size: contain !important;
+  mask-size: contain !important;
+  -webkit-mask-repeat: no-repeat !important;
+  mask-repeat: no-repeat !important;
+  -webkit-mask-position: center !important;
+  mask-position: center !important;
 }
 
 .menu {
@@ -2497,16 +2497,6 @@ html {
   border-top-width: 2px;
   --tw-bg-opacity: 1;
   background-color: hsl(var(--b1) / var(--tw-bg-opacity));
-}
-
-.btm-nav>*.\!disabled,
-    .btm-nav>*.\!disabled:hover {
-  pointer-events: none !important;
-  --tw-border-opacity: 0 !important;
-  background-color: hsl(var(--n) / var(--tw-bg-opacity)) !important;
-  --tw-bg-opacity: 0.1 !important;
-  color: hsl(var(--bc) / var(--tw-text-opacity)) !important;
-  --tw-text-opacity: 0.2 !important;
 }
 
 .btm-nav>*.disabled,

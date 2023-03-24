@@ -63,8 +63,8 @@ const Gallery = () => {
     let imageID = `slide${index}`;
     return (
       <div id={imageID} className={ index === mainImage ? 'carousel-card' : 'inactive-card'}>
-          <button className="right-arrow btn btn-ghost" onClick={nextSlide}>{mainImage === galleryList.length - 1 ? '' : '❯'}</button>
-          <button className="left-arrow btn btn-ghost" onClick={prevSlide}>{mainImage === 0 ? '' : '❮'}</button>
+          {mainImage !== galleryList.length - 1 ? <button className="right-arrow btn btn-ghost" onClick={nextSlide}>❯</button> : ''}
+          {mainImage !== 0 ? <button className="left-arrow btn btn-ghost" onClick={prevSlide}>❮</button> : ''}
           {index === mainImage && (<img className='object-contain w-full h-550' src={image.url} onClick={handleImageClick}></img>)}
       </div>)
   })
