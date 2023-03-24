@@ -2,9 +2,11 @@ import React from 'react';
 import { StyleContext } from './Overview.jsx'
 const axios = require('axios');
 
+
 const Styles = () => {
 
   const [styles, setStyles] = React.useState([]);
+  const [added, setAdded] = React.useState(false);
 
   React.useEffect(() => {
     getGallery();
@@ -34,6 +36,23 @@ const Styles = () => {
     setCurrentStyle(index);
   }
 
+  let handleAddToBagClick = (event) => {
+    event.preventDefault();
+    let productToAdd = styles[currentStyle].name;
+    let currentItems = JSON.parse(localStorage.getItem('products')) || {};
+    if (currentItems[productToAdd] === undefined) {
+      currentItems[productToAdd] = 1;
+    } else {
+      currentItems[productToAdd]++;
+    }
+    console.log(currentItems);
+    localStorage.setItem('products', JSON.stringify(currentItems));
+    setAdded(true);
+    setTimeout(() => {
+      setAdded(false);
+    }, 3000);
+  }
+
   let styleList = styles.map(style => {
     let index = styles.indexOf(style);
     return(<img id='style-image' className={currentStyle === index ?  'selectedStyle h-10 w-10 rounded-full' :' h-10 w-10 rounded-full'} onClick={()=> {handleStyleClick(index)}} src={style.photos[0].thumbnail_url}></img>)
@@ -43,6 +62,8 @@ const Styles = () => {
   let sizeList = sizes.map(size => {
     return (<option>{size.quantity !== 0 ? size.size : size.size + ' OUT OF STOCK'}</option>)
   })
+
+
 
   return (
     <>
@@ -62,6 +83,9 @@ const Styles = () => {
     <option>3</option>
   </select>
 </div>
+<div><button className='btn w-52' onClick={handleAddToBagClick}>Add to Bag</button>
+  {added && <p className='added-message'>Added to cart!</p>}
+  </div>
 </>)
 }
 

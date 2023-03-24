@@ -9,12 +9,15 @@ import { FacebookShareButton, TwitterShareButton, PinterestShareButton } from 'r
 const axios = require('axios');
 
 const StyleContext = React.createContext(0);
+// localStorage.setItem('products', 0);
+
 
 const Overview = () => {
 
   const [productDetails, setProductDetails] = React.useState({});
 
   // Can pass this context down
+  // currentStyle is the index of the current style
   const [currentStyle, setCurrentStyle] = React.useState(0);
   const [average, setAverage] = React.useState(0);
   const [total, setTotal] = React.useState(0);
@@ -58,8 +61,12 @@ const Overview = () => {
     <>
       <h1 className='flex items-center justify-between flex-wrap bg-white' >
         <p id='title' className='ml-10'>@Fetch</p>
-        <p ><FontAwesomeIcon classname='mr-5' icon={faCartShopping} style={{color: "#5d8452",}} /><input placeholder='Search...' className="input input-bordered input-success h-10 m-2"></input></p>
+        <div className='flex items-center'>
+          <p className='mt-2 mr-5'><FontAwesomeIcon icon={faCartShopping} size="lg" style={{color: "#5d8452",}} /></p>
+          <input placeholder='Search...' className="input input-bordered input-success h-10 m-2"></input>
+        </div>
       </h1>
+      <div>
         <div className='flex flex-row w-4/5 mt-5'>
           <StyleContext.Provider value={currentStyle}>
             <Gallery />
@@ -79,7 +86,6 @@ const Overview = () => {
             <StyleContext.Provider value={{currentStyle, setCurrentStyle}}>
               <Styles />
             </StyleContext.Provider>
-          <button className='btn w-52'>Add to Bag</button>
         </div>
       </div>
       <div className='flex w-full items-center mt-5'>
@@ -106,6 +112,7 @@ const Overview = () => {
         <PinterestShareButton url={'window.location.href'} media={'window.location.href'} description={'Check out this cool product I found on Fetch!'}>
           <button className='gap-2 text-white bg-[#E02222] hover:bg-[#E02222]/90 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center mr-4 mb-2'><FontAwesomeIcon icon={faPinterestP} size="lg" style={{color: "#ffffff",}} />Share to Pinterest</button>
         </PinterestShareButton>
+        </div>
         </div>
     </>
   )
