@@ -6,6 +6,7 @@ import axios from 'axios';
 import RelatedAndCompModule from './related/components/RelatedAndCompModule.jsx';
 import { Overview } from './overview/Overview.jsx'
 const root = createRoot(document.getElementById("root"));
+import RatingsReviews from './ratings-and-reviews/components/RatingsReviews.jsx'
 
 // Huzzah for jsx!
 const App = () => {
@@ -14,6 +15,7 @@ const App = () => {
       <h1>Hello World</h1>
       <Overview />
       <RelatedAndCompModule />
+      <RatingsReviews />
     </div>
     )
 }

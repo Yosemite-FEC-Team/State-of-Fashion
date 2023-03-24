@@ -31,17 +31,25 @@
     "babel-loader": "^9.1.2",
     "cors": "^2.8.5",
     "css-loader": "^6.7.3",
+    "express": "^4.18.2",
     "morgan": "^1.10.0",
-    "daisyui": "^2.51.4",
-    "postcss": "^8.4.21",
+    "process": "^0.11.10",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-modal": "^3.16.1",
+    "style-loader": "^3.3.2",
+    "tailwind": "^4.0.0",
+    "daisyui": "^2.51.4",
+    "postcss": "^8.4.21",
     "react-icons": "^4.8.0",
     "react-scripts": "^5.0.1",
-    "style-loader": "^3.3.2",
     "tailwindcss": "^3.2.7",
     "webpack": "^5.76.1",
     "webpack-cli": "^5.0.1",
     "webpack-dev-server": "^4.12.0"
+  },
+  "devDependencies": {
+    "dotenv": "^16.0.3",
+    "tailwindcss": "^3.2.7"
   }
 }
