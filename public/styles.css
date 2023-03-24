@@ -1,0 +1,125 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+#style-image {
+  margin-right: 10px;
+}
+
+#title {
+  font-family: 'Lobster';
+  font-size: 50px;
+  color: #639d80;
+}
+
+.h-550 {
+  height: 550px;
+}
+
+/* This contains the carousel and just had all of the images in a flex row where, in the individual card section, the overflow will be hidden and only the width of that card will be shown*/
+.carousel-container {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow: hidden;
+  width: 900px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  align-items: center;
+  z-index: 9;
+}
+
+.carousel-card {
+  position: relative;
+  opacity: 1;
+  height: 550px;
+  min-width: 900px;
+  width: fit-content;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: -webkit-zoom-in;
+}
+
+.inactive-card {
+  opacity: 0;
+}
+
+.right-arrow {
+  position: absolute;
+  top: 50%;
+  right: 2px;
+  z-index: 3;
+  transition: 1s ease;
+}
+
+.left-arrow {
+  position: absolute;
+  top: 50%;
+  left: 2px;
+  z-index: 3;
+  transition: 1s ease;
+}
+
+::-webkit-scrollbar {
+  width: 0px;
+  background: transparent;
+}
+
+.mini-thumbnail-flex {
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  position: absolute;
+  margin-top: 40px;
+  background-color: azure;
+  left: 50px;
+  width: 70px;
+  height: 420px;
+  z-index: 4;
+  overflow-y: scroll;
+}
+
+.mini-thumbnail {
+  width: 60px;
+  height: 60px;
+  justify-content: center;
+}
+
+.isSelected {
+  border-bottom: 5px solid #639d80;
+}
+
+.selectedStyle {
+  border: 5px solid goldenrod;
+}
+
+.expanded-view {
+  display: flex;
+  z-index: 5;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  background-color: white;
+}
+
+.expanded-card {
+  position: relative;
+  opacity: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.expanded-image {
+  max-width: 90%;
+  max-height: 90%;
+  object-fit: contain;
+}
+
+.expanded-button {
+  position:absolute;
+  top:0;
+  right:0;
+}
