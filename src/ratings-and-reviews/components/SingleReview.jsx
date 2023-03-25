@@ -10,11 +10,17 @@ const SingleReview = ({result}) => {
     const options = { month: "long", day: "numeric", year: "numeric" };
     return date.toLocaleDateString("en-US", options);
   }
+
+  const filledStars='★'.repeat(result.rating);
+  const emptyStars='☆'.repeat(5 -result.rating);
   //for photos, if result.photos.length > 0, map that array to a photo component
   return (
    <div className='single-review'>
    <div className="rating-user-date">
-     <p>{result.rating}</p>
+    <div>
+     <span>{filledStars}</span>
+     <span>{emptyStars}</span>
+    </div>
      <p id="user-date">{`${result.reviewer_name},`} {formatDate(result.date)}</p>
    </div>
 

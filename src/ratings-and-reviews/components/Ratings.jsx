@@ -9,7 +9,7 @@ const Ratings = () => {
   useEffect(() => {
   axios.get('/products/reviews')
   .then(data => {
-    console.log('data.data inside Ratings component', data.data)
+    console.log('data inside Ratings component', data)
     setMetadata(data.data);
   })
   .catch(err => {
@@ -18,15 +18,15 @@ const Ratings = () => {
   }, [])
 
   return (
-    <>
-    <h1>Ratings & Reviews</h1>
-    <Stars />
+    <div className='ratings-component'>
+    <p id='ratings-reviews-title'>RATINGS & REVIEWS</p>
+    <Stars data={metadata}/>
     <Characteristics />
 
 
 
 
-    </>
+    </div>
   )
 }
 

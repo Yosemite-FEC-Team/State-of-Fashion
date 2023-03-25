@@ -124,6 +124,19 @@
   right:0;
 }
 
+.ratings-reviews {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.ratings-component {
+  display: flex;
+  flex-direction: column;
+}
+.reviews-component {
+  display: flex;
+  flex-direction: column;
+}
 .single-review {
   padding: 5px;
 }
@@ -165,8 +178,31 @@
 
 .review-btn {
   display: inline-block;
+  width: 200px;
   padding: 20px;
   margin: 20px;
   text-align: center;
   border: 2px solid black;
+}
+
+.review-sort {
+  font-weight: bold;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.big-rating {
+  font-weight: bolder;
+  font-size: 40px;
+}
+
+.small-text {
+  font-size: xx-small;
+}
+
+.button-container {
+  display: flex;
+}
+#ratings-reviews-title {
+  font-size: small;
 }

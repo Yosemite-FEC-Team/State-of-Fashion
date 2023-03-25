@@ -22,7 +22,7 @@ const Reviews = () => {
   useEffect(() => {
     axios.get('/products/review')
     .then(data => {
-      console.log('data from axios call in reviews', data);
+      console.log('data from axios call in reviews', data.data);
       setResults(data.data);
     })
     .catch(err => {
@@ -34,28 +34,31 @@ const Reviews = () => {
   const [numberOfReviews, setNumberOfReviews] = useState(2);
 
   return (
-    <>
-
-    <h3>{results.length} reviews, Reviews sorted by</h3><select>
+    <div className='reviews-component'>
+    <div className='review-sort'>
+    <p>{results.length} reviews,sorted by</p><select>
       <option>Relevance</option>
       <option>Helpful</option>
       <option>Newest</option>
       </select>
+    </div>
+
        {/* we will have to map over each SingleReview component */}
     {results.slice(0, numberOfReviews).map((object, i) => {
       return <SingleReview key={i} result={object}/>
     })}
+    <div className='button-container'>
     <button className ='review-btn' onClick={()=> setNumberOfReviews(numberOfReviews + 2)}> MORE REVIEWS </button>
     <button className ='review-btn' onClick={handleOpenForm}> ADD REVIEW  + </button>
     <Modal isOpen={formIsOpen} onRequestClose={handleCloseForm}>
       <ReviewForm />
     </Modal>
+    </div>
 
 
 
 
-
-    </>
+    </div>
   )
 }
 
