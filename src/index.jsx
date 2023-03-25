@@ -1,17 +1,17 @@
 // Bring React in to build a component.
-import React, {useEffect} from "react";
+import React from 'react';
 // Import from react-dom the ability to create a root render
-import { createRoot } from "react-dom/client";
-import axios from 'axios';
+import { createRoot } from 'react-dom/client';
+import { Overview } from './overview/Overview.jsx';
 import RelatedAndCompModule from './related/components/RelatedAndCompModule.jsx';
-import { Overview } from './overview/Overview.jsx'
-const root = createRoot(document.getElementById("root"));
+
+const root = createRoot(document.getElementById('root'));
 
 // Huzzah for jsx!
 const App = () => {
   return (
     <div>
-      <h1>Hello World</h1>
+      <h1>Hello World. Yes, we're leaving this here.</h1>
       <Overview />
       <RelatedAndCompModule />
     </div>
@@ -19,10 +19,3 @@ const App = () => {
 }
 
 root.render(<App />);
-
-// useEffect(() => {
-//   axios.get('http://localhost:3000/products/37311/related')
-//   .then(result => console.log('result from react axios call', result.data))
-//   .catch(err => console.log(err));
-// }, [])
-

@@ -123,3 +123,35 @@
   top:0;
   right:0;
 }
+
+.related-products-list {
+  margin-left: 20px;
+}
+
+.related-products-list h2 {
+  padding: 15px 0;
+}
+
+.related-products-carousel {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-start;
+  align-items: stretch;
+  /* gap: 1%; */
+  gap: 15px;
+  text-align: center;
+}
+
+.product-card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column;
+  width: 300px;
+}
+
+.card-image {
+  width: 300px;
+  height: 300px;
+  object-fit: contain;
+}
