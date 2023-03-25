@@ -44,16 +44,20 @@ const Checkout = ({ styles }) => {
             <p>Price: ${item.price}</p>
             <p>Amount: {item.amount}</p>
           </div>
-
+          <button className='btn btn-sm btn-accent'>Remove</button>
         </div>)
       })
       return (<div className='flex flex-col'>{itemList}</div>);
 
     }
   }
-  return(<div className='checkout-window'>
+  return(<div className='checkout-window shadow-lg'>
     <h1 className="text-center mt-0 mb-2 bg-white text-3xl font-medium leading-tight text-primary">Checkout</h1>
     {checkoutList()}
+    <div className='flex justify-between items-center'>
+      <p>Total:</p>
+     <button className='checkout-button btn btn-sm btn-primary mr-5 text-white'>Checkout</button>
+    </div>
     </div>)
 }
 

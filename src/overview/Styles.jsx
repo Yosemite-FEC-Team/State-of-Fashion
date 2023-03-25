@@ -9,6 +9,7 @@ const Styles = ({ checkout, productDetails }) => {
   const [styles, setStyles] = React.useState([]);
   const [added, setAdded] = React.useState(false);
   const [pickedSize, setPickedSize] = React.useState('Pick a size');
+  const [amount, setAmount] = React.useState(1);
   const [noSize, setNoSize] = React.useState(false);
 
   React.useEffect(() => {
@@ -44,6 +45,10 @@ const Styles = ({ checkout, productDetails }) => {
     setNoSize(false);
   }
 
+  const handleAmountChange = (event) => {
+    setAmount(event.target.value);
+  }
+
   let handleAddToBagClick = (event) => {
     event.preventDefault();
     if (pickedSize !== 'Pick a size') {
@@ -51,9 +56,9 @@ const Styles = ({ checkout, productDetails }) => {
       let productToAdd = [productDetails.name, pickedSize, styles[currentStyle].name];
       let currentItems = JSON.parse(localStorage.getItem('products')) || {};
       if (currentItems[productToAdd] === undefined) {
-        currentItems[productToAdd] = 1;
+        currentItems[productToAdd] = amount;
       } else {
-        currentItems[productToAdd]++;
+        currentItems[productToAdd]+= amount;
       }
       console.log(currentItems);
       localStorage.setItem('products', JSON.stringify(currentItems));
@@ -97,7 +102,7 @@ const Styles = ({ checkout, productDetails }) => {
       {noSize && <p className='ml-1 text-sm text-red-600'>Please pick a size!</p>}
     </div>
     <div >
-      <select className='select w-40 max-w-xs bg-white mt-5'>
+      <select className='select w-40 max-w-xs bg-white mt-5' onChange={handleAmountChange}>
         <option>1</option>
         <option>2</option>
         <option>3</option>

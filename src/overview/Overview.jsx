@@ -67,15 +67,24 @@ const Overview = () => {
 
   return (
     <>
-      <h1 className='flex items-center justify-between flex-wrap bg-white' >
+      <h1 className='flex items-end justify-between flex-wrap bg-white' >
         <p id='title' className='ml-10'>@Fetch</p>
-        <div className='flex items-center'>
+          <p className='ml-3 mb-3'>Womens </p>
+          <p className='ml-3 mb-3'>Mens </p>
+          <p className='ml-3 mb-3'>Childrens </p>
+          <p className='ml-3 mb-3'>Activewear </p>
+          <p className='ml-3 mb-3'>Assessories </p>
+          <p className='ml-3 mb-3'>Sale</p>
+        <div className='flex ml-48 items-center'>
           <p className='mt-2 mr-5'><FontAwesomeIcon onClick={handleCheckoutClick} icon={faCartShopping} size="lg" style={{color: "#5d8452",}} /></p>
           <input placeholder='Search...' className="input input-bordered input-success h-10 m-2"></input>
         </div>
       </h1>
+      <div className='text-center'>
+        <p>LIMITED TIME OFFER! HUGE SALE! 30% OFF STOREWIDE!!</p>
+      </div>
       <div>
-        <div className='flex flex-row w-4/5 mt-5'>
+        <div className='flex flex-row w-4/5'>
           <StyleContext.Provider value={currentStyle}>
             <Gallery />
           </StyleContext.Provider>
@@ -89,7 +98,7 @@ const Overview = () => {
             <p className='underline'>See all {total} reviews </p>
             </div>
             <p className='category mt-10'>{productDetails.category}</p>
-            <h4 className="mt-0 mb-2 text-3xl font-medium leading-tight text-primary">{productDetails.name}</h4>
+            <h4 className="mt-0 mb-2 text-3xl font-bold leading-tight text-primary">{productDetails.name}</h4>
             {/* The index from styles can go to gallery for the onClick change */}
             <StyleContext.Provider value={{currentStyle, setCurrentStyle}}>
               <Styles productDetails={productDetails} checkout={checkout}/>
@@ -112,13 +121,13 @@ const Overview = () => {
       </div>
       <div className='mt-2 pt-2 ml-5'>
         <FacebookShareButton url={'window.location.href'} quote='Check out this cool product I found on Fetch!'>
-          <button className='gap-2 text-white bg-[#3b5998] hover:bg-[#3b5998]/90 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center mr-4 mb-2' href='https://www.facebook.com/'><FontAwesomeIcon icon={faFacebookF} size="lg" style={{color: "#ffffff",}} />Share to Facebook</button>
+          <button className='gap-2 text-white bg-[#3b5998] hover:bg-[#3b5998]/90 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center mr-4 mb-2' href='https://www.facebook.com/'><FontAwesomeIcon icon={faFacebookF} size="lg" style={{color: "#ffffff",}} /></button>
         </FacebookShareButton>
         <TwitterShareButton url={'window.location.href'} hashtags={['#fetch']}>
-          <button className='gap-2 text-white bg-[#1da1f2] hover:bg-[#1da1f2]/90 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center mr-4 mb-2'><FontAwesomeIcon icon={faTwitter} size="lg" style={{color: "#ffffff",}} />Share to Twitter</button>
+          <button className='gap-2 text-white bg-[#1da1f2] hover:bg-[#1da1f2]/90 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center mr-4 mb-2'><FontAwesomeIcon icon={faTwitter} size="lg" style={{color: "#ffffff",}} /></button>
         </TwitterShareButton>
         <PinterestShareButton url={'window.location.href'} media={'window.location.href'} description={'Check out this cool product I found on Fetch!'}>
-          <button className='gap-2 text-white bg-[#E02222] hover:bg-[#E02222]/90 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center mr-4 mb-2'><FontAwesomeIcon icon={faPinterestP} size="lg" style={{color: "#ffffff",}} />Share to Pinterest</button>
+          <button className='gap-2 text-white bg-[#E02222] hover:bg-[#E02222]/90 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center mr-4 mb-2'><FontAwesomeIcon icon={faPinterestP} size="lg" style={{color: "#ffffff",}} /></button>
         </PinterestShareButton>
         </div>
         </div>
