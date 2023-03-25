@@ -4,7 +4,7 @@ import Checkout from './Checkout.jsx';
 const axios = require('axios');
 
 
-const Styles = ({ checkout }) => {
+const Styles = ({ checkout, productDetails }) => {
 
   const [styles, setStyles] = React.useState([]);
   const [added, setAdded] = React.useState(false);
@@ -47,7 +47,8 @@ const Styles = ({ checkout }) => {
   let handleAddToBagClick = (event) => {
     event.preventDefault();
     if (pickedSize !== 'Pick a size') {
-      let productToAdd = styles[currentStyle].name;
+      console.log(productDetails);
+      let productToAdd = [productDetails.name, pickedSize, styles[currentStyle].name];
       let currentItems = JSON.parse(localStorage.getItem('products')) || {};
       if (currentItems[productToAdd] === undefined) {
         currentItems[productToAdd] = 1;
@@ -79,8 +80,8 @@ const Styles = ({ checkout }) => {
 
   return (
     <>
-    {checkout && <div className='checkout-window'>
-      <Checkout />
+    {checkout && <div>
+      <Checkout styles={styles}/>
     </div>}
     <p>${styles[currentStyle] && styles[currentStyle].original_price}</p>
     <p className='category mt-10'>Style > {styles[currentStyle] && styles[currentStyle].name}</p>

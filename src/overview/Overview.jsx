@@ -92,7 +92,7 @@ const Overview = () => {
             <h4 className="mt-0 mb-2 text-3xl font-medium leading-tight text-primary">{productDetails.name}</h4>
             {/* The index from styles can go to gallery for the onClick change */}
             <StyleContext.Provider value={{currentStyle, setCurrentStyle}}>
-              <Styles checkout={checkout}/>
+              <Styles productDetails={productDetails} checkout={checkout}/>
             </StyleContext.Provider>
         </div>
       </div>
