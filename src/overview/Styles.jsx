@@ -1,9 +1,10 @@
 import React from 'react';
-import { StyleContext } from './Overview.jsx'
+import { StyleContext } from './Overview.jsx';
+import Checkout from './Checkout.jsx';
 const axios = require('axios');
 
 
-const Styles = () => {
+const Styles = ({ checkout }) => {
 
   const [styles, setStyles] = React.useState([]);
   const [added, setAdded] = React.useState(false);
@@ -78,6 +79,9 @@ const Styles = () => {
 
   return (
     <>
+    {checkout && <div className='checkout-window'>
+      <Checkout />
+    </div>}
     <p>${styles[currentStyle] && styles[currentStyle].original_price}</p>
     <p className='category mt-10'>Style > {styles[currentStyle] && styles[currentStyle].name}</p>
   <div className='flex flex-row mt-5'>
@@ -89,7 +93,7 @@ const Styles = () => {
         <option defaultValue>Pick a size</option>
         {sizeList}
       </select>
-      {noSize && <a className='ml-5 text-sm text-red-600'>Please pick a size!</a>}
+      {noSize && <p className='ml-1 text-sm text-red-600'>Please pick a size!</p>}
     </div>
     <div >
       <select className='select w-40 max-w-xs bg-white mt-5'>

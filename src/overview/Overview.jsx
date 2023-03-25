@@ -22,6 +22,9 @@ const Overview = () => {
   const [average, setAverage] = React.useState(0);
   const [total, setTotal] = React.useState(0);
 
+  // for checkout
+  const [checkout, setCheckout] = React.useState(false);
+
   React.useEffect(() => {
     getProductDetails();
     getReviews();
@@ -55,6 +58,11 @@ const Overview = () => {
     })
   }
 
+  const handleCheckoutClick = (event) => {
+    event.preventDefault();
+    setCheckout(!checkout);
+  }
+
   // likely going to use an <a href=#reviews> for the All reviews
 
   return (
@@ -62,7 +70,7 @@ const Overview = () => {
       <h1 className='flex items-center justify-between flex-wrap bg-white' >
         <p id='title' className='ml-10'>@Fetch</p>
         <div className='flex items-center'>
-          <p className='mt-2 mr-5'><FontAwesomeIcon icon={faCartShopping} size="lg" style={{color: "#5d8452",}} /></p>
+          <p className='mt-2 mr-5'><FontAwesomeIcon onClick={handleCheckoutClick} icon={faCartShopping} size="lg" style={{color: "#5d8452",}} /></p>
           <input placeholder='Search...' className="input input-bordered input-success h-10 m-2"></input>
         </div>
       </h1>
@@ -84,7 +92,7 @@ const Overview = () => {
             <h4 className="mt-0 mb-2 text-3xl font-medium leading-tight text-primary">{productDetails.name}</h4>
             {/* The index from styles can go to gallery for the onClick change */}
             <StyleContext.Provider value={{currentStyle, setCurrentStyle}}>
-              <Styles />
+              <Styles checkout={checkout}/>
             </StyleContext.Provider>
         </div>
       </div>
