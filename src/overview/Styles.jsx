@@ -90,7 +90,7 @@ const Styles = ({ checkout, productDetails }) => {
     </div>}
     <p>${styles[currentStyle] && styles[currentStyle].original_price}</p>
     <p className='category mt-10'>Style > {styles[currentStyle] && styles[currentStyle].name}</p>
-  <div className='flex flex-row mt-5'>
+  <div className='flex flex-row mt-5 flex-wrap'>
     {styleList}
   </div>
   <div className='mb-5'>

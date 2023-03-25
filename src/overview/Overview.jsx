@@ -63,6 +63,7 @@ const Overview = () => {
     setCheckout(!checkout);
   }
 
+
   // likely going to use an <a href=#reviews> for the All reviews
 
   return (
@@ -81,7 +82,7 @@ const Overview = () => {
         </div>
       </h1>
       <div className='text-center'>
-        <p>LIMITED TIME OFFER! HUGE SALE! 30% OFF STOREWIDE!!</p>
+        <p>LIMITED TIME OFFER! <span className='text-red-400'>HUGE SALE!</span> 30% OFF STOREWIDE!! USE CODE <span className='text-red-400'>ILOVEREACT</span> FOR FREE SHIPPING!</p>
       </div>
       <div>
         <div className='flex flex-row w-4/5'>
