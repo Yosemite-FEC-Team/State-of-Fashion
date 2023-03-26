@@ -35,6 +35,9 @@ const retrieveProductRatingsById = (id) => {
 };
 
 const calculateStarRatingById = (id) => {
+  const roundToValue = (value, toNearest, fixed) => {
+    return (Math.ceil(value / toNearest) * toNearest);
+  }
   return retrieveProductRatingsById(id)
     .then(result => {
       return result.data.ratings;
@@ -50,7 +53,11 @@ const calculateStarRatingById = (id) => {
         ratingsSum += key * result[key];
         numberOfRatings += result[key];
       }
-      return Math.round((ratingsSum / numberOfRatings + Number.EPSILON) * 100) / 100;
+      let averageRating = Math.round((ratingsSum / numberOfRatings + Number.EPSILON) * 100) / 100;
+      let roundedToNearestFourth = roundToValue(Number(averageRating), 0.25);
+      console.log('rating before .25 round', averageRating)
+      console.log('rating after', roundedToNearestFourth);
+      return roundedToNearestFourth;
     })
     .catch(err => console.log(err));
 };
@@ -62,7 +69,7 @@ const generateProductCardData = (id) => {
     calculateStarRatingById(id)
   ])
   .then(elements => {
-    console.log('returned promise elements', elements[0].data);
+    // console.log('returned promise elements', elements[0].data.results[0]);
     const productStyles = elements[0].data.results[0];
     const product = elements[1].data;
     const starRating = elements[2];
@@ -83,15 +90,6 @@ const generateProductCardData = (id) => {
   })
   .catch(err => console.log(err));
 };
-
-// const findThis = () => {
-//   let promises = [];
-//   for (let i = 37311; i < 38322; i++) {
-//     promises.push(retrieveProductStylesById(i));
-//   }
-//   return
-// }
-
 
 module.exports = {
   retrieveRelatedProductIds,

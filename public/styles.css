@@ -126,6 +126,8 @@
 
 .related-products-list {
   margin-left: 20px;
+  padding-bottom: 20px;
+  margin-top: 20px;
 }
 
 .related-products-list h2 {
@@ -148,10 +150,53 @@
   align-items: center;
   flex-flow: column;
   width: 300px;
+  box-shadow: 3px 3px 10px grey;
+  position: relative;
 }
 
 .card-image {
-  width: 300px;
-  height: 300px;
+  /* width: 300px;
+  height: 300px; */
   object-fit: contain;
+  z-index: 2;
+  aspect-ratio: 1 / 1;
+  width:100%;
+  /* background-color: white; */
+}
+
+.card-image-background {
+  position: absolute;
+  z-index: 1;
+  top: 0px;
+  left: 0px;
+  /* width: 300px;
+  height: 300px; */
+  object-fit: cover;
+  filter: blur(1px);
+  aspect-ratio: 1 / 1;
+  width:100%;
+}
+
+.card-category {
+  font-size: 11px;
+  color:rgb(60, 60, 60);
+  text-transform: uppercase;
+  padding-top: 10px;
+  padding-bottom: 5px;
+}
+
+.card-color {
+  font-size: 12px;
+  color: rgb(110, 110, 110);
+}
+
+.card-price {
+  font-size: 12px;
+  padding-top: 7px;
+  padding-bottom: 7px;
+  color: rgb(110, 110, 110);
+}
+
+.card-stars {
+  padding-bottom: 10px;
 }
