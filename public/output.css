@@ -4273,16 +4273,19 @@ html {
 .ratings-reviews {
   display: flex;
   justify-content: flex-start;
+  padding: 10px;
 }
 
 .ratings-component {
   display: flex;
   flex-direction: column;
+  padding: 15px;
 }
 
 .reviews-component {
   display: flex;
   flex-direction: column;
+  padding: 15px;
 }
 
 .single-review {
@@ -4355,4 +4358,73 @@ html {
 
 #ratings-reviews-title {
   font-size: small;
+}
+
+.stars-and-bar-container {
+  display: flex;
+  white-space: nowrap;
+  align-items: center;
+}
+
+.x-stars{
+  padding-right: 10px;
+}
+
+.star-bar-container {
+  width: 100%;
+  height: 15px;
+  border: 1px solid rgb(175, 172, 172);
+  display: flex;
+  justify-content: flex-end;
+  overflow: hidden;
+}
+
+.star-bar-fill {
+  height: 100%;
+  background-color: rgb(15, 118, 110);
+  transition: width 0.5s ease-in-out;
+}
+
+.star-bar-unfill {
+  height: 100%;
+  background-color: rgb(203, 198, 198);
+  transition: width 0.5s ease-in-out;
+}
+
+.triangle-container {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  /* align items at the top */
+  height: 20px;
+  background-color: #f2f2f2;
+}
+
+.rectangle {
+  width: 50px;
+  height: 20px;
+  margin-right: 10px;
+  background-color: #e6e6e6;
+}
+
+.right-rectangle {
+  width: 50px;
+  height: 20px;
+  background-color: #e6e6e6;
+}
+
+.triangle {
+  position: absolute;
+  bottom: 20px;
+  /* position the triangle below the rectangles */
+  left: calc(50% - 15px);
+  /* center the triangle horizontally */
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 20px 15px 0 15px;
+  /* change the border widths to create a downward-pointing triangle */
+  border-color: #0a0a0a transparent transparent transparent;
+  /* change the border colors to match the background color of the container */
 }
