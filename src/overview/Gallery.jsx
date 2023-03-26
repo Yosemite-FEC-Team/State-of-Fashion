@@ -81,9 +81,9 @@ const Gallery = () => {
   // ideas:
   // use index of the response data (in array) to determine which picture and format it into the carousel format below
   return (
-    <div>
+    <div className='ml-3'>
       {showExpanded && <Expanded revert={handleDefaultClick} galleryList={galleryList} setMainImage={setMainImage} mainImage={mainImage}/>}
-      <div className='mini-thumbnail-flex items-center'>
+      <div className='mini-thumbnail-flex items-center ml-2'>
         {galleryThumbnails}
       </div>
       <div className="carousel-container bg-white">

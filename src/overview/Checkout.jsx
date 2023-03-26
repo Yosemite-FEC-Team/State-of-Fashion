@@ -2,12 +2,19 @@ import React from 'react';
 
 const Checkout = ({ styles }) => {
 
+  const [bought, setBought] = React.useState(false);
+
+  const handleBuyClick = () => {
+    localStorage.clear();
+    setBought(true);
+  }
+
   const checkoutList = () => {
     let cart = JSON.parse(localStorage.getItem('products'));
     console.log(cart, 'CART');
     console.log(styles, 'STYLES');
     if (cart === null) {
-      return (<p>No products have been added to cart!</p>)
+      return (!bought && <p>No products have been added to cart!</p>)
     } else {
       let cartItems = Object.keys(cart);
       let cartAmounts = Object.values(cart);
@@ -33,10 +40,15 @@ const Checkout = ({ styles }) => {
           }
         }
       }
+      let total = 0;
+      for (let i = 0; i < checkoutItems.length; i++) {
+        total+= (checkoutItems[i].amount * checkoutStyles[i].price);
+      }
+      total = (Math.ceil(100 * total)/100).toFixed(2);
       console.log(checkoutItems, 'CHECKOUT ITEMS');
       let itemList = checkoutItems.map(item => {
         return (<div className='flex'>
-          <img className='mt-2 ml-5 bg-white object-contain w-32 h-32' src={item.image}></img>
+          <img className='mt-2 ml-5 bg-gray-200 object-contain w-32 h-32' src={item.image}></img>
           <div className='mt-2 ml-3 text-sm'>
             <p>Product: {item.mainName}</p>
             <p>Style: {item.styleName}</p>
@@ -47,17 +59,19 @@ const Checkout = ({ styles }) => {
           <button className='btn btn-sm btn-accent'>Remove</button>
         </div>)
       })
-      return (<div className='flex flex-col'>{itemList}</div>);
+      return (<><div className='flex flex-col'>{itemList}</div>
+      <div className='flex justify-between items-center mt-5 ml-5'>
+      <p>Total: ${total} <span className='text-xs'>(Not including tax and shipping fee)</span></p>
+     <button className='checkout-button btn btn-sm btn-primary mr-5 text-white' onClick={handleBuyClick}>Checkout</button>
+    </div></>);
 
     }
   }
-  return(<div className='checkout-window shadow-lg'>
-    <h1 className="text-center mt-0 mb-2 bg-white text-3xl font-medium leading-tight text-primary">Checkout</h1>
+
+  return(<div className='checkout-window bg-gray-300 shadow-lg'>
+    <h1 className="text-center mt-0 mb-2 bg-white text-3xl font-medium leading-tight text-primary">Your Bag</h1>
     {checkoutList()}
-    <div className='flex justify-between items-center'>
-      <p>Total:</p>
-     <button className='checkout-button btn btn-sm btn-primary mr-5 text-white'>Checkout</button>
-    </div>
+    {bought && <p>Purchase successful!</p>}
     </div>)
 }
 

@@ -85,7 +85,7 @@ const Overview = () => {
         <p>LIMITED TIME OFFER! <span className='text-red-400'>HUGE SALE!</span> 30% OFF STOREWIDE!! USE CODE <span className='text-red-400'>ILOVEREACT</span> FOR FREE SHIPPING!</p>
       </div>
       <div>
-        <div className='flex flex-row w-4/5'>
+        <div className='flex flex-row w-4/5 mt-2 items-center '>
           <StyleContext.Provider value={currentStyle}>
             <Gallery />
           </StyleContext.Provider>

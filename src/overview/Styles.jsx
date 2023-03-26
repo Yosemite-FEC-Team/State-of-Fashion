@@ -73,7 +73,7 @@ const Styles = ({ checkout, productDetails }) => {
 
   let styleList = styles.map(style => {
     let index = styles.indexOf(style);
-    return(<img id='style-image' className={currentStyle === index ?  'selectedStyle h-10 w-10 rounded-full' :' h-10 w-10 rounded-full'} onClick={()=> {handleStyleClick(index)}} src={style.photos[0].thumbnail_url}></img>)
+    return(<img id='style-image' className={currentStyle === index ?  'selectedStyle h-12 w-12 rounded-full' :' h-10 w-10 rounded-full'} onClick={()=> {handleStyleClick(index)}} src={style.photos[0].thumbnail_url}></img>)
   })
 
   //console.log(sizes);
@@ -90,7 +90,7 @@ const Styles = ({ checkout, productDetails }) => {
     </div>}
     <p>${styles[currentStyle] && styles[currentStyle].original_price}</p>
     <p className='category mt-10'>Style > {styles[currentStyle] && styles[currentStyle].name}</p>
-  <div className='flex flex-row mt-5 flex-wrap'>
+  <div className='flex flex-row mt-5 items-center flex-wrap'>
     {styleList}
   </div>
   <div className='mb-5'>
@@ -111,7 +111,7 @@ const Styles = ({ checkout, productDetails }) => {
   </div>
   <div>
     <button className='btn w-52' onClick={handleAddToBagClick}>Add to Bag</button>
-    {added && <p className='text-sm text-red-600'>Added to cart!</p>}
+    {added && <p className='text-sm text-red-600'>Added to bag!</p>}
   </div>
 </>)
 }
