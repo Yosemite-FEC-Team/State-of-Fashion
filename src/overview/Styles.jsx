@@ -11,13 +11,17 @@ const Styles = ({ checkout, productDetails }) => {
   const [pickedSize, setPickedSize] = React.useState('Pick a size');
   const [amount, setAmount] = React.useState(1);
   const [noSize, setNoSize] = React.useState(false);
+  const [stockArr, setStockArr] = React.useState([]);
 
   React.useEffect(() => {
     getGallery();
   }, []);
 
-  const [sizes, setSizes] = React.useState([]);
+  React.useEffect(() => {
+    quantityList();
+  }, [pickedSize]);
 
+  const [sizes, setSizes] = React.useState([]);
   const {currentStyle, setCurrentStyle} = React.useContext(StyleContext);
 
 
@@ -81,6 +85,27 @@ const Styles = ({ checkout, productDetails }) => {
     return (<option>{size.quantity !== 0 ? size.size : size.size + ' OUT OF STOCK'}</option>)
   })
 
+  const quantityList = () => {
+    if (sizes.length !== 0) {
+      let stock = 0;
+      for (let i = 0; i < sizes.length; i++) {
+        console.log(sizes[i], pickedSize, 'SIZE COMPARE');
+        if (sizes[i].size === pickedSize) {
+          stock = Number(sizes[i].quantity);
+        }
+      }
+      let temp = [];
+      for (let i  = 1; i < stock + 1; i++) {
+        temp.push(i);
+      }
+      setStockArr(temp);
+    }
+  }
+
+  let quantitySelector = stockArr.map(quantity => {
+    return (<option>{quantity}</option>)
+  })
+
 
   return (
     <>
@@ -101,10 +126,7 @@ const Styles = ({ checkout, productDetails }) => {
       {noSize && <p className='ml-1 text-sm text-red-600'>Please pick a size!</p>}
     </div>
     <div >
-      <select className='select w-40 max-w-xs bg-white mt-5' onChange={handleAmountChange}>
-        <option>1</option>
-        <option>2</option>
-        <option>3</option>
+      <select className='select w-40 max-w-xs bg-white mt-5' onChange={handleAmountChange}> { stockArr.length !== 0 ? quantitySelector : <option>-</option>}
       </select>
     </div>
   </div>

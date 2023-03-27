@@ -101,7 +101,7 @@ const Overview = () => {
           <div className='flex flex-col ml-10 mt-5'>
             <div>
               <StarRatings rating={average} starDimension='20px' starSpacing='2px' starRatedColor='#639d80'/>
-            <p className='underline'>See all {total} reviews </p>
+            <a className='underline'>See all {total} reviews </a>
             </div>
             <p className='category mt-10'>{productDetails.category}</p>
             <h4 className="mt-0 mb-2 text-3xl font-bold leading-tight text-primary">{productDetails.name}</h4>

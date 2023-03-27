@@ -1,6 +1,6 @@
 import { createRoot } from "react-dom/client";
 import React from 'react';
-import { Overview } from './overview/Overview.jsx'
+import { Overview } from './overview/Overview.jsx';
 const axios = require('axios');
 
 // Huzzah for jsx!

@@ -4119,6 +4119,10 @@ html {
   margin-left: 0.5rem;
 }
 
+.mt-96 {
+  margin-top: 24rem;
+}
+
 .block {
   display: block;
 }
