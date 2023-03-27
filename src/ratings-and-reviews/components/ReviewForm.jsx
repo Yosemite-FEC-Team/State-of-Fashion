@@ -5,6 +5,8 @@ import ComfortButtons from './ComfortButtons.jsx'
 import QualityButtons from './QualityButtons.jsx'
 import LengthButtons from './LengthButtons.jsx'
 import FitButtons from './FitButtons.jsx'
+import PhotoUploader from './PhotoUploader.jsx'
+
 
 const ReviewForm = ({formIsOpen, handleCloseForm}) => {
 //I will need different data here that gives me the product name
@@ -104,8 +106,9 @@ const ReviewForm = ({formIsOpen, handleCloseForm}) => {
        <QualityButtons />
        <LengthButtons />
        <FitButtons />
-    <label>Review summary</label>
+    <label className='bold-titles'>Review summary</label>
       <input
+      className='review-summary-box'
       type="text"
       placeholder="Example: Best purchase ever!"
       maxLength ="60"
@@ -113,8 +116,9 @@ const ReviewForm = ({formIsOpen, handleCloseForm}) => {
       />
 
     <br/>
-    <label>Review Body*</label>
+    <label className='bold-titles'>Review Body*</label>
       <input
+      className='review-body-box'
       type="text"
       placeholder="Do you like the product or not?"
       minLength="50"
@@ -122,35 +126,37 @@ const ReviewForm = ({formIsOpen, handleCloseForm}) => {
       onChange={reviewBodyChange}
       required
       />{ charsNeeded >= 0 ? (
-         <p>Minimum required characters left: {charsNeeded}</p>
-      ) : (<p>Minimum Reached</p>)
+         <p className='baby-text'>Minimum required characters left: {charsNeeded}</p>
+      ) : (<p className='baby-text'>Minimum Reached</p>)
 
       }
 
      <br/>
-    {/*Upload Your Photos goes here*/}
-    <label>What is your nickname?*
+    <PhotoUploader />
+    <label className='bold-titles'>What is your nickname?*</label>
       <input
+      className='form-boxes'
       type="text"
       placeholder="Example: jackson11!"
       maxLength="60"
       onChange={nicknameChange}
       required
       />
-      </label>
-      <small>For privacy reasons, do not use your full name or e-mail address</small>
+
+     <p className='baby-text'>For privacy reasons, do not use your full name or e-mail address</p>
       <br/>
-      <label>Your e-mail*
+      <label className='bold-titles'>Your e-mail*</label>
       <input
       type="text"
+      className='form-boxes'
       placeholder="Example: jackson11@email.com"
       maxLength="60"
       onChange={emailChange}
       required
       />
-      <small>For authentication reasons, you will not be emailed</small>
-      </label>
-      <input type="submit" value="SubmitReview" />
+      <p className='baby-text'>For authentication reasons, you will not be emailed</p>
+
+      <input type="submit" value="Submit Review" className ='review-btn'/>
   </form>
   )
 }
