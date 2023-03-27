@@ -8,26 +8,30 @@ function SizeButtons() {
   }
 
   const options =['A size too small', '1/2 a size too small', 'Perfect', '1/2 a size too big', 'A size too big'];
+
   return (
     <>
-    <h5>Size</h5>
-    <div>
-      {options.map((option, i) => (
-        <>
-        <label key={option}>
-          <input
-          type='radio'
-          value={option}
-          checked={selectedSize === option}
-          onChange={handleSizeChange}
-          />
-        </label>
-        <span key={i}>{option}</span>
-        </>
-      ))}
-    </div>
+      <p className='small-title'>Size</p>
+      <div style={{ display: 'flex', padding: '10px' }}>
+        {options.map((option, i) => (
+          <div key={option} style={{ marginRight: '10px', marginLeft: '10px' }}>
+            <label style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+              <input
+                type='radio'
+                value={option}
+                checked={selectedSize === option}
+                onChange={handleSizeChange}
+              />
+              <span className='baby-text' style={{ textAlign: 'center' }}>{option}</span>
+            </label>
+          </div>
+        ))}
+      </div>
     </>
-  )
+  );
 }
+
+
+
 
 export default SizeButtons;

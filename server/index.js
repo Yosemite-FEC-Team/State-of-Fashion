@@ -4,7 +4,7 @@ const morgan = require('morgan');
 const cors = require('cors');
 const axios = require('axios');
 const config = require('./config.js')
-const dataServices = require('../helpers/dataServices.js');
+
 
 const app = express();
 
@@ -14,13 +14,13 @@ app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 app.use(express.static(path.join(__dirname, '../public')));
 
-app.get('/products/37311/related', (req, res) => {
-  console.log('app.get enpoint test for related for 37315');
-  dataServices.testFunction()
-  .then(result => {
-    console.log('app.get test returning result from dataServices', result.data.length);
-    res.send(result.data);
-  }).catch(err => console.log(err));
+// app.get('/products/37311/related', (req, res) => {
+//   console.log('app.get enpoint test for related for 37315');
+//   dataServices.testFunction()
+//   .then(result => {
+//     console.log('app.get test returning result from dataServices', result.data.length);
+//     res.send(result.data);
+//   }).catch(err => console.log(err));
   // const options = {
   //   url: `https://app-hrsei-api.herokuapp.com/api/fec2/:${config.CAMPUS_CODE}/products`,
   //   headers: {
@@ -35,7 +35,7 @@ app.get('/products/37311/related', (req, res) => {
   //   res.send(result.data);
   // })
   // .catch(err => console.log('failed to get results from testFunction', err));
-})
+// })
 
 
 app.get('/products/styles', (req, res) => {
@@ -60,11 +60,11 @@ app.get('/products', (req, res) => {
     })
 })
 
-//Lizz, do not modify this endpoint if you decide to use another product, cause Xiao Wen is using this
+//Lizz, do not modify this endpoint if you decide to use another product, cause Xiao Wen is using this MAY NEED TO REFORMAT CAUSE SHE IS JUST USING THE RATINGS!!!!
 app.get('/products/reviews', (req, res) => {
   axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/reviews/meta', { params: {product_id: '37315' }, headers: {'Authorization': `${config.TOKEN}` } })
     .then(data => {
-     //console.log(data.data);
+      console.log(data.data, 'META FROM THE SERVER');
       res.send(data.data.ratings);
     })
     .catch(err => {
