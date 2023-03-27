@@ -124,10 +124,39 @@
   right:0;
 }
 
+
+/*
+.related-outer-container {
+  width: 100%;
+  height: 462px;
+  background-color: #E9E7E7;
+  z-index: 20;
+  position: relative;
+  display: flex;
+}
+
+.related-products-container {
+  border: 1px solid black;
+  width: 85%;
+  height: 462px;
+  position: relative;
+  z-index: 10;
+}
+
+.cover {
+  background-color: #E9E7E7;
+  height: 462px;
+  width: 15%;
+  z-index: 30;
+}
+ */
+
+
 .related-products-list {
   margin-left: 20px;
-  padding-bottom: 20px;
+  padding-bottom: 100px;
   margin-top: 20px;
+  z-index: 0;
 }
 
 .related-products-list h2 {
@@ -135,17 +164,19 @@
 }
 
 .related-products-carousel {
+  position: relative;
   display: flex;
   flex-flow: row nowrap;
   justify-content: flex-start;
   align-items: stretch;
-  /* gap: 1%; */
   gap: 15px;
   text-align: center;
+  z-index: 1;
 }
 
 .product-card {
   display: flex;
+  z-index: 2;
   justify-content: center;
   align-items: center;
   flex-flow: column;
@@ -155,26 +186,32 @@
 }
 
 .card-image {
-  /* width: 300px;
-  height: 300px; */
   object-fit: contain;
-  z-index: 2;
+  z-index: 4;
   aspect-ratio: 1 / 1;
   width:100%;
-  /* background-color: white; */
+  position: relative;
 }
 
 .card-image-background {
   position: absolute;
-  z-index: 1;
+  z-index: 3;
   top: 0px;
   left: 0px;
-  /* width: 300px;
-  height: 300px; */
-  object-fit: cover;
+  background-size: cover;
   filter: blur(1px);
   aspect-ratio: 1 / 1;
   width:100%;
+}
+
+.star-action-button {
+  position: absolute;
+  z-index: 5;
+  top: 12px;
+  right: 12px;
+  font-size: 24px;
+  border-radius: 50%;
+  padding: 2px;
 }
 
 .card-category {
@@ -199,4 +236,11 @@
 
 .card-stars {
   padding-bottom: 10px;
+}
+
+.modal-close-button {
+  font-size: 24px;
+  position: absolute;
+  top: 0;
+  right: 0;
 }

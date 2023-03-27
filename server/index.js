@@ -15,7 +15,38 @@ app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 app.use(express.static(path.join(__dirname, '../public')));
 
-let currentId = 37311;
+let currentId = 37315;
+const outfitIds = [];
+
+// app.get('/products/related', (req, res) => {
+//   const idWithPromises = {};
+//   const idWithProductCards = {};
+//   dataServices.retrieveRelatedProductIds(currentId)
+//   .then(ids => {
+//     const cardPromises = [];
+//     const uniqueIds = [...new Set(ids.data)];
+//     for (let i = 0; i < uniqueIds.length; i++) {
+//       cardPromises.push(dataServices.generateProductCardData(uniqueIds[i]));
+//     }
+//     return cardPromises;
+//   })
+//   .then(cardPromises => {
+//     idWithPromises[currentId] = cardPromises;
+//     return idWithPromises;
+//   })
+//   .then(idWithPromises => {
+//     return Promise.all(idWithPromises[currentId]);
+//   })
+//   .then(productCards => {
+//     idWithProductCards[currentId] = productCards;
+//     return idWithProductCards;
+//   })
+//   .then(idWithProductCards => {
+//     // console.log('id with product cards', idWithProductCards);
+//     res.send(idWithProductCards);
+//   })
+//   .catch(err => console.log(err));
+// })
 
 app.get('/products/related', (req, res) => {
   dataServices.retrieveRelatedProductIds(currentId)
@@ -30,11 +61,46 @@ app.get('/products/related', (req, res) => {
   .then(cardPromises => {
     return Promise.all(cardPromises);
   })
-  .then(cards => {
-    // console.log('product cards', cards);
-    res.send(cards);
+  .then(productCards => {
+    return productCards;
+  })
+  .then(productCards => {
+    res.send(productCards);
   })
   .catch(err => console.log(err));
+})
+
+app.post('/products/outfit', (req, res) => {
+  console.log('req.body in post request', req.body);
+  if (!outfitIds.includes(req.body.id)) {
+    outfitIds.push(req.body.id);
+    console.log('outfit ids after adding one', outfitIds);
+    res.send(outfitIds);
+  } else {
+    console.log('outfit ids after adding a duplicate', outfitIds);
+    res.send(outfitIds);
+  }
+})
+
+app.get('/products/outfits', (req, res) => {
+  const cardPromises = [];
+  for (let i = 0; i < outfitIds.length; i++) {
+    cardPromises.push(dataServices.generateProductCardData(outfitIds[i]));
+  }
+  return Promise.all(cardPromises)
+  .then(productCards => {
+    // console.log('productCards from app.get /products/outfits', productCards);
+    res.send(productCards);
+  })
+  .catch(err => console.log(err));
+})
+
+app.post('/products/delete-outfit', (req, res) => {
+  console.log('request body from delete in server', req.body);
+  const indexToDelete = outfitIds.indexOf(req.body.id);
+  outfitIds.splice(indexToDelete, 1);
+  console.log('after deletion ids', outfitIds);
+  res.send(outfitIds);
 })
 
 app.get('/products/styles', (req, res) => {

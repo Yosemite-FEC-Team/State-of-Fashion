@@ -55,8 +55,6 @@ const calculateStarRatingById = (id) => {
       }
       let averageRating = Math.round((ratingsSum / numberOfRatings + Number.EPSILON) * 100) / 100;
       let roundedToNearestFourth = roundToValue(Number(averageRating), 0.25);
-      console.log('rating before .25 round', averageRating)
-      console.log('rating after', roundedToNearestFourth);
       return roundedToNearestFourth;
     })
     .catch(err => console.log(err));
