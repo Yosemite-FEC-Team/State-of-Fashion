@@ -82,7 +82,6 @@ const Styles = ({ checkout, productDetails }) => {
   })
 
 
-
   return (
     <>
     {checkout && <div>
@@ -95,8 +94,8 @@ const Styles = ({ checkout, productDetails }) => {
   </div>
   <div className='mb-5'>
     <div>
-      <select className='select w-32 max-w-xs bg-white mt-5' onChange={handleStyleSelectChange}>
-        <option defaultValue>Pick a size</option>
+      <select className='select w-32 max-w-xs bg-white mt-5 pr-2' onChange={handleStyleSelectChange}>
+        <option defaultValue>Select size</option>
         {sizeList}
       </select>
       {noSize && <p className='ml-1 text-sm text-red-600'>Please pick a size!</p>}

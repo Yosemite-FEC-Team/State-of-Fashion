@@ -65,7 +65,7 @@ const Gallery = () => {
       <div id={imageID} className={ index === mainImage ? 'carousel-card' : 'inactive-card'}>
           {mainImage !== galleryList.length - 1 ? <button className="right-arrow btn btn-ghost" onClick={nextSlide}>❯</button> : ''}
           {mainImage !== 0 ? <button className="left-arrow btn btn-ghost" onClick={prevSlide}>❮</button> : ''}
-          {index === mainImage && (<img className='object-contain w-full h-550' src={image.url} onClick={handleImageClick}></img>)}
+          {index === mainImage && (<img className='object-contain w-full h-550' src={image.url}  alt='No Image Available' onClick={handleImageClick}></img>)}
       </div>)
   })
 
@@ -74,19 +74,19 @@ const Gallery = () => {
     let index = galleryList.indexOf(image);
     let ref = `#slide${index}`;
     return (
-    <span><img onClick={() => {handleMiniClick(index)}} className={index === mainImage ? 'mini-thumbnail object-contain p-1 isSelected' : 'mini-thumbnail object-contain p-1'} src={image.thumbnail_url}></img>
+    <span><img onClick={() => {handleMiniClick(index)}} className={index === mainImage ? 'mini-thumbnail object-contain p-1 isSelected' : 'mini-thumbnail object-contain p-1'} src={image.thumbnail_url} alt='No Image Available'></img>
     </span>)
   })
 
   // ideas:
   // use index of the response data (in array) to determine which picture and format it into the carousel format below
   return (
-    <div className='ml-3'>
+    <div>
       {showExpanded && <Expanded revert={handleDefaultClick} galleryList={galleryList} setMainImage={setMainImage} mainImage={mainImage}/>}
       <div className='mini-thumbnail-flex items-center ml-2'>
         {galleryThumbnails}
       </div>
-      <div className="carousel-container bg-white">
+      <div className="carousel-container ml-3 bg-white">
         {galleryCarousel}
       </div>
     </div>

@@ -1,6 +1,8 @@
 import React from 'react';
 import Gallery from './Gallery.jsx';
 import Styles from './Styles.jsx';
+
+import StarRatings from 'react-star-ratings';
 import { AiOutlineStar } from 'react-icons/Ai';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebookF, faTwitter, faPinterestP } from '@fortawesome/free-brands-svg-icons';
@@ -45,13 +47,20 @@ const Overview = () => {
   let getReviews = () => {
     axios.get('/products/reviews')
     .then(data => {
-      //console.log(data.data);
-      let total = (data.data[1] * 1) + (data.data[2] * 2) + (data.data[3] * 3) + (data.data[4] * 4) + (data.data[5] * 5);
-      let reviews = Number(data.data[1])  + Number(data.data[2]) + Number(data.data[3]) + Number(data.data[4]) + Number(data.data[5]);
-      let averageReview = total/reviews;
+      console.log(data.data, 'REVIEWS');
+      let reviewData = data.data;
+      let total = 0;
+      let reviews = 0;
+      // Calculate total reviews and number of reviews to find average
+      for (let key in reviewData) {
+        total += (reviewData[key] * key);
+        reviews += Number(reviewData[key]);
+      }
+      // round to the nearest quarter
+      let averageReview = Number((Math.round(total/reviews * 4) / 4).toFixed(2));
       setTotal(reviews);
       setAverage(averageReview);
-      //console.log(averageReview, 'total');
+      console.log(averageReview, 'total');
     })
     .catch(err => {
       console.log(err, 'error getting reviews');
@@ -91,11 +100,7 @@ const Overview = () => {
           </StyleContext.Provider>
           <div className='flex flex-col ml-10 mt-5'>
             <div>
-            <span className="fa fa-star"></span>
-            <span className="fa fa-star"></span>
-            <span className="fa fa-star"></span>
-            <span className="fa fa-star-o"></span>
-            <span className="fa fa-star-o"></span>
+              <StarRatings rating={average} starDimension='20px' starSpacing='2px' starRatedColor='#639d80'/>
             <p className='underline'>See all {total} reviews </p>
             </div>
             <p className='category mt-10'>{productDetails.category}</p>
