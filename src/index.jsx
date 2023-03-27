@@ -2,11 +2,11 @@
 import React, {useEffect} from "react";
 // Import from react-dom the ability to create a root render
 import { createRoot } from "react-dom/client";
-import axios from 'axios';
+const axios = require('axios');
 import RelatedAndCompModule from './related/components/RelatedAndCompModule.jsx';
 import { Overview } from './overview/Overview.jsx'
-const root = createRoot(document.getElementById("root"));
 import RatingsReviews from './ratings-and-reviews/components/RatingsReviews.jsx'
+const root = createRoot(document.getElementById("root"));
 
 // Huzzah for jsx!
 const App = () => {
