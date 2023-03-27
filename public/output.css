@@ -1889,6 +1889,61 @@ html {
   border-radius: var(--rounded-btn, 0.5rem);
 }
 
+.file-input {
+  height: 3rem;
+  flex-shrink: 1;
+  padding-right: 1rem;
+  font-size: 1rem;
+  line-height: 2;
+  line-height: 1.5rem;
+  overflow: hidden;
+  border-width: 1px;
+  border-color: hsl(var(--bc) / var(--tw-border-opacity));
+  --tw-border-opacity: 0;
+  --tw-bg-opacity: 1;
+  background-color: hsl(var(--b1) / var(--tw-bg-opacity));
+  border-radius: var(--rounded-btn, 0.5rem);
+}
+
+.file-input::file-selector-button {
+  margin-right: 1rem;
+  display: inline-flex;
+  height: 2.875rem;
+  min-height: 2.875rem;
+  flex-shrink: 0;
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  text-align: center;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  line-height: 1em;
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-backdrop-filter;
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-backdrop-filter;
+  transition-duration: 200ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  border-style: solid;
+  --tw-border-opacity: 1;
+  border-color: hsl(var(--n) / var(--tw-border-opacity));
+  --tw-bg-opacity: 1;
+  background-color: hsl(var(--n) / var(--tw-bg-opacity));
+  font-weight: 600;
+  text-transform: uppercase;
+  text-transform: var(--btn-text-case, uppercase);
+  --tw-text-opacity: 1;
+  color: hsl(var(--nc) / var(--tw-text-opacity));
+  text-decoration-line: none;
+  border-width: var(--border-btn, 1px);
+  animation: button-pop var(--animation-btn, 0.25s) ease-out;
+}
+
 .footer {
   display: grid;
   width: 100%;
@@ -2068,6 +2123,39 @@ html {
 
 .menu > :where(li:focus) > :where(ul) {
   display: flex;
+}
+
+.modal {
+  pointer-events: none;
+  visibility: hidden;
+  position: fixed;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  display: flex;
+  justify-content: center;
+  opacity: 0;
+  z-index: 999;
+  background-color: hsl(var(--nf, var(--n)) / var(--tw-bg-opacity));
+  --tw-bg-opacity: 0.4;
+  transition-duration: 200ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-property: transform, opacity, visibility;
+  overflow-y: hidden;
+  overscroll-behavior: contain;
+}
+
+:where(.modal) {
+  align-items: center;
+}
+
+.modal-open,
+.modal:target,
+.modal-toggle:checked + .modal {
+  pointer-events: auto;
+  visibility: visible;
+  opacity: 1;
 }
 
 .progress {
@@ -2885,6 +2973,40 @@ html {
   outline: 2px solid currentColor;
 }
 
+.file-input:focus {
+  outline: 2px solid hsla(var(--bc) / 0.2);
+  outline-offset: 2px;
+}
+
+.file-input-disabled,
+  .file-input[disabled] {
+  cursor: not-allowed;
+  --tw-border-opacity: 1;
+  border-color: hsl(var(--b2, var(--b1)) / var(--tw-border-opacity));
+  --tw-bg-opacity: 1;
+  background-color: hsl(var(--b2, var(--b1)) / var(--tw-bg-opacity));
+  --tw-text-opacity: 0.2;
+}
+
+.file-input-disabled::-moz-placeholder, .file-input[disabled]::-moz-placeholder {
+  color: hsl(var(--bc) / var(--tw-placeholder-opacity));
+  --tw-placeholder-opacity: 0.2;
+}
+
+.file-input-disabled::placeholder,
+  .file-input[disabled]::placeholder {
+  color: hsl(var(--bc) / var(--tw-placeholder-opacity));
+  --tw-placeholder-opacity: 0.2;
+}
+
+.file-input-disabled::file-selector-button, .file-input[disabled]::file-selector-button {
+  --tw-border-opacity: 0;
+  background-color: hsl(var(--n) / var(--tw-bg-opacity));
+  --tw-bg-opacity: 0.2;
+  color: hsl(var(--bc) / var(--tw-text-opacity));
+  --tw-text-opacity: 0.2;
+}
+
 .label a:hover {
   --tw-text-opacity: 1;
   color: hsl(var(--bc) / var(--tw-text-opacity));
@@ -3172,6 +3294,15 @@ html {
   overflow: hidden;
   border-radius: 40px;
   margin-top: -25px;
+}
+
+.modal-open .modal-box,
+.modal-toggle:checked + .modal .modal-box,
+.modal:target .modal-box {
+  --tw-translate-y: 0px;
+  --tw-scale-x: 1;
+  --tw-scale-y: 1;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
 .progress::-moz-progress-bar {
@@ -4699,4 +4830,250 @@ html {
     --tw-ring-opacity: 1;
     --tw-ring-color: rgb(107 33 168 / var(--tw-ring-opacity));
   }
+}
+.ratings-reviews {
+  display: flex;
+  justify-content: flex-start;
+  padding: 10px;
+}
+
+.ratings-component {
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+}
+
+.reviews-component {
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+}
+
+.single-review {
+  padding: 5px;
+}
+
+.review-photos {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.reviewPhoto {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 10px;
+  width: 100px;
+  height: auto;
+}
+
+.rating-user-date {
+  padding-top: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+#user-date, .review-bottom, .recommend {
+  font-size: small
+}
+
+#review-summary {
+  font-weight: bold;
+  font-size: large;
+}
+
+.review-bottom {
+  display: flex;
+  justify-content: flex-start;
+  border-bottom: 1px solid #CCC;
+  padding-bottom: 5px;
+}
+
+.review-btn {
+  display: inline-block;
+  width: 200px;
+  padding: 20px;
+  margin: 20px;
+  text-align: center;
+  border: 2px solid black;
+}
+
+.review-sort {
+  font-weight: bold;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.big-rating {
+  font-weight: bolder;
+  font-size: 40px;
+}
+
+.small-text {
+  font-size: xx-small;
+}
+
+.button-container {
+  display: flex;
+}
+
+#ratings-reviews-title {
+  font-size: small;
+}
+
+.stars-and-bar-container {
+  display: flex;
+  white-space: nowrap;
+  align-items: center;
+}
+
+.x-stars{
+  padding-right: 10px;
+}
+
+.star-bar-container {
+  width: 100%;
+  height: 15px;
+  border: 1px solid rgb(175, 172, 172);
+  display: flex;
+  justify-content: flex-end;
+  overflow: hidden;
+}
+
+.star-bar-fill {
+  height: 100%;
+  background-color: rgb(15, 118, 110);
+  transition: width 0.5s ease-in-out;
+}
+
+.star-bar-unfill {
+  height: 100%;
+  background-color: rgb(203, 198, 198);
+  transition: width 0.5s ease-in-out;
+}
+
+.triangle-container {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  /* align items at the top */
+  height: 20px;
+}
+
+.rectangle {
+  width: 55px;
+  height: 7px;
+  margin-right: 5px;
+  background-color: #9a9898;
+}
+
+.right-rectangle {
+  width: 55px;
+  height: 7px;
+  background-color: #9a9898;
+}
+
+.triangle {
+  position: absolute;
+  left: calc(50% - 15px);
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 12px 8px 0 8px;
+  /* change the border widths to create a downward-pointing triangle */
+  border-color: #0a0a0a transparent transparent transparent;
+  /* change the border colors to match the background color of the container */
+}
+
+.char-labels {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  /* align items at the top */
+  font-size: xx-small;
+}
+
+.small-text {
+  font-size: x-small;
+}
+
+.inside-review-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: black;
+}
+
+.big-title {
+  font-size: larger;
+  font-weight: bold;
+}
+
+.bold-titles {
+  font-weight: bold;
+}
+
+.form-yes-no {
+  flex-direction: row;
+  margin: 10px;
+}
+
+.radio-btn {
+  margin-right: 10px;
+}
+
+.radio-label {
+  display: flex;
+  align-items: center;
+  margin-right: 20px;
+}
+
+/* style the custom radio button */
+
+.radio-btn {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+/* style the custom radio button when it is checked */
+
+.radio-btn:checked {
+  background-color: #000;
+}
+
+.center-rating {
+  display: flex;
+  justify-content: center;
+  font-size: small;
+}
+
+.baby-text {
+  font-size: xx-small;
+}
+
+.small-title {
+  font-size: small;
+  font-weight: bold
+}
+
+.review-summary-box {
+  width: 300px;
+  height: 30px;
+}
+
+.review-body-box {
+  width: 300px;
+  height: 100px;
+}
+
+.form-boxes {
+  width: 300px;
 }
