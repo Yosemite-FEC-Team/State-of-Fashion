@@ -1,10 +1,12 @@
 import React from 'react';
 import { StyleContext } from './Overview.jsx';
 import Checkout from './Checkout.jsx';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBagShopping } from '@fortawesome/free-solid-svg-icons';
 const axios = require('axios');
 
 
-const Styles = ({ checkout, productDetails }) => {
+const Styles = ({ setCheckout, checkout, productDetails }) => {
 
   const [styles, setStyles] = React.useState([]);
   const [added, setAdded] = React.useState(false);
@@ -137,7 +139,7 @@ const Styles = ({ checkout, productDetails }) => {
   return (
     <>
     {checkout && <div>
-      <Checkout styles={styles}/>
+      <Checkout setCheckout={setCheckout} styles={styles}/>
     </div>}
     <p>${styles[currentStyle] && styles[currentStyle].original_price}</p>
     <p className='category mt-10'>Style > {styles[currentStyle] && styles[currentStyle].name}</p>
@@ -159,7 +161,7 @@ const Styles = ({ checkout, productDetails }) => {
   </div> : <div className='text-red-400 mt-10 mb-10'>OUT OF STOCK</div>}
   <div>
     <button className='btn w-52' onClick={handleAddToBagClick}>Add to Bag</button>
-    {added && <p className='text-sm text-red-600'>Added to bag!</p>}
+    {added && <p className='text-sm text-red-600'>Added to bag! <FontAwesomeIcon icon={faBagShopping} /></p>}
   </div>
 </>)
 }

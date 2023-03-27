@@ -1,6 +1,8 @@
 import React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBagShopping } from '@fortawesome/free-solid-svg-icons';
 
-const Checkout = ({ styles }) => {
+const Checkout = ({ styles, setCheckout }) => {
 
   const [bought, setBought] = React.useState(false);
 
@@ -9,12 +11,15 @@ const Checkout = ({ styles }) => {
     setBought(true);
   }
 
+  const handleStartShoppingClick = () => {
+    setCheckout(false);
+  }
+
   const checkoutList = () => {
     let cart = JSON.parse(localStorage.getItem('products'));
-    console.log(cart, 'CART');
-    console.log(styles, 'STYLES');
     if (cart === null) {
-      return (!bought && <p>No products have been added to cart!</p>)
+      return (!bought && <div className='flex flex-col justify-items-center'><p className='text-center '>No products have been added to cart!</p>
+      <button className='btn btn-primary self-center mt-5 text-white bg-gradient-to-r from-purple-500 to-pink-500 hover:bg-gradient-to-l focus:ring-4 focus:outline-none focus:ring-purple-200 dark:focus:ring-purple-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center"' onClick={handleStartShoppingClick}>Start shopping!</button></div>)
     } else {
       let cartItems = Object.keys(cart);
       let cartAmounts = Object.values(cart);
@@ -69,9 +74,9 @@ const Checkout = ({ styles }) => {
   }
 
   return(<div className='checkout-window bg-gray-300 shadow-lg'>
-    <h1 className="text-center mt-0 mb-2 bg-white text-3xl font-medium leading-tight text-primary">Your Bag</h1>
+    <h1 className="text-center mt-0 mb-2 bg-white text-3xl font-medium leading-tight text-primary">Your Bag <FontAwesomeIcon icon={faBagShopping} /></h1>
     {checkoutList()}
-    {bought && <p>Purchase successful!</p>}
+    {bought && <p className='items-center'>Purchase successful!</p>}
     </div>)
 }
 

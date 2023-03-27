@@ -101,13 +101,13 @@ const Overview = () => {
           <div className='flex flex-col ml-10 mt-5'>
             <div>
               <StarRatings rating={average} starDimension='20px' starSpacing='2px' starRatedColor='#639d80'/>
-            <a className='underline'>See all {total} reviews </a>
+            <a className='underline ml-2'>See all {total} reviews </a>
             </div>
             <p className='category mt-10'>{productDetails.category}</p>
             <h4 className="mt-0 mb-2 text-3xl font-bold leading-tight text-primary">{productDetails.name}</h4>
             {/* The index from styles can go to gallery for the onClick change */}
             <StyleContext.Provider value={{currentStyle, setCurrentStyle}}>
-              <Styles productDetails={productDetails} checkout={checkout}/>
+              <Styles productDetails={productDetails} checkout={checkout} setCheckout={setCheckout}/>
             </StyleContext.Provider>
         </div>
       </div>
