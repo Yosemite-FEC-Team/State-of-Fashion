@@ -86,7 +86,7 @@ const Gallery = () => {
       <div className='mini-thumbnail-flex items-center ml-2'>
         {galleryThumbnails}
       </div>
-      <div className="carousel-container ml-3 bg-white">
+      <div className="carousel-container ml-3 bg-white shadow-lg">
         {galleryCarousel}
       </div>
     </div>
