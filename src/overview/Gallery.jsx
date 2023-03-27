@@ -26,7 +26,7 @@ const Gallery = () => {
   let getGallery = () => {
     axios.get('/products/styles')
       .then(data => {
-      console.log(data.data.results[currentStyle].photos);
+      //console.log(data.data.results[currentStyle].photos);
       // this has all the styles and the photos for those styles
       setGalleryList(data.data.results[currentStyle].photos);
       })

@@ -12,6 +12,16 @@ const Styles = ({ checkout, productDetails }) => {
   const [amount, setAmount] = React.useState(1);
   const [noSize, setNoSize] = React.useState(false);
   const [stockArr, setStockArr] = React.useState([]);
+  // for if the product has no stock at all
+  const [noStock, setNoStock] = React.useState(false);
+  const {currentStyle, setCurrentStyle} = React.useContext(StyleContext);
+
+  const [sizes, setSizes] = React.useState([]);
+
+  //sizes for initial load, currentStyle for future loads
+  React.useEffect(() => {
+    allStock();
+  }, [currentStyle, sizes]);
 
   React.useEffect(() => {
     getGallery();
@@ -20,9 +30,6 @@ const Styles = ({ checkout, productDetails }) => {
   React.useEffect(() => {
     quantityList();
   }, [pickedSize]);
-
-  const [sizes, setSizes] = React.useState([]);
-  const {currentStyle, setCurrentStyle} = React.useContext(StyleContext);
 
 
   let getGallery = () => {
@@ -94,11 +101,31 @@ const Styles = ({ checkout, productDetails }) => {
           stock = Number(sizes[i].quantity);
         }
       }
+      if (stock > 15) {
+        stock = 15;
+      }
       let temp = [];
       for (let i  = 1; i < stock + 1; i++) {
         temp.push(i);
       }
       setStockArr(temp);
+    }
+  }
+
+  // This is for if the ENTIRE STOCK is out
+  const allStock = () => {
+    // so it wont lag and say out of stock before sizes updates :)
+    if (sizes.length !== 0) {
+      let stockValues = Object.values(sizes);
+      let totalStock = 0;
+      for (let i = 0; i < stockValues.length; i++) {
+        totalStock += (stockValues[i].quantity);
+      }
+      if (totalStock === 0) {
+        setNoStock(true);
+      } else {
+        setNoStock(false);
+      }
     }
   }
 
@@ -117,7 +144,7 @@ const Styles = ({ checkout, productDetails }) => {
   <div className='flex flex-row mt-5 items-center flex-wrap'>
     {styleList}
   </div>
-  <div className='mb-5'>
+  {!noStock ? <div className='mb-5'>
     <div>
       <select className='select w-32 max-w-xs bg-white mt-5 pr-2' onChange={handleStyleSelectChange}>
         <option defaultValue>Select size</option>
@@ -129,7 +156,7 @@ const Styles = ({ checkout, productDetails }) => {
       <select className='select w-40 max-w-xs bg-white mt-5' onChange={handleAmountChange}> { stockArr.length !== 0 ? quantitySelector : <option>-</option>}
       </select>
     </div>
-  </div>
+  </div> : <div className='text-red-400 mt-10 mb-10'>OUT OF STOCK</div>}
   <div>
     <button className='btn w-52' onClick={handleAddToBagClick}>Add to Bag</button>
     {added && <p className='text-sm text-red-600'>Added to bag!</p>}
