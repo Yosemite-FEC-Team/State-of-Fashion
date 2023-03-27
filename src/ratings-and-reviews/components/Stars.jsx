@@ -1,8 +1,11 @@
 import React, {useState, useEffect} from 'react';
+import StarRatings from 'react-star-ratings';
 
 const Stars = ({data}) => {
-  console.log(data, 'HEY THIS SHOULD BE REVIEW METADATA')
+
+
   var sum = 0;
+  var rawAverage = 0;
   function createAverageRating(metadataObject) {
     //create an array of the values per rating
     var arrayOfTotalRatings = Object.values(metadataObject);
@@ -16,16 +19,17 @@ const Stars = ({data}) => {
 
 
     var rawAverage = dividend/sum;
-    var finalAverage = rawAverage.toFixed(1);
-    return finalAverage;
 
-
+    return rawAverage;
 
   }
-
-  var bigRating = createAverageRating(data);
-
+  var averageNotRounded = createAverageRating(data);
+  var bigRating = averageNotRounded.toFixed(1);
+  console.log(bigRating, 'this is the big rating')
+  var starRating =(averageNotRounded*4).toFixed(8)/4;
+  console.log(starRating, 'this is the star rating');
   var arrayOfTotalRatings = Object.values(data);
+  console.log(arrayOfTotalRatings, 'array of all ratings');
 
   var fiveStarPercentage = ((Number(arrayOfTotalRatings[4])/sum)*100).toFixed(0);
   var fourStarPercentage = ((Number(arrayOfTotalRatings[3])/sum)*100).toFixed(0);
@@ -37,9 +41,9 @@ const Stars = ({data}) => {
   return (
     <div className='stars-component'>
     <span className='big-rating'>{bigRating}</span>
-    <span> stars</span>
-    <span className='small-text'>({sum} total reviews)</span>
-    <h3>100% of reviews recommend this product</h3>
+    <StarRatings starDimension='15px' starSpacing='3px' rating={3}/>
+    <div className='small-text'>({sum} total reviews)</div>
+    <div className='small-text'>100% of reviews recommend this product</div>
     <div className='stars-and-bar-container'>
       <div className='x-stars'><small><u>5 stars</u></small></div>
       <div className='star-bar-container'>

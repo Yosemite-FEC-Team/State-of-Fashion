@@ -244,29 +244,105 @@
   justify-content: space-between;
   align-items: flex-start; /* align items at the top */
   height: 20px;
-  background-color: #f2f2f2;
+
 }
 
 .rectangle {
-  width: 50px;
-  height: 20px;
-  margin-right: 10px;
-  background-color: #747272;
-  color
+  width: 55px;
+  height: 7px;
+  margin-right: 5px;
+  background-color: #9a9898;
+
 }
 
 .right-rectangle {
-  width: 50px;
-  height: 20px;
-  background-color: #747272;
+  width: 55px;
+  height: 7px;
+  background-color: #9a9898;
+
 }
 
 .triangle {
   position: absolute;
-  left: calc(50% - 15px); /* center the triangle horizontally */
+  left: calc(50% - 15px);
   width: 0;
   height: 0;
   border-style: solid;
-  border-width: 20px 15px 0 15px; /* change the border widths to create a downward-pointing triangle */
+  border-width: 12px 8px 0 8px; /* change the border widths to create a downward-pointing triangle */
   border-color: #0a0a0a transparent transparent transparent; /* change the border colors to match the background color of the container */
+}
+
+.char-labels {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start; /* align items at the top */
+  font-size: xx-small;
+}
+
+.small-text {
+  font-size: x-small;
+}
+
+.inside-review-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: black;
+}
+
+.big-title {
+  font-size: larger;
+  font-weight: bold;
+}
+
+.bold-titles {
+  font-weight: bold;
+}
+
+.form-yes-no {
+  flex-direction: row;
+  margin: 10px;
+}
+
+.radio-btn {
+  margin-right: 10px;
+}
+
+.radio-label {
+  display: flex;
+  align-items: center;
+  margin-right: 20px;
+}
+
+/* style the custom radio button */
+.radio-btn {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+/* style the custom radio button when it is checked */
+.radio-btn:checked {
+  background-color: #000;
+}
+
+.center-rating {
+  display: flex;
+  justify-content: center;
+  font-size: small;
+}
+
+.baby-text {
+  font-size: xx-small;
+}
+
+.small-title {
+  font-size: small;
+  font-weight: bold
 }

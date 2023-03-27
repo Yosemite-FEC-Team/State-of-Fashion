@@ -60,11 +60,11 @@ app.get('/products', (req, res) => {
     })
 })
 
-//Lizz, do not modify this endpoint if you decide to use another product, cause Xiao Wen is using this
+//Lizz, do not modify this endpoint if you decide to use another product, cause Xiao Wen is using this MAY NEED TO REFORMAT CAUSE SHE IS JUST USING THE RATINGS!!!!
 app.get('/products/reviews', (req, res) => {
   axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/reviews/meta', { params: {product_id: '37315' }, headers: {'Authorization': `${config.TOKEN}` } })
     .then(data => {
-     //console.log(data.data);
+      console.log(data.data, 'META FROM THE SERVER');
       res.send(data.data.ratings);
     })
     .catch(err => {

@@ -37,9 +37,9 @@ const Reviews = () => {
     <div className='reviews-component'>
     <div className='review-sort'>
     <p>{results.length} reviews,sorted by</p><select>
-      <option>Relevance</option>
-      <option>Helpful</option>
-      <option>Newest</option>
+      <option><u>relevance</u></option>
+      <option>helpful</option>
+      <option>newest</option>
       </select>
     </div>
 
