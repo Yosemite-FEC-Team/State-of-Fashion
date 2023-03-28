@@ -193,6 +193,10 @@
   position: relative;
 }
 
+.product-card-button {
+  width: 100%;
+}
+
 .card-image {
   object-fit: contain;
   z-index: 4;

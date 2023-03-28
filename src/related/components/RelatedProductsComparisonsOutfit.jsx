@@ -3,15 +3,42 @@ import RelatedProductsList from './RelatedProductsList.jsx';
 import OutfitList from './OutfitList.jsx';
 import axios from 'axios';
 
-const RelatedProductsComparisonsOutfit = () => {
+const RelatedProductsComparisonsOutfit = ({ currentId, handleProductCardClick }) => {
   const [relatedProducts, setRelatedProducts] = useState([]);
-  // const [currentId, setCurrentId] = useState(0);
+  // const [currentId, setCurrentId] = useState('');
   const [outfitProducts, setOutfitProducts] = useState([]);
 
   useEffect(() => {
     getRelatedProducts();
     getOutfitProducts();
-  }, []);
+  }, [currentId]);
+
+  // const handleProductCardClick = (id) => {
+  //   console.log('clicked product card', id)
+  //   axios.post('/products', {id: id})
+  //   .then(result => {
+  //     console.log('after new axios post req', typeof result.data);
+  //     if (typeof result.data === 'number') {
+  //       result.data = result.data.toString();
+  //     }
+  //     console.log('after conversion', typeof result.data, result.data)
+  //     return setCurrentId(result.data);
+  //     // return currentId;
+  //   })
+  //   .then(result => {
+  //     console.log('after setId', result)
+  //     return result;
+  //   })
+  //   .catch(err => console.log(err));
+  // }
+
+  const getComparisonModalContent = (id) => {
+    getCurrentProductInfo()
+    .then(result => {
+      console.log('current info in modal function', result);
+      return result;
+    })
+  }
 
   const handleAddToOutfitButtonClick = () => {
     getCurrentProductInfo()
@@ -66,11 +93,8 @@ const RelatedProductsComparisonsOutfit = () => {
 
   return (
     <div>
-      <RelatedProductsList relatedProducts={relatedProducts} />
-      <OutfitList
-      // currentId={currentId}
-      outfitProducts={outfitProducts} handleAddToOutfitButtonClick={handleAddToOutfitButtonClick} handleDeleteFromOutfitButtonClick={handleDeleteFromOutfitButtonClick} />
-      {/* <button onClick={() => handleAddToOutfitButtonClick()}>testButton</button> */}
+      <RelatedProductsList relatedProducts={relatedProducts} handleProductCardClick={handleProductCardClick} getComparisonModalContent={getComparisonModalContent} />
+      <OutfitList outfitProducts={outfitProducts} handleAddToOutfitButtonClick={handleAddToOutfitButtonClick} handleDeleteFromOutfitButtonClick={handleDeleteFromOutfitButtonClick} handleProductCardClick={handleProductCardClick} />
     </div>
   );
 };

@@ -67,7 +67,7 @@ const generateProductCardData = (id) => {
     calculateStarRatingById(id)
   ])
   .then(elements => {
-    // console.log('returned promise elements', elements[0].data.results[0]);
+    console.log('returned promise elements', elements[1].data.features);
     const productStyles = elements[0].data.results[0];
     const product = elements[1].data;
     const starRating = elements[2];
@@ -80,9 +80,10 @@ const generateProductCardData = (id) => {
       },
       category: product.category,
       name: product.name,
-      expandedName: `${product.name} \u2014 ${product.slogan}`,
+      // expandedName: `${product.name} \u2014 ${product.slogan}`,
       defaultPrice: `$${Math.round(product.default_price)}`,
-      starRating: starRating
+      starRating: starRating,
+      features: product.features
     };
     return productCardData;
   })

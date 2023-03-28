@@ -4916,6 +4916,10 @@ html {
   position: relative;
 }
 
+.product-card-button {
+  width: 100%;
+}
+
 .card-image {
   -o-object-fit: contain;
      object-fit: contain;
