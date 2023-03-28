@@ -2,10 +2,10 @@ const express = require('express');
 const path = require('path');
 const morgan = require('morgan');
 const cors = require('cors');
-const dataServices = require('../helpers/dataServices.js');
 const axios = require('axios');
-const config = require('../config.js');
 const Promise = require('bluebird');
+const config = require('../config.js');
+const dataServices = require('../helpers/dataServices.js');
 
 const app = express();
 
@@ -16,7 +16,7 @@ app.use(express.urlencoded({extended: false}));
 app.use(express.static(path.join(__dirname, '../public')));
 
 let currentId = 37315;
-const outfitIds = [];
+const outfitIds = ['37311', '37319', '37312', '37313'];
 
 // app.get('/products/related', (req, res) => {
 //   const idWithPromises = {};
@@ -106,7 +106,6 @@ app.post('/products/delete-outfit', (req, res) => {
 app.get('/products/styles', (req, res) => {
   axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/products/${currentId}/styles`, { headers: {'Authorization': `${config.TOKEN}` } })
     .then(data => {
-     //console.log(data.data);
       res.send(data.data);
     })
     .catch(err => {
@@ -117,7 +116,6 @@ app.get('/products/styles', (req, res) => {
 app.get('/products', (req, res) => {
   axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/products/${currentId}`, { headers: {'Authorization': `${config.TOKEN}` } })
     .then(data => {
-      //console.log(data.data);
       res.send(data.data);
     })
     .catch(err => {
@@ -125,11 +123,22 @@ app.get('/products', (req, res) => {
     })
 })
 
+//Lizz, do not modify this endpoint if you decide to use another product, cause Xiao Wen is using this MAY NEED TO REFORMAT CAUSE SHE IS JUST USING THE RATINGS!!!!
 app.get('/products/reviews', (req, res) => {
   axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/reviews/meta', { params: {product_id: currentId }, headers: {'Authorization': `${config.TOKEN}` } })
     .then(data => {
-     //console.log(data.data);
       res.send(data.data.ratings);
+    })
+    .catch(err => {
+      console.log(err, 'error making call for review metadata');
+      res.end();
+    })
+})
+
+app.get('/products/review', (req, res) => {
+  axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/reviews/', { params: {product_id: '37315', count: 1000 }, headers: {'Authorization': `${config.TOKEN}` } })
+    .then(data => {
+      res.send(data.data.results);
     })
     .catch(err => {
       console.log(err, 'error making call for reviews');
@@ -140,3 +149,5 @@ app.get('/products/reviews', (req, res) => {
 app.listen(config.PORT, function() {
   console.log(`listening on port ${config.PORT}`);
 });
+
+

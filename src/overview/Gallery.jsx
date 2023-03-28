@@ -26,7 +26,7 @@ const Gallery = () => {
   let getGallery = () => {
     axios.get('/products/styles')
       .then(data => {
-      console.log(data.data.results[currentStyle].photos);
+      //console.log(data.data.results[currentStyle].photos);
       // this has all the styles and the photos for those styles
       setGalleryList(data.data.results[currentStyle].photos);
       })
@@ -63,9 +63,9 @@ const Gallery = () => {
     let imageID = `slide${index}`;
     return (
       <div id={imageID} className={ index === mainImage ? 'carousel-card' : 'inactive-card'}>
-          <button className="right-arrow btn btn-ghost" onClick={nextSlide}>{mainImage === galleryList.length - 1 ? '' : '❯'}</button>
-          <button className="left-arrow btn btn-ghost" onClick={prevSlide}>{mainImage === 0 ? '' : '❮'}</button>
-          {index === mainImage && (<img className='object-contain w-full h-550' src={image.url} onClick={handleImageClick}></img>)}
+          {mainImage !== galleryList.length - 1 ? <button className="right-arrow btn btn-ghost" onClick={nextSlide}>❯</button> : ''}
+          {mainImage !== 0 ? <button className="left-arrow btn btn-ghost" onClick={prevSlide}>❮</button> : ''}
+          {index === mainImage && (<img className='object-contain w-full h-550' src={image.url}  alt='No Image Available' onClick={handleImageClick}></img>)}
       </div>)
   })
 
@@ -74,7 +74,7 @@ const Gallery = () => {
     let index = galleryList.indexOf(image);
     let ref = `#slide${index}`;
     return (
-    <span><img onClick={() => {handleMiniClick(index)}} className={index === mainImage ? 'mini-thumbnail object-contain p-1 isSelected' : 'mini-thumbnail object-contain p-1'} src={image.thumbnail_url}></img>
+    <span><img onClick={() => {handleMiniClick(index)}} className={index === mainImage ? 'mini-thumbnail object-contain p-1 isSelected' : 'mini-thumbnail object-contain p-1'} src={image.thumbnail_url} alt='No Image Available'></img>
     </span>)
   })
 
@@ -83,10 +83,10 @@ const Gallery = () => {
   return (
     <div>
       {showExpanded && <Expanded revert={handleDefaultClick} galleryList={galleryList} setMainImage={setMainImage} mainImage={mainImage}/>}
-      <div className='mini-thumbnail-flex items-center'>
+      <div className='mini-thumbnail-flex items-center ml-2'>
         {galleryThumbnails}
       </div>
-      <div className="carousel-container bg-white">
+      <div className="carousel-container ml-3 bg-white shadow-lg">
         {galleryCarousel}
       </div>
     </div>

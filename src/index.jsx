@@ -4,8 +4,11 @@ import React from 'react';
 import { createRoot } from 'react-dom/client';
 import { Overview } from './overview/Overview.jsx';
 import RelatedAndCompModule from './related/components/RelatedAndCompModule.jsx';
+import RatingsReviews from './ratings-and-reviews/components/RatingsReviews.jsx';
 
 const root = createRoot(document.getElementById('root'));
+
+
 
 // Huzzah for jsx!
 const App = () => {
@@ -14,6 +17,7 @@ const App = () => {
       <h1>Hello World. Yes, we're leaving this here.</h1>
       <Overview />
       <RelatedAndCompModule />
+      <RatingsReviews />
     </div>
     )
 }
