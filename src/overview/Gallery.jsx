@@ -2,6 +2,8 @@ import React from 'react';
 import { StyleContext } from './Overview.jsx';
 import Expanded from './Expanded.jsx';
 const axios = require('axios');
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
 
 const Gallery = () => {
   // lets make a state for the incoming gallery list
@@ -83,9 +85,12 @@ const Gallery = () => {
   return (
     <div>
       {showExpanded && <Expanded revert={handleDefaultClick} galleryList={galleryList} setMainImage={setMainImage} mainImage={mainImage}/>}
-      <div className='mini-thumbnail-flex items-center ml-2'>
-        {galleryThumbnails}
-      </div>
+        <div className='mini-thumbnail-flex items-center ml-2'>
+          {galleryThumbnails}
+        </div>
+        <div className='mini-thumbnail-div '>
+          <FontAwesomeIcon icon={faAngleDown} />
+        </div>
       <div className="carousel-container ml-3 bg-white shadow-lg">
         {galleryCarousel}
       </div>

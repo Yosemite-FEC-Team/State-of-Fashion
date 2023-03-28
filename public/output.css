@@ -4254,20 +4254,8 @@ html {
   margin-top: 1.25rem;
 }
 
-.mt-1 {
-  margin-top: 0.25rem;
-}
-
-.mt-6 {
-  margin-top: 1.5rem;
-}
-
-.mt-7 {
-  margin-top: 1.75rem;
-}
-
-.mt-8 {
-  margin-top: 2rem;
+.mr-2 {
+  margin-right: 0.5rem;
 }
 
 .block {
@@ -4732,6 +4720,13 @@ html {
   height: 420px;
   z-index: 4;
   overflow-y: scroll;
+}
+
+.mini-thumbnail-div {
+  position: absolute;
+  margin-top: 480px;
+  margin-left: 87px;
+  z-index: 5;
 }
 
 .mini-thumbnail {

@@ -92,12 +92,12 @@ const Checkout = ({ added, styles, setCheckout }) => {
     <h1 className="text-center mt-0 mb-2 bg-white text-3xl font-medium leading-tight text-primary">Your Bag <FontAwesomeIcon icon={faBagShopping} /></h1>
     {!bought && regCart === null && <div className='flex flex-col justify-items-center'><p className='text-center '>No products have been added to cart!</p>
       <button className='btn btn-primary self-center mt-5 text-white bg-gradient-to-r from-purple-500 to-pink-500 hover:bg-gradient-to-l focus:ring-4 focus:outline-none focus:ring-purple-200 dark:focus:ring-purple-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center"' onClick={handleStartShoppingClick}>Start shopping!</button></div>}
-    {regCart !== null && <div className='flex flex-col'>{itemList}</div>}
-      {regCart !== null && <div className='flex justify-between items-center mt-10 ml-5'>
+    {!bought && regCart !== null && <div className='flex flex-col'>{itemList}</div>}
+      {!bought && regCart !== null && <div className='flex justify-between items-center mt-10 ml-5'>
       <p>Total: ${totalCost} <span className='text-xs'>(Not including tax and shipping fee)</span></p>
      <button className='checkout-button btn btn-sm btn-primary mr-5 text-white' onClick={handleBuyClick}>Checkout</button>
     </div>}
-    {bought && <p className='items-center'>Purchase successful!</p>}
+    {bought && <p className='text-center'>Purchase successful!</p>}
     </div>)
 }
 

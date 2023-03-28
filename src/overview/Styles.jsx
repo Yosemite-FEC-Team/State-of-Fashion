@@ -161,8 +161,7 @@ const Styles = ({ setCheckout, checkout, productDetails }) => {
     </div>
   </div> : <div className='text-red-400 mt-10 mb-10'>OUT OF STOCK</div>}
   <div>
-    <button className='btn w-52' onClick={handleAddToBagClick}>Add to Bag</button>
-    {added && <p className='text-sm text-red-600'>Added to bag! <FontAwesomeIcon icon={faBagShopping} /></p>}
+    {added ? <button className='btn w-52'><p className='mr-2'>Added to bag!</p><FontAwesomeIcon icon={faBagShopping} /></button> : <button className='btn w-52' onClick={handleAddToBagClick}>Add to Bag</button>}
   </div>
 </>)
 }
