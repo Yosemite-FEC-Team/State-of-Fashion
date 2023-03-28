@@ -15,6 +15,18 @@ const Checkout = ({ styles, setCheckout }) => {
     setCheckout(false);
   }
 
+  const handleRemoveClick = (item) => {
+    let itemObj = JSON.parse(localStorage.getItem('products'));
+    console.log(itemObj);
+    delete itemObj[`${item.mainName},${item.pickedSize},${item.styleName}`];
+    if (Object.keys(itemObj).length === 0) {
+      localStorage.clear();
+    } else {
+      localStorage.setItem('products', JSON.stringify(itemObj));
+    }
+    checkoutList();
+  }
+
   const checkoutList = () => {
     let cart = JSON.parse(localStorage.getItem('products'));
     if (cart === null) {
@@ -61,11 +73,12 @@ const Checkout = ({ styles, setCheckout }) => {
             <p>Price: ${item.price}</p>
             <p>Amount: {item.amount}</p>
           </div>
-          <button className='btn btn-sm btn-accent'>Remove</button>
+          <button className='btn btn-sm btn-accent bg-green-200 ml-5 mt-5' onClick={() => {
+            handleRemoveClick(item)}}>Remove</button>
         </div>)
       })
       return (<><div className='flex flex-col'>{itemList}</div>
-      <div className='flex justify-between items-center mt-5 ml-5'>
+      <div className='flex justify-between items-center mt-10 ml-5'>
       <p>Total: ${total} <span className='text-xs'>(Not including tax and shipping fee)</span></p>
      <button className='checkout-button btn btn-sm btn-primary mr-5 text-white' onClick={handleBuyClick}>Checkout</button>
     </div></>);

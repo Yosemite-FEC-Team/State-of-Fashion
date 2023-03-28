@@ -10,7 +10,7 @@ const Styles = ({ setCheckout, checkout, productDetails }) => {
 
   const [styles, setStyles] = React.useState([]);
   const [added, setAdded] = React.useState(false);
-  const [pickedSize, setPickedSize] = React.useState('Pick a size');
+  const [pickedSize, setPickedSize] = React.useState('Select size');
   const [amount, setAmount] = React.useState(1);
   const [noSize, setNoSize] = React.useState(false);
   const [stockArr, setStockArr] = React.useState([]);
@@ -64,7 +64,7 @@ const Styles = ({ setCheckout, checkout, productDetails }) => {
 
   let handleAddToBagClick = (event) => {
     event.preventDefault();
-    if (pickedSize !== 'Pick a size') {
+    if (pickedSize !== 'Select size') {
       console.log(productDetails);
       let productToAdd = [productDetails.name, pickedSize, styles[currentStyle].name];
       let currentItems = JSON.parse(localStorage.getItem('products')) || {};
