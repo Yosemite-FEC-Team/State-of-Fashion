@@ -360,3 +360,9 @@
 .form-boxes {
   width: 300px;
 }
+
+.rating-container-with-star {
+  display: flex;
+  align-items: center;
+}
+

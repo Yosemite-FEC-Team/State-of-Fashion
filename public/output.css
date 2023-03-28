@@ -4238,10 +4238,6 @@ html {
   transition-duration: 150ms;
 }
 
-.ease-in-out {
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-}
-
 #style-image {
   margin-right: 10px;
 }
@@ -4613,3 +4609,9 @@ html {
 .form-boxes {
   width: 300px;
 }
+
+.rating-container-with-star {
+  display: flex;
+  align-items: center;
+}
+

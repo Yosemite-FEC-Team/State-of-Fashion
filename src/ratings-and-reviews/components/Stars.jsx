@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
-import StarRatings from 'react-star-ratings';
+
+import { DynamicStar } from 'react-dynamic-star';
 
 const Stars = ({data}) => {
 
@@ -40,8 +41,11 @@ const Stars = ({data}) => {
   console.log(fiveStarPercentage, 'five star percentage');
   return (
     <div className='stars-component'>
+    <div className='rating-container-with-star'>
     <span className='big-rating'>{bigRating}</span>
-    <StarRatings starDimension='15px' starSpacing='3px' rating={3}/>
+    <DynamicStar rating={averageNotRounded} fullStarColor={'black'} outlined={true} width={15} height={15}/>
+    </div>
+
     <div className='small-text'>({sum} total reviews)</div>
     <div className='small-text'>100% of reviews recommend this product</div>
     <div className='stars-and-bar-container'>
