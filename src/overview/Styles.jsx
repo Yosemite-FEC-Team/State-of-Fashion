@@ -59,7 +59,7 @@ const Styles = ({ setCheckout, checkout, productDetails }) => {
   }
 
   const handleAmountChange = (event) => {
-    setAmount(event.target.value);
+    setAmount(Number(event.target.value));
   }
 
   let handleAddToBagClick = (event) => {
@@ -149,11 +149,11 @@ const Styles = ({ setCheckout, checkout, productDetails }) => {
   </div>
   {!noStock ? <div className='mb-5'>
     <div>
-      <select className='select w-32 max-w-xs bg-white mt-5 pr-2' onChange={handleStyleSelectChange}>
+      {noSize ? <p className='mt-5 ml-1 text-sm text-red-600'>Please pick a size!</p> : <p className='mt-10'> </p>}
+      <select className='select w-32 max-w-xs bg-white pr-2' onChange={handleStyleSelectChange}>
         <option defaultValue>Select size</option>
         {sizeList}
       </select>
-      {noSize && <p className='ml-1 text-sm text-red-600'>Please pick a size!</p>}
     </div>
     <div >
       <select className='select w-40 max-w-xs bg-white mt-5' onChange={handleAmountChange}> { stockArr.length !== 0 ? quantitySelector : <option>-</option>}

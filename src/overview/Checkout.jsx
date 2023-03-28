@@ -7,7 +7,7 @@ const Checkout = ({ styles, setCheckout }) => {
   const [bought, setBought] = React.useState(false);
 
   const handleBuyClick = () => {
-    localStorage.clear();
+    localStorage.removeItem('products');
     setBought(true);
   }
 
@@ -17,19 +17,19 @@ const Checkout = ({ styles, setCheckout }) => {
 
   const handleRemoveClick = (item) => {
     let itemObj = JSON.parse(localStorage.getItem('products'));
-    console.log(itemObj);
-    delete itemObj[`${item.mainName},${item.pickedSize},${item.styleName}`];
-    if (Object.keys(itemObj).length === 0) {
-      localStorage.clear();
+    if (Object.keys(itemObj).length === 1) {
+      localStorage.removeItem('products');
     } else {
+      delete itemObj[`${item.mainName},${item.pickedSize},${item.styleName}`];
       localStorage.setItem('products', JSON.stringify(itemObj));
     }
-    checkoutList();
+    // because of async problems :()
+    setTimeout(checkoutList(), 1000);
   }
 
   const checkoutList = () => {
     let cart = JSON.parse(localStorage.getItem('products'));
-    if (cart === null) {
+    if (cart === null || cart === undefined) {
       return (!bought && <div className='flex flex-col justify-items-center'><p className='text-center '>No products have been added to cart!</p>
       <button className='btn btn-primary self-center mt-5 text-white bg-gradient-to-r from-purple-500 to-pink-500 hover:bg-gradient-to-l focus:ring-4 focus:outline-none focus:ring-purple-200 dark:focus:ring-purple-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center"' onClick={handleStartShoppingClick}>Start shopping!</button></div>)
     } else {
