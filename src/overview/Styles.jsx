@@ -140,7 +140,7 @@ const Styles = ({ setCheckout, checkout, productDetails }) => {
   return (
     <>
     {checkout && <div>
-      <Checkout setCheckout={setCheckout} styles={styles}/>
+      <Checkout added={added} setCheckout={setCheckout} styles={styles}/>
     </div>}
     <p>${styles[currentStyle] && styles[currentStyle].original_price}</p>
     <p className='category mt-10'>Style > {styles[currentStyle] && styles[currentStyle].name}</p>
