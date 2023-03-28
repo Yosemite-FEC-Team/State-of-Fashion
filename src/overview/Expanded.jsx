@@ -43,8 +43,14 @@ const Expanded = ({galleryThumbnails, revert, galleryList, mainImage, setMainIma
 
   return(
     <div className='expanded-view'>
-      <div className='mini-thumbnail-flex2 items-center ml-2'>
-        {galleryThumbnails}
+      <div>
+        <div className='mini-thumbnail-flex2 items-center ml-2'>
+          {galleryThumbnails}
+        </div>
+        <div class='mini-carousel-arrows'>
+          <button class='mini-prev'>prev</button>
+          <button class='mini-next'>next</button>
+        </div>
       </div>
       <button className='expanded-button btn btn-square btn-outline btn-sm' onClick={revert}>x</button>
       {expandedCarousel}

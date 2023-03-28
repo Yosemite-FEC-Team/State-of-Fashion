@@ -4338,6 +4338,10 @@ html {
   width: 100%;
 }
 
+.w-96 {
+  width: 24rem;
+}
+
 .max-w-xs {
   max-width: 20rem;
 }
@@ -4374,6 +4378,10 @@ html {
 
 .resize {
   resize: both;
+}
+
+.grid-cols-4 {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
 }
 
 .flex-row {

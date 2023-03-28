@@ -86,7 +86,7 @@ const Styles = ({ setCheckout, checkout, productDetails }) => {
 
   let styleList = styles.map(style => {
     let index = styles.indexOf(style);
-    return(<img id='style-image' className={currentStyle === index ?  'selectedStyle h-12 w-12 rounded-full' :' h-10 w-10 rounded-full'} onClick={()=> {handleStyleClick(index)}} src={style.photos[0].thumbnail_url}></img>
+    return(<img id='style-image' className={currentStyle === index ?  'selectedStyle mb-2 h-12 w-12 rounded-full' :' mb-2 h-10 w-10 rounded-full'} onClick={()=> {handleStyleClick(index)}} src={style.photos[0].thumbnail_url}></img>
     )
   })
 
@@ -144,7 +144,7 @@ const Styles = ({ setCheckout, checkout, productDetails }) => {
     </div>}
     <p>${styles[currentStyle] && styles[currentStyle].original_price}</p>
     <p className='category mt-10'>Style > {styles[currentStyle] && styles[currentStyle].name}</p>
-  <div className='flex flex-row mt-5 items-center flex-wrap'>
+  <div className='grid grid-cols-4 mt-5 items-center flex-wrap'>
     {styleList}
   </div>
   {!noStock ? <div className='mb-5'>

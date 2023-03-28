@@ -78,7 +78,7 @@ const Overview = () => {
   return (
     <>
       <h1 className='flex items-end justify-between flex-wrap bg-white' >
-        <p id='title' className='ml-10'>@State of Fashion</p>
+        <p id='title' className='ml-5'>@State of Fashion</p>
           <p className='ml-3 mb-3'>Womens </p>
           <p className='ml-3 mb-3'>Mens </p>
           <p className='ml-3 mb-3'>Childrens </p>
@@ -94,14 +94,14 @@ const Overview = () => {
         <p>LIMITED TIME OFFER! <span className='text-red-400'>HUGE SALE!</span> 30% OFF STOREWIDE!! USE CODE <span className='text-red-400'>ILOVEREACT</span> FOR FREE SHIPPING!</p>
       </div>
       <div>
-        <div className='flex flex-row w-4/5 mt-2 items-center '>
+        <div className='flex flex-row w-full mt-2 items-center '>
           <StyleContext.Provider value={currentStyle}>
             <Gallery />
           </StyleContext.Provider>
           <div className='flex flex-col ml-10 mt-5'>
             <div>
-              <StarRatings rating={average} starDimension='20px' starSpacing='2px' starRatedColor='#639d80'/>
-            <a href='#reviews' className='underline ml-2'>See all {total} reviews </a>
+              <StarRatings rating={average} starDimension='18px' starSpacing='1px' starRatedColor='#639d80'/>
+            <a href='#reviews' className='underline ml-2 text-xs'>See all {total} reviews </a>
             </div>
             <p className='category mt-10'>{productDetails.category}</p>
             <h4 className="mt-0 mb-2 text-3xl font-bold leading-tight text-primary">{productDetails.name}</h4>
