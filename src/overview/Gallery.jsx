@@ -84,12 +84,9 @@ const Gallery = () => {
   // use index of the response data (in array) to determine which picture and format it into the carousel format below
   return (
     <div>
-      {showExpanded && <Expanded revert={handleDefaultClick} galleryList={galleryList} setMainImage={setMainImage} mainImage={mainImage}/>}
+      {showExpanded && <Expanded galleryThumbnails={galleryThumbnails} revert={handleDefaultClick} galleryList={galleryList} setMainImage={setMainImage} mainImage={mainImage}/>}
         <div className='mini-thumbnail-flex items-center ml-2'>
           {galleryThumbnails}
-        </div>
-        <div className='mini-thumbnail-div '>
-          <FontAwesomeIcon icon={faAngleDown} />
         </div>
       <div className="carousel-container ml-3 bg-white shadow-lg">
         {galleryCarousel}

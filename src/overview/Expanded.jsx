@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Expanded = ({revert, galleryList, mainImage, setMainImage}) => {
+const Expanded = ({galleryThumbnails, revert, galleryList, mainImage, setMainImage}) => {
 
   const [position, setPosition] = React.useState('0% 0%');
   const [zoom, setZoom] = React.useState(false);
@@ -43,6 +43,9 @@ const Expanded = ({revert, galleryList, mainImage, setMainImage}) => {
 
   return(
     <div className='expanded-view'>
+      <div className='mini-thumbnail-flex2 items-center ml-2'>
+        {galleryThumbnails}
+      </div>
       <button className='expanded-button btn btn-square btn-outline btn-sm' onClick={revert}>x</button>
       {expandedCarousel}
     </div>

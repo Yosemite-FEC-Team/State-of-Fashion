@@ -78,7 +78,7 @@ const Overview = () => {
   return (
     <>
       <h1 className='flex items-end justify-between flex-wrap bg-white' >
-        <p id='title' className='ml-10'>@Fetch</p>
+        <p id='title' className='ml-10'>@State of Fashion</p>
           <p className='ml-3 mb-3'>Womens </p>
           <p className='ml-3 mb-3'>Mens </p>
           <p className='ml-3 mb-3'>Childrens </p>
