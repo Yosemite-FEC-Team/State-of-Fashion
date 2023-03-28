@@ -11,6 +11,7 @@ const Gallery = () => {
   const [galleryList, setGalleryList] = React.useState([]);
   const [mainImage, setMainImage] = React.useState(0);
   const [showExpanded, setShowExpanded] = React.useState(false);
+  const [miniIndex, setMiniIndex] = React.useState(0);
 
   const currentStyle = React.useContext(StyleContext);
 
@@ -20,10 +21,6 @@ const Gallery = () => {
     getGallery();
     setMainImage(0);
   }, [currentStyle]);
-
-  React.useEffect(() => {
-
-  });
 
   let getGallery = () => {
     axios.get('/products/styles')
@@ -85,9 +82,11 @@ const Gallery = () => {
   return (
     <div>
       {showExpanded && <Expanded galleryThumbnails={galleryThumbnails} revert={handleDefaultClick} galleryList={galleryList} setMainImage={setMainImage} mainImage={mainImage}/>}
+      <div >
         <div className='mini-thumbnail-flex items-center ml-2'>
           {galleryThumbnails}
         </div>
+      </div>
       <div className="carousel-container ml-3 bg-white shadow-lg">
         {galleryCarousel}
       </div>

@@ -6,6 +6,7 @@ const Expanded = ({galleryThumbnails, revert, galleryList, mainImage, setMainIma
   const [zoom, setZoom] = React.useState(false);
 
 
+
   const handleMouseEvent = (event) => {
     const {left, top, width, height} = event.target.getBoundingClientRect();
     const x = (event.pageX - left ) / width * 100;
@@ -29,8 +30,6 @@ const Expanded = ({galleryThumbnails, revert, galleryList, mainImage, setMainIma
       setZoom(!zoom);
     }
 
-
-
     let imageID = `slide${index}`;
     let imageStyle = {backgroundImage: `url(${image.url})`, backgroundSize: '3750px', backgroundPosition: position}
     return (
@@ -43,15 +42,9 @@ const Expanded = ({galleryThumbnails, revert, galleryList, mainImage, setMainIma
 
   return(
     <div className='expanded-view'>
-      <div>
         <div className='mini-thumbnail-flex2 items-center ml-2'>
           {galleryThumbnails}
         </div>
-        <div class='mini-carousel-arrows'>
-          <button class='mini-prev'>prev</button>
-          <button class='mini-next'>next</button>
-        </div>
-      </div>
       <button className='expanded-button btn btn-square btn-outline btn-sm' onClick={revert}>x</button>
       {expandedCarousel}
     </div>

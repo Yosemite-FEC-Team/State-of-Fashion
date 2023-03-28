@@ -27,7 +27,7 @@ const Checkout = ({ added, styles, setCheckout }) => {
     if (Object.keys(itemObj).length === 1) {
       localStorage.removeItem('products');
     } else {
-      delete itemObj[`${item.mainName},${item.pickedSize},${item.styleName}`];
+      delete itemObj[`${item.mainName},${item.pickedSize},${item.styleName},${item.price},${item.image}`];
       localStorage.setItem('products', JSON.stringify(itemObj));
     }
     checkoutList();
@@ -44,7 +44,7 @@ const Checkout = ({ added, styles, setCheckout }) => {
         cartItems[i] = cartItems[i].split(',');
         cartItems[i].push(cartAmounts[i]);
       }
-      // cartItems format [NAME OF ITEM, SIZE, STYLE, AMOUNT]
+      // cartItems format [NAME OF ITEM, SIZE, STYLE, PRICE, PICTURE, AMOUNT]
       let checkoutStyles = {};
       //console.log(cartItems, 'ITEMS IN CART');
       let checkoutItems = [];
@@ -53,11 +53,11 @@ const Checkout = ({ added, styles, setCheckout }) => {
           if (cartItems[i].indexOf(styles[key].name) !== -1) {
             checkoutStyles[i] = {};
             checkoutStyles[i].mainName = cartItems[i][0];
-            checkoutStyles[i].image = styles[key].photos[0].thumbnail_url;
-            checkoutStyles[i].styleName = styles[key].name;
-            checkoutStyles[i].price = styles[key].original_price;
+            checkoutStyles[i].image = cartItems[i][4];
+            checkoutStyles[i].styleName = cartItems[i][2];
+            checkoutStyles[i].price = cartItems[i][3];
             checkoutStyles[i].pickedSize = cartItems[i][1];
-            checkoutStyles[i].amount = cartItems[i][3];
+            checkoutStyles[i].amount = cartItems[i][5];
             checkoutItems.push(checkoutStyles[i]);
           }
         }
