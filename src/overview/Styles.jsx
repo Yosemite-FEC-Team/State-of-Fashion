@@ -148,7 +148,7 @@ const Styles = ({ setCheckout, checkout, productDetails }) => {
     {checkout && <div>
       <Checkout added={added} setCheckout={setCheckout} styles={styles}/>
     </div>}
-    {styles[currentStyle] && styles[currentStyle].sale_price === null ? styles[currentStyle] && <p>${styles[currentStyle].original_price}</p> : styles[currentStyle] && <p><span className='line-through'>${styles[currentStyle].original_price}</span><span className='text-red-400'>${styles[currentStyle].sale_price}</span></p>}
+    {styles[currentStyle] && styles[currentStyle].sale_price === null ? styles[currentStyle] && <p>${styles[currentStyle].original_price}</p> : styles[currentStyle] && <p><span className='line-through'>${styles[currentStyle].original_price}</span><span className='ml-2 text-red-400'>${styles[currentStyle].sale_price}</span></p>}
     <p className='category mt-10'>Style > {styles[currentStyle] && styles[currentStyle].name}</p>
   <div className='grid grid-cols-4 mt-5 items-center flex-wrap'>
     {styleList}

@@ -48,19 +48,15 @@ const Checkout = ({ added, styles, setCheckout }) => {
       let checkoutStyles = {};
       //console.log(cartItems, 'ITEMS IN CART');
       let checkoutItems = [];
-      for (let key in styles) {
-        for (let i = 0; i < cartItems.length; i++) {
-          if (cartItems[i].indexOf(styles[key].name) !== -1) {
-            checkoutStyles[i] = {};
-            checkoutStyles[i].mainName = cartItems[i][0];
-            checkoutStyles[i].image = cartItems[i][4];
-            checkoutStyles[i].styleName = cartItems[i][2];
-            checkoutStyles[i].price = cartItems[i][3];
-            checkoutStyles[i].pickedSize = cartItems[i][1];
-            checkoutStyles[i].amount = cartItems[i][5];
-            checkoutItems.push(checkoutStyles[i]);
-          }
-        }
+      for (let i = 0; i < cartItems.length; i++) {
+          checkoutStyles[i] = {};
+          checkoutStyles[i].mainName = cartItems[i][0];
+          checkoutStyles[i].image = cartItems[i][4];
+          checkoutStyles[i].styleName = cartItems[i][2];
+          checkoutStyles[i].price = cartItems[i][3];
+          checkoutStyles[i].pickedSize = cartItems[i][1];
+          checkoutStyles[i].amount = cartItems[i][5];
+          checkoutItems.push(checkoutStyles[i]);
       }
       let total = 0;
       for (let i = 0; i < checkoutItems.length; i++) {
