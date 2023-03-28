@@ -2082,15 +2082,6 @@ html {
   text-decoration-line: underline;
 }
 
-.mask {
-  -webkit-mask-size: contain;
-  mask-size: contain;
-  -webkit-mask-repeat: no-repeat;
-  mask-repeat: no-repeat;
-  -webkit-mask-position: center;
-  mask-position: center;
-}
-
 .\!mask {
   -webkit-mask-size: contain !important;
   mask-size: contain !important;
@@ -2098,6 +2089,15 @@ html {
   mask-repeat: no-repeat !important;
   -webkit-mask-position: center !important;
   mask-position: center !important;
+}
+
+.mask {
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
 }
 
 .menu {
@@ -2651,6 +2651,16 @@ html {
   border-top-width: 2px;
   --tw-bg-opacity: 1;
   background-color: hsl(var(--b1) / var(--tw-bg-opacity));
+}
+
+.btm-nav>*.\!disabled,
+    .btm-nav>*.\!disabled:hover {
+  pointer-events: none !important;
+  --tw-border-opacity: 0 !important;
+  background-color: hsl(var(--n) / var(--tw-bg-opacity)) !important;
+  --tw-bg-opacity: 0.1 !important;
+  color: hsl(var(--bc) / var(--tw-text-opacity)) !important;
+  --tw-text-opacity: 0.2 !important;
 }
 
 .btm-nav>*.disabled,
@@ -4875,7 +4885,7 @@ html {
 
 .related-products-list {
   margin-left: 20px;
-  padding-bottom: 100px;
+  padding-bottom: 30px;
   margin-top: 20px;
   z-index: 0;
 }
@@ -4898,7 +4908,7 @@ html {
 .product-card {
   display: flex;
   z-index: 2;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   flex-flow: column;
   width: 300px;
@@ -4918,22 +4928,43 @@ html {
 .card-image-background {
   position: absolute;
   z-index: 3;
-  top: 0px;
-  left: 0px;
   background-size: cover;
   filter: blur(1px);
   aspect-ratio: 1 / 1;
   width:100%;
 }
 
-.star-action-button {
+.action-button {
   position: absolute;
   z-index: 5;
   top: 12px;
   right: 12px;
   font-size: 24px;
-  border-radius: 50%;
   padding: 2px;
+}
+
+.add-button-container-background {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  width:100%;
+}
+
+.add-button-container {
+  display: flex;
+  position: absolute;
+  justify-content: center;
+  align-items: center;
+  aspect-ratio: 1 / 1;
+  width:100%;
+}
+
+.add-button-icon {
+  font-size: 80px;
+}
+
+.add-label {
+  padding-top: 31px;
+  padding-bottom: 84.5px;
 }
 
 .card-category {
