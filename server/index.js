@@ -18,6 +18,11 @@ app.use(express.static(path.join(__dirname, '../public')));
 let currentId = 37315;
 const outfitIds = ['37311', '37319', '37312', '37313'];
 
+app.post('/products', (req, res) => {
+  currentId = req.body.id;
+  res.send(currentId);
+});
+
 // app.get('/products/related', (req, res) => {
 //   const idWithPromises = {};
 //   const idWithProductCards = {};
@@ -136,7 +141,7 @@ app.get('/products/reviews', (req, res) => {
 })
 
 app.get('/products/review', (req, res) => {
-  axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/reviews/', { params: {product_id: '37315', count: 1000 }, headers: {'Authorization': `${config.TOKEN}` } })
+  axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/reviews/', { params: {product_id: currentId, count: 1000 }, headers: {'Authorization': `${config.TOKEN}` } })
     .then(data => {
       res.send(data.data.results);
     })

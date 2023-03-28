@@ -1,13 +1,13 @@
 import React from 'react';
-import ProductCardRelated from './ProductCardRelated.jsx';
+import RelatedProductCard from './RelatedProductCard.jsx';
 
-const RelatedProductsList = ({ relatedProducts }) => (
+const RelatedProductsList = ({ relatedProducts, handleProductCardClick, getComparisonModalContent }) => (
 
   <div className='related-products-list'>
     <h2>RELATED PRODUCTS</h2>
         <div className='related-products-carousel'>
           {relatedProducts.map(card =>
-          <ProductCardRelated card={card} />
+          <RelatedProductCard card={card} handleProductCardClick={handleProductCardClick} getComparisonModalContent={getComparisonModalContent} />
           )}
         </div>
   </div>
