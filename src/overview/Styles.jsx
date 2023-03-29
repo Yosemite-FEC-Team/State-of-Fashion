@@ -92,7 +92,7 @@ const Styles = ({ setCheckout, checkout, productDetails }) => {
 
   let styleList = styles.map(style => {
     let index = styles.indexOf(style);
-    return(<>{currentStyle === index ? <div><img id='style-image' className='selectedStyle mb-2 h-12 w-12 rounded-full' src={style.photos[0].thumbnail_url}></img><span className='absolute z-10 check' ><FontAwesomeIcon icon={faCircleCheck} style={{color: "#daa520",}} /></span></div> : <img id='style-image' className='mb-2 h-12 w-12 rounded-full' onClick={() => {handleStyleClick(index)}} src={style.photos[0].thumbnail_url}></img>}</>
+    return(<>{currentStyle === index ? <div><img id='style-image' className='selectedStyle mb-2 h-12 w-12 rounded-full' src={style.photos[0].thumbnail_url}></img><span className='absolute z-4 check' ><FontAwesomeIcon icon={faCircleCheck} style={{color: "#daa520",}} /></span></div> : <img id='style-image' className='mb-2 h-12 w-12 rounded-full' onClick={() => {handleStyleClick(index)}} src={style.photos[0].thumbnail_url}></img>}</>
     )
   })
 

@@ -82,7 +82,7 @@ const Overview = () => {
   // likely going to use an <a href=#reviews> for the All reviews
 
   return (
-    <>
+    <div id='overview'>
       <h1 className='flex items-end justify-between flex-wrap bg-white' >
         <p id='title' className='ml-5'>@State of Fashion</p>
           <p className='ml-3 mb-3'>Womens </p>
@@ -144,7 +144,7 @@ const Overview = () => {
         </PinterestShareButton>
         </div>
         </div>
-    </>
+    </div>
   )
 }
 
