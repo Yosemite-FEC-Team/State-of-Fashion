@@ -23,6 +23,7 @@ const Overview = () => {
   const [currentStyle, setCurrentStyle] = React.useState(0);
   const [average, setAverage] = React.useState(0);
   const [total, setTotal] = React.useState(0);
+  const [noReviews, setNoReviews] = React.useState(false);
 
   // for checkout
   const [checkout, setCheckout] = React.useState(false);
@@ -52,15 +53,20 @@ const Overview = () => {
       let total = 0;
       let reviews = 0;
       // Calculate total reviews and number of reviews to find average
-      for (let key in reviewData) {
-        total += (reviewData[key] * key);
-        reviews += Number(reviewData[key]);
+      if (Object.values(reviewData).length === 0) {
+        setNoReviews(true);
+      } else {
+        for (let key in reviewData) {
+          total += (reviewData[key] * key);
+          reviews += Number(reviewData[key]);
+        }
+        // round to the nearest quarter
+        let averageReview = Number((Math.round(total/reviews * 4) / 4).toFixed(2));
+        setTotal(reviews);
+        setAverage(averageReview);
+        setNoReviews(false);
+        console.log(averageReview, 'total');
       }
-      // round to the nearest quarter
-      let averageReview = Number((Math.round(total/reviews * 4) / 4).toFixed(2));
-      setTotal(reviews);
-      setAverage(averageReview);
-      console.log(averageReview, 'total');
     })
     .catch(err => {
       console.log(err, 'error getting reviews');
@@ -99,10 +105,11 @@ const Overview = () => {
             <Gallery />
           </StyleContext.Provider>
           <div className='flex flex-col ml-10 mt-5'>
+            {noReviews ? <div><p className='text-xs'>No reviews yet for this product.</p></div> :
             <div>
-              <StarRatings rating={average} starDimension='18px' starSpacing='1px' starRatedColor='#639d80'/>
-            <a href='#reviews' className='underline ml-2 text-xs'>See all {total} reviews </a>
-            </div>
+            <StarRatings rating={average} starDimension='18px' starSpacing='1px' starRatedColor='#639d80'/>
+          <a href='#reviews' className='underline ml-2 text-xs'>See all {total} reviews </a>
+          </div>}
             <p className='category mt-10'>{productDetails.category}</p>
             <h4 className="mt-0 mb-2 text-3xl font-bold leading-tight text-primary">{productDetails.name}</h4>
             {/* The index from styles can go to gallery for the onClick change */}
