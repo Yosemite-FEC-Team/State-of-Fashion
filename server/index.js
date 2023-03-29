@@ -73,6 +73,7 @@ app.get('/products/reviews', (req, res) => {
     })
 })
 
+//HAVE SARAH CHANGE THIS IS MERGE TO USE CURRENT ID
 app.get('/products/review', (req, res) => {
   axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/reviews/', { params: {product_id: '37315', count: 1000 }, headers: {'Authorization': `${config.TOKEN}` } })
     .then(data => {
@@ -84,6 +85,8 @@ app.get('/products/review', (req, res) => {
     })
 })
 
+
+//HAVE SARAH CHANGE THIS IS MERGE TO USE CURRENT ID
 app.get('/products/reviews/meta', (req, res) => {
   axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/reviews/meta', { params: {product_id: '37315' }, headers: {'Authorization': `${config.TOKEN}` } })
     .then(data => {
