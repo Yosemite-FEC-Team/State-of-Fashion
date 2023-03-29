@@ -4182,6 +4182,10 @@ html {
   position: relative;
 }
 
+.z-10 {
+  z-index: 10;
+}
+
 .m-2 {
   margin: 0.5rem;
 }
@@ -4308,10 +4312,6 @@ html {
 
 .min-h-screen {
   min-height: 100vh;
-}
-
-.w-10 {
-  width: 2.5rem;
 }
 
 .w-12 {
@@ -4810,6 +4810,11 @@ html {
 
 .checkout-button {
   background-color: #639d80;
+}
+
+.check {
+  margin-top: -65px;
+  margin-left: 35px;
 }
 
 .ratings-reviews {

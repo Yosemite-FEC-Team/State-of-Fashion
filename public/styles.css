@@ -163,6 +163,13 @@
 .checkout-button {
   background-color: #639d80;
 }
+
+.check {
+  margin-top: -65px;
+  margin-left: 35px;
+}
+
+
 .ratings-reviews {
   display: flex;
   justify-content: flex-start;
