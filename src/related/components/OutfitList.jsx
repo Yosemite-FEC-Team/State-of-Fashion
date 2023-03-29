@@ -1,7 +1,17 @@
 import React from 'react';
+import AddToOutfitCard from './AddToOutfitCard.jsx';
+import OutfitProductCard from './OutfitProductCard.jsx';
 
-const OutfitList = () => (
-  <h1>OutfitList</h1>
+const OutfitList = ({ outfitProducts, handleAddToOutfitButtonClick, handleDeleteFromOutfitButtonClick, handleProductCardClick }) => (
+  <div className='related-products-list'>
+    <h2>YOUR OUTFIT</h2>
+    <div className='related-products-carousel'>
+      <AddToOutfitCard handleAddToOutfitButtonClick={handleAddToOutfitButtonClick} />
+      {outfitProducts.map(card =>
+        <OutfitProductCard card={card} handleDeleteFromOutfitButtonClick={handleDeleteFromOutfitButtonClick} handleProductCardClick={handleProductCardClick} />
+      )}
+    </div>
+  </div>
 )
 
 export default OutfitList;
