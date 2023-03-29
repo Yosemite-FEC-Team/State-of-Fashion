@@ -1,8 +1,33 @@
 import React, {useState, useEffect} from 'react';
-import StarRatings from 'react-star-ratings';
+const axios = require('axios');
+import { DynamicStar } from 'react-dynamic-star';
 
 const Stars = ({data}) => {
 
+  const [percentRec, setPercentRec] =useState(0);
+
+  useEffect(() => {
+    axios.get('/products/reviews/meta')
+    .then(data => {
+      var numberOfYes = Number(data.data.recommended.true);
+      var numberOfNo = Number(data.data.recommended.false);
+      var totalNumberOfRecs = numberOfNo + numberOfYes;
+      var percentageCalc = ((numberOfYes/totalNumberOfRecs)*100).toFixed(0);
+      setPercentRec(percentageCalc);
+
+
+
+      console.log(data.data.recommended, 'this is data inside stars component')
+     })
+
+
+
+
+      .catch(err => {
+      console.log(err, 'Error getting review metadata from the server');
+      });
+
+  }, [])
 
   var sum = 0;
   var rawAverage = 0;
@@ -40,10 +65,13 @@ const Stars = ({data}) => {
   console.log(fiveStarPercentage, 'five star percentage');
   return (
     <div className='stars-component'>
+    <div className='rating-container-with-star'>
     <span className='big-rating'>{bigRating}</span>
-    <StarRatings starDimension='15px' starSpacing='3px' rating={3}/>
+    <DynamicStar rating={averageNotRounded} fullStarColor={'black'} outlined={true} width={15} height={15}/>
+    </div>
+
     <div className='small-text'>({sum} total reviews)</div>
-    <div className='small-text'>100% of reviews recommend this product</div>
+    <div className='small-text'>{percentRec}% of reviews recommend this product</div>
     <div className='stars-and-bar-container'>
       <div className='x-stars'><small><u>5 stars</u></small></div>
       <div className='star-bar-container'>
