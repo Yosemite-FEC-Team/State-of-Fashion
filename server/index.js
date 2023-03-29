@@ -39,7 +39,7 @@ app.use(express.static(path.join(__dirname, '../public')));
 
 
 app.get('/products/styles', (req, res) => {
-  axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/products/37325/styles', { headers: {'Authorization': `${config.TOKEN}` } })
+  axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/products/37315/styles', { headers: {'Authorization': `${config.TOKEN}` } })
     .then(data => {
       res.send(data.data);
     })
@@ -49,7 +49,7 @@ app.get('/products/styles', (req, res) => {
 })
 
 app.get('/products', (req, res) => {
-  axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/products/37325', { headers: {'Authorization': `${config.TOKEN}` } })
+  axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/products/37315', { headers: {'Authorization': `${config.TOKEN}` } })
     .then(data => {
       res.send(data.data);
     })
@@ -60,7 +60,7 @@ app.get('/products', (req, res) => {
 
 //Lizz, do not modify this endpoint if you decide to use another product, cause Xiao Wen is using this MAY NEED TO REFORMAT CAUSE SHE IS JUST USING THE RATINGS!!!!
 app.get('/products/reviews', (req, res) => {
-  axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/reviews/meta', { params: {product_id: '37325' }, headers: {'Authorization': `${config.TOKEN}` } })
+  axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/reviews/meta', { params: {product_id: '37315' }, headers: {'Authorization': `${config.TOKEN}` } })
     .then(data => {
       res.send(data.data.ratings);
     })
@@ -71,7 +71,7 @@ app.get('/products/reviews', (req, res) => {
 })
 
 app.get('/products/review', (req, res) => {
-  axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/reviews/', { params: {product_id: '37325', count: 1000 }, headers: {'Authorization': `${config.TOKEN}` } })
+  axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/reviews/', { params: {product_id: '37315', count: 1000 }, headers: {'Authorization': `${config.TOKEN}` } })
     .then(data => {
       res.send(data.data.results);
     })

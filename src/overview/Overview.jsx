@@ -118,12 +118,12 @@ const Overview = () => {
             </StyleContext.Provider>
         </div>
       </div>
-      <div className='flex w-full items-center mt-5'>
+      <div className='grid grid-cols-2 w-full items-center mt-5'>
         <div>
           <h2 className='text-teal-700 text-2xl font-bold ml-5 pb-5'>{productDetails.slogan && productDetails.slogan}</h2>
           <p className='mr-14 ml-5'>{productDetails.description && productDetails.description}</p>
         </div>
-        <div className='w-full'>
+        <div className='ml-10'>
           {productDetails.features && productDetails.features.map(feature => {
             return (
             <>
