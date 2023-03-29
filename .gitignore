@@ -2,4 +2,5 @@ node_modules/
 config.js
 public/bundle.js
 .env
-
+spec/overview.test.js
+jest.config.js
