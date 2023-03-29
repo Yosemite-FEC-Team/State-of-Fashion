@@ -2,6 +2,7 @@ node_modules/
 config.js
 public/bundle.js
 .env
+spec/overview.test.js
 jest.config.js
 src/ratings-and-reviews/tests/
 

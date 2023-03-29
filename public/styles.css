@@ -85,6 +85,21 @@
   justify-content: center;
 }
 
+
+.mini-thumbnail-flex2 {
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  position: absolute;
+  margin-top: 40px;
+  background-color:transparent;
+  left: 25px;
+  width: 70px;
+  height: 420px;
+  z-index: 4;
+  overflow-y: scroll;
+}
+
 .isSelected {
   border-bottom: 5px solid #639d80;
 }
@@ -283,17 +298,24 @@
   top: 0;
   right: 0;
   width: 600px;
-  height: 400px;
+  height: 425px;
   margin-top: 80px;
   margin-right: 10px;
   border: 1px solid #639d80;
-  z-index: 6;
+  z-index: 11;
   overflow: scroll;
 }
 
 .checkout-button {
   background-color: #639d80;
 }
+
+.check {
+  margin-top: -65px;
+  margin-left: 35px;
+}
+
+
 .ratings-reviews {
   display: flex;
   justify-content: flex-start;
