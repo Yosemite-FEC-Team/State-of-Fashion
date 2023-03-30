@@ -9,8 +9,6 @@ import RatingsReviews from './ratings-and-reviews/components/RatingsReviews.jsx'
 
 const root = createRoot(document.getElementById('root'));
 
-
-
 // Huzzah for jsx!
 const App = () => {
   const [currentId, setCurrentId] = useState('');
@@ -28,10 +26,9 @@ const App = () => {
 
   return (
     <div>
-      <h1>Hello World. Yes, we're leaving this here.</h1>
-      {/* <Overview currentId={currentId} /> */}
+      <Overview currentId={currentId} />
       <RelatedProductsComparisonsOutfit currentId={currentId} handleProductCardClick={handleProductCardClick} />
-      {/* <RatingsReviews currentId={currentId} /> */}
+      <RatingsReviews currentId={currentId} />
     </div>
     )
 }

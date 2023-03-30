@@ -23,6 +23,7 @@ const Overview = ({ currentId }) => {
   const [currentStyle, setCurrentStyle] = React.useState(0);
   const [average, setAverage] = React.useState(0);
   const [total, setTotal] = React.useState(0);
+  const [noReviews, setNoReviews] = React.useState(false);
 
   // for checkout
   const [checkout, setCheckout] = React.useState(false);
@@ -52,15 +53,20 @@ const Overview = ({ currentId }) => {
       let total = 0;
       let reviews = 0;
       // Calculate total reviews and number of reviews to find average
-      for (let key in reviewData) {
-        total += (reviewData[key] * key);
-        reviews += Number(reviewData[key]);
+      if (Object.values(reviewData).length === 0) {
+        setNoReviews(true);
+      } else {
+        for (let key in reviewData) {
+          total += (reviewData[key] * key);
+          reviews += Number(reviewData[key]);
+        }
+        // round to the nearest quarter
+        let averageReview = Number((Math.round(total/reviews * 4) / 4).toFixed(2));
+        setTotal(reviews);
+        setAverage(averageReview);
+        setNoReviews(false);
+        console.log(averageReview, 'total');
       }
-      // round to the nearest quarter
-      let averageReview = Number((Math.round(total/reviews * 4) / 4).toFixed(2));
-      setTotal(reviews);
-      setAverage(averageReview);
-      console.log(averageReview, 'total');
     })
     .catch(err => {
       console.log(err, 'error getting reviews');
@@ -76,9 +82,9 @@ const Overview = ({ currentId }) => {
   // likely going to use an <a href=#reviews> for the All reviews
 
   return (
-    <>
+    <div id='overview'>
       <h1 className='flex items-end justify-between flex-wrap bg-white' >
-        <p id='title' className='ml-10'>@Fetch</p>
+        <p id='title' className='ml-5'>@State of Fashion</p>
           <p className='ml-3 mb-3'>Womens </p>
           <p className='ml-3 mb-3'>Mens </p>
           <p className='ml-3 mb-3'>Childrens </p>
@@ -94,15 +100,16 @@ const Overview = ({ currentId }) => {
         <p>LIMITED TIME OFFER! <span className='text-red-400'>HUGE SALE!</span> 30% OFF STOREWIDE!! USE CODE <span className='text-red-400'>ILOVEREACT</span> FOR FREE SHIPPING!</p>
       </div>
       <div>
-        <div className='flex flex-row w-4/5 mt-2 items-center '>
+        <div className='flex flex-row w-full mt-2 items-center '>
           <StyleContext.Provider value={currentStyle}>
             <Gallery currentId={currentId} />
           </StyleContext.Provider>
           <div className='flex flex-col ml-10 mt-5'>
+            {noReviews ? <div><p className='text-xs'>No reviews yet for this product.</p></div> :
             <div>
-              <StarRatings rating={average} starDimension='20px' starSpacing='2px' starRatedColor='#639d80'/>
-            <a className='underline ml-2'>See all {total} reviews </a>
-            </div>
+            <StarRatings rating={average} starDimension='18px' starSpacing='1px' starRatedColor='#639d80'/>
+          <a href='#reviews' className='underline ml-2 text-xs'>See all {total} reviews </a>
+          </div>}
             <p className='category mt-10'>{productDetails.category}</p>
             <h4 className="mt-0 mb-2 text-3xl font-bold leading-tight text-primary">{productDetails.name}</h4>
             {/* The index from styles can go to gallery for the onClick change */}
@@ -111,12 +118,12 @@ const Overview = ({ currentId }) => {
             </StyleContext.Provider>
         </div>
       </div>
-      <div className='flex w-full items-center mt-5'>
+      <div className='grid grid-cols-2 w-full items-center mt-5'>
         <div>
           <h2 className='text-teal-700 text-2xl font-bold ml-5 pb-5'>{productDetails.slogan && productDetails.slogan}</h2>
           <p className='mr-14 ml-5'>{productDetails.description && productDetails.description}</p>
         </div>
-        <div className='w-full'>
+        <div className='ml-10'>
           {productDetails.features && productDetails.features.map(feature => {
             return (
             <>
@@ -137,7 +144,7 @@ const Overview = ({ currentId }) => {
         </PinterestShareButton>
         </div>
         </div>
-    </>
+    </div>
   )
 }
 

@@ -7,7 +7,7 @@ const RatingsReviews = ({ currentId }) => {
 
 
   return (
-    <div className='ratings-reviews' >
+    <div id='reviews' className='ratings-reviews' >
 
    <Ratings currentId={currentId} />
    <Reviews currentId={currentId} />

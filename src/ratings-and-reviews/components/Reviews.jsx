@@ -28,18 +28,36 @@ const Reviews = ({ currentId }) => {
     .catch(err => {
       console.log(err, 'Error getting reviews from the API')
     })
-  }, [currentId]);
+  }, [currentId, selectedSort]);
   //this state variable will dictate the reviews that are shown and be used in conjunction
   //Create state where we set the number of visible reviews
   const [numberOfReviews, setNumberOfReviews] = useState(2);
+  const [selectedSort, setSelectedSort] = useState('helpful');
+
+  const handleSelectChange = (event) => {
+    const selectedOption = event.target.value;
+    setSelectedSort(selectedOption);
+
+    console.log(selectedSort, 'selected Sort AFTER CHANGE')
+
+    if (selectedOption === 'newest') {
+      console.log(results, 'this is the result array')
+      newestResults = results.sort((a, b) => new Date(b.date) - new Date(a.date));
+      setResults(newestResults);
+      console.log(results, 'results after newest sort')
+      console.log('DID THIS GET TRIGGERED')
+    }
+
+    console.log('Selected sort', event.target.value)
+  }
 
   return (
     <div className='reviews-component'>
     <div className='review-sort'>
-    <p>{results.length} reviews,sorted by</p><select>
-      <option><u>relevance</u></option>
-      <option>helpful</option>
-      <option>newest</option>
+    <p>{results.length} reviews,sorted by</p><select value={selectedSort} onChange={handleSelectChange}>
+      <option value='relevance'>relevance</option>
+      <option value='helpful'>helpful</option>
+      <option value='newest'>newest</option>
       </select>
     </div>
 
