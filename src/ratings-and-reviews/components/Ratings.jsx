@@ -3,7 +3,7 @@ const axios = require('axios');
 import Stars from './Stars.jsx'
 import Characteristics from './Characteristics.jsx'
 
-const Ratings = () => {
+const Ratings = ({ currentId }) => {
 
   const [metadata, setMetadata] = useState([]);
   useEffect(() => {
@@ -15,7 +15,7 @@ const Ratings = () => {
   .catch(err => {
     console.log(err, 'Error getting data from API')
   })
-  }, [])
+  }, [currentId])
 
   return (
     <div className='ratings-component'>

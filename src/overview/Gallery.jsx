@@ -2,13 +2,16 @@ import React from 'react';
 import { StyleContext } from './Overview.jsx';
 import Expanded from './Expanded.jsx';
 const axios = require('axios');
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
 
-const Gallery = () => {
+const Gallery = ({ currentId }) => {
   // lets make a state for the incoming gallery list
   // Might move this to an overarching components since the styles need this as well
   const [galleryList, setGalleryList] = React.useState([]);
   const [mainImage, setMainImage] = React.useState(0);
   const [showExpanded, setShowExpanded] = React.useState(false);
+  const [miniIndex, setMiniIndex] = React.useState(0);
 
   const currentStyle = React.useContext(StyleContext);
 
@@ -17,11 +20,7 @@ const Gallery = () => {
   React.useEffect(() => {
     getGallery();
     setMainImage(0);
-  }, [currentStyle]);
-
-  React.useEffect(() => {
-
-  });
+  }, [currentId, currentStyle]);
 
   let getGallery = () => {
     axios.get('/products/styles')
@@ -81,10 +80,12 @@ const Gallery = () => {
   // ideas:
   // use index of the response data (in array) to determine which picture and format it into the carousel format below
   return (
-    <div>
-      {showExpanded && <Expanded revert={handleDefaultClick} galleryList={galleryList} setMainImage={setMainImage} mainImage={mainImage}/>}
-      <div className='mini-thumbnail-flex items-center ml-2'>
-        {galleryThumbnails}
+    <div data-testid='gallery'>
+      {showExpanded && <Expanded galleryThumbnails={galleryThumbnails} revert={handleDefaultClick} galleryList={galleryList} setMainImage={setMainImage} mainImage={mainImage}/>}
+      <div >
+        <div className='mini-thumbnail-flex items-center ml-2'>
+          {galleryThumbnails}
+        </div>
       </div>
       <div className="carousel-container ml-3 bg-white shadow-lg">
         {galleryCarousel}

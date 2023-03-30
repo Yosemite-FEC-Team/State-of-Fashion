@@ -85,6 +85,21 @@
   justify-content: center;
 }
 
+
+.mini-thumbnail-flex2 {
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  position: absolute;
+  margin-top: 40px;
+  background-color:transparent;
+  left: 25px;
+  width: 70px;
+  height: 420px;
+  z-index: 4;
+  overflow-y: scroll;
+}
+
 .isSelected {
   border-bottom: 5px solid #639d80;
 }
@@ -180,6 +195,7 @@
   gap: 15px;
   text-align: center;
   z-index: 1;
+  /* overflow: scroll; */
 }
 
 .product-card {
@@ -245,6 +261,7 @@
 .add-label {
   padding-top: 31px;
   padding-bottom: 84.5px;
+  font-weight: 500;
 }
 
 .card-category {
@@ -255,16 +272,33 @@
   padding-bottom: 5px;
 }
 
+.card-name {
+  font-weight: 500;
+}
+
 .card-color {
   font-size: 12px;
   color: rgb(110, 110, 110);
+  padding-bottom: 7px;
 }
 
 .card-price {
   font-size: 12px;
-  padding-top: 7px;
   padding-bottom: 7px;
   color: rgb(110, 110, 110);
+}
+
+.card-sale-price {
+  font-size: 12px;
+  padding-bottom: 1px;
+  color: red;
+}
+
+.card-original-price {
+  font-size: 12px;
+  padding-bottom: 1px;
+  color: rgb(110, 110, 110);
+  text-decoration: line-through;
 }
 
 .card-stars {
@@ -278,22 +312,81 @@
   right: 0;
 }
 
+.comparison-modal-title {
+  color: #3C3C3C;
+  font-size: 12px;
+  padding: 2px 0;
+}
+
+.modal-names-container {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+}
+
+.left-product-name {
+  color: #100F0F;
+  font-weight: 500;
+  text-align: left;
+}
+
+.right-product-name {
+  color: #100F0F;
+  font-weight: 500;
+  text-align: right;
+}
+
+.feature-values-item {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  min-width: 510px;
+  padding: 5px 0;
+  color:#3C3C3C;
+  font-size: 13px;
+}
+
+.left-value {
+  position: absolute;
+  left: 0;
+  text-align: left;
+}
+
+.feature {
+  text-align: center;
+  font-size: 14px;
+  vertical-align: top;
+}
+
+.right-value {
+  position: absolute;
+  right: 0;
+  text-align: right;
+}
+
 .checkout-window {
   position: absolute;
   top: 0;
   right: 0;
   width: 600px;
-  height: 400px;
+  height: 425px;
   margin-top: 80px;
   margin-right: 10px;
   border: 1px solid #639d80;
-  z-index: 6;
+  z-index: 11;
   overflow: scroll;
 }
 
 .checkout-button {
   background-color: #639d80;
 }
+
+.check {
+  margin-top: -65px;
+  margin-left: 35px;
+}
+
+
 .ratings-reviews {
   display: flex;
   justify-content: flex-start;

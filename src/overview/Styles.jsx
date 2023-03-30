@@ -2,15 +2,15 @@ import React from 'react';
 import { StyleContext } from './Overview.jsx';
 import Checkout from './Checkout.jsx';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBagShopping } from '@fortawesome/free-solid-svg-icons';
+import { faBagShopping, faCircleCheck } from '@fortawesome/free-solid-svg-icons';
 const axios = require('axios');
 
 
-const Styles = ({ setCheckout, checkout, productDetails }) => {
+const Styles = ({ currentId, setCheckout, checkout, productDetails }) => {
 
   const [styles, setStyles] = React.useState([]);
   const [added, setAdded] = React.useState(false);
-  const [pickedSize, setPickedSize] = React.useState('Pick a size');
+  const [pickedSize, setPickedSize] = React.useState('Select size');
   const [amount, setAmount] = React.useState(1);
   const [noSize, setNoSize] = React.useState(false);
   const [stockArr, setStockArr] = React.useState([]);
@@ -27,7 +27,7 @@ const Styles = ({ setCheckout, checkout, productDetails }) => {
 
   React.useEffect(() => {
     getGallery();
-  }, []);
+  }, [currentId]);
 
   React.useEffect(() => {
     quantityList();
@@ -59,14 +59,20 @@ const Styles = ({ setCheckout, checkout, productDetails }) => {
   }
 
   const handleAmountChange = (event) => {
-    setAmount(event.target.value);
+    setAmount(Number(event.target.value));
   }
 
   let handleAddToBagClick = (event) => {
     event.preventDefault();
-    if (pickedSize !== 'Pick a size') {
+    if (pickedSize !== 'Select size') {
       console.log(productDetails);
-      let productToAdd = [productDetails.name, pickedSize, styles[currentStyle].name];
+      let price = 0;
+      if (styles[currentStyle].sale_price !== null) {
+        price = styles[currentStyle].sale_price;
+      } else {
+        price = styles[currentStyle].original_price;
+      }
+      let productToAdd = [productDetails.name, pickedSize, styles[currentStyle].name, price, styles[currentStyle].photos[0].thumbnail_url];
       let currentItems = JSON.parse(localStorage.getItem('products')) || {};
       if (currentItems[productToAdd] === undefined) {
         currentItems[productToAdd] = amount;
@@ -86,7 +92,7 @@ const Styles = ({ setCheckout, checkout, productDetails }) => {
 
   let styleList = styles.map(style => {
     let index = styles.indexOf(style);
-    return(<img id='style-image' className={currentStyle === index ?  'selectedStyle h-12 w-12 rounded-full' :' h-10 w-10 rounded-full'} onClick={()=> {handleStyleClick(index)}} src={style.photos[0].thumbnail_url}></img>
+    return(<>{currentStyle === index ? <div><img id='style-image' className='selectedStyle mb-2 h-12 w-12 rounded-full' src={style.photos[0].thumbnail_url}></img><span className='absolute z-4 check' ><FontAwesomeIcon icon={faCircleCheck} style={{color: "#daa520",}} /></span></div> : <img id='style-image' className='mb-2 h-12 w-12 rounded-full' onClick={() => {handleStyleClick(index)}} src={style.photos[0].thumbnail_url}></img>}</>
     )
   })
 
@@ -140,20 +146,20 @@ const Styles = ({ setCheckout, checkout, productDetails }) => {
   return (
     <>
     {checkout && <div>
-      <Checkout setCheckout={setCheckout} styles={styles}/>
+      <Checkout added={added} setCheckout={setCheckout} styles={styles}/>
     </div>}
-    <p>${styles[currentStyle] && styles[currentStyle].original_price}</p>
+    {styles[currentStyle] && styles[currentStyle].sale_price === null ? styles[currentStyle] && <p>${styles[currentStyle].original_price}</p> : styles[currentStyle] && <p><span className='line-through'>${styles[currentStyle].original_price}</span><span className='ml-2 text-red-400'>${styles[currentStyle].sale_price}</span></p>}
     <p className='category mt-10'>Style > {styles[currentStyle] && styles[currentStyle].name}</p>
-  <div className='flex flex-row mt-5 items-center flex-wrap'>
+  <div className='grid grid-cols-4 mt-5 items-center flex-wrap'>
     {styleList}
   </div>
   {!noStock ? <div className='mb-5'>
     <div>
-      <select className='select w-32 max-w-xs bg-white mt-5 pr-2' onChange={handleStyleSelectChange}>
+      {noSize ? <p className='mt-5 ml-1 text-sm text-red-600'>Please pick a size!</p> : <p className='mt-10'> </p>}
+      <select className='select w-32 max-w-xs bg-white pr-2' onChange={handleStyleSelectChange}>
         <option defaultValue>Select size</option>
         {sizeList}
       </select>
-      {noSize && <p className='ml-1 text-sm text-red-600'>Please pick a size!</p>}
     </div>
     <div >
       <select className='select w-40 max-w-xs bg-white mt-5' onChange={handleAmountChange}> { stockArr.length !== 0 ? quantitySelector : <option>-</option>}
@@ -161,8 +167,7 @@ const Styles = ({ setCheckout, checkout, productDetails }) => {
     </div>
   </div> : <div className='text-red-400 mt-10 mb-10'>OUT OF STOCK</div>}
   <div>
-    <button className='btn w-52' onClick={handleAddToBagClick}>Add to Bag</button>
-    {added && <p className='text-sm text-red-600'>Added to bag! <FontAwesomeIcon icon={faBagShopping} /></p>}
+    {added ? <button className='btn w-52'><p className='mr-2'>Added to bag!</p><FontAwesomeIcon icon={faBagShopping} /></button> : <button className='btn w-52' onClick={handleAddToBagClick}>Add to Bag</button>}
   </div>
 </>)
 }
