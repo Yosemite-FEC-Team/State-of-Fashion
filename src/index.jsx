@@ -28,16 +28,10 @@ const App = () => {
 
   return (
     <div>
-<<<<<<< HEAD
-      <Overview />
-      <RelatedAndCompModule />
-      <RatingsReviews />
-=======
       <h1>Hello World. Yes, we're leaving this here.</h1>
       <Overview currentId={currentId} />
-      <RelatedProductsComparisonsOutfit currentId={currentId} handleProductCardClick={handleProductCardClick} />
+      {/* <RelatedProductsComparisonsOutfit currentId={currentId} handleProductCardClick={handleProductCardClick} /> */}
       <RatingsReviews currentId={currentId} />
->>>>>>> main
     </div>
     )
 }

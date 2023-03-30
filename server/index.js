@@ -3,14 +3,9 @@ const path = require('path');
 const morgan = require('morgan');
 const cors = require('cors');
 const axios = require('axios');
-<<<<<<< HEAD
-const config = require('../config.js')
-
-=======
 const Promise = require('bluebird');
 const config = require('../config.js');
 const dataServices = require('../helpers/dataServices.js');
->>>>>>> main
 
 const app = express();
 
@@ -160,7 +155,7 @@ app.get('/products/review', (req, res) => {
 
 //HAVE SARAH CHANGE THIS IS MERGE TO USE CURRENT ID
 app.get('/products/reviews/meta', (req, res) => {
-  axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/reviews/meta', { params: {product_id: '37315' }, headers: {'Authorization': `${config.TOKEN}` } })
+  axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/reviews/meta', { params: {product_id: {currentId} }, headers: {'Authorization': `${config.TOKEN}` } })
     .then(data => {
       res.send(data.data);
     })

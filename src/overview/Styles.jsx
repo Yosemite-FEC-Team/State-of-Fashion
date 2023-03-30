@@ -105,7 +105,6 @@ const Styles = ({ setCheckout, checkout, productDetails }) => {
     if (sizes.length !== 0) {
       let stock = 0;
       for (let i = 0; i < sizes.length; i++) {
-        console.log(sizes[i], pickedSize, 'SIZE COMPARE');
         if (sizes[i].size === pickedSize) {
           stock = Number(sizes[i].quantity);
         }
