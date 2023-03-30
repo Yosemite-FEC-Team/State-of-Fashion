@@ -1,30 +1,27 @@
 import React, { useState, useEffect } from 'react';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation } from 'swiper';
 import RelatedProductCard from './RelatedProductCard.jsx';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import '../../../public/styles.css';
 
 const RelatedProductsList = ({ currentId, currentProductInfo, relatedProducts, handleProductCardClick }) => (
   <div className='related-products-list'>
     <h2>RELATED PRODUCTS</h2>
     <div className='related-products-carousel'>
-      {relatedProducts.map(card =>
-      <RelatedProductCard currentId={currentId} currentProductInfo={currentProductInfo} card={card} handleProductCardClick={handleProductCardClick} />
-      )}
+      <Swiper slidesPerView={4} spaceBetween={1} navigation={true} modules={[Navigation]} className='swiper'>
+        {relatedProducts.map(card =>
+        <SwiperSlide>
+          <div className='product-card-shadow-container'>
+            <RelatedProductCard currentId={currentId} currentProductInfo={currentProductInfo} card={card} handleProductCardClick={handleProductCardClick} />
+          </div>
+        </SwiperSlide>
+        )}
+      </Swiper>
     </div>
   </div>
 );
 
 export default RelatedProductsList;
-
-// <div className='related-products-list'>
-// <h2>RELATED PRODUCTS</h2>
-// <div className='related-outer-container'>
-//   <div className='related-products-container'>
-//     <div className='related-products-carousel'>
-//       {relatedProducts.map(card =>
-//       <ProductCard card={card} />
-//       )}
-//     </div>
-//   </div>
-//   <div className='cover'></div>
-// </div>
-
-// </div>
