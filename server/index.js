@@ -4,7 +4,7 @@ const morgan = require('morgan');
 const cors = require('cors');
 const axios = require('axios');
 const Promise = require('bluebird');
-const config = require('./config.js');
+const config = require('../config.js');
 const dataServices = require('../helpers/dataServices.js');
 
 const app = express();
