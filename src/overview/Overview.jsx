@@ -14,7 +14,7 @@ const StyleContext = React.createContext(0);
 // localStorage.setItem('products', 0);
 
 
-const Overview = () => {
+const Overview = ({ currentId }) => {
 
   const [productDetails, setProductDetails] = React.useState({});
 
@@ -31,7 +31,7 @@ const Overview = () => {
   React.useEffect(() => {
     getProductDetails();
     getReviews();
-  }, []);
+  }, [currentId]);
 
   let getProductDetails = () => {
     axios.get('/products')
@@ -102,7 +102,7 @@ const Overview = () => {
       <div>
         <div className='flex flex-row w-full mt-2 items-center '>
           <StyleContext.Provider value={currentStyle}>
-            <Gallery />
+            <Gallery currentId={currentId} />
           </StyleContext.Provider>
           <div className='flex flex-col ml-10 mt-5'>
             {noReviews ? <div><p className='text-xs'>No reviews yet for this product.</p></div> :
@@ -114,7 +114,7 @@ const Overview = () => {
             <h4 className="mt-0 mb-2 text-3xl font-bold leading-tight text-primary">{productDetails.name}</h4>
             {/* The index from styles can go to gallery for the onClick change */}
             <StyleContext.Provider value={{currentStyle, setCurrentStyle}}>
-              <Styles productDetails={productDetails} checkout={checkout} setCheckout={setCheckout}/>
+              <Styles currentId={currentId} productDetails={productDetails} checkout={checkout} setCheckout={setCheckout}/>
             </StyleContext.Provider>
         </div>
       </div>

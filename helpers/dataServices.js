@@ -15,22 +15,22 @@ const getData = (url) => {
 
 const retrieveRelatedProductIds = (id) => {
   id = id || 37317;
-  url = `${urlStart}/products/${id}/related`;
+  let url = `${urlStart}/products/${id}/related`;
   return getData(url);
 };
 
 const retrieveProductById = (id) => {
-  url = `${urlStart}/products/${id}`;
+  let url = `${urlStart}/products/${id}`;
   return getData(url);
 };
 
 const retrieveProductStylesById = (id) => {
-  url = `${urlStart}/products/${id}/styles`;
+  let url = `${urlStart}/products/${id}/styles`;
   return getData(url);
 };
 
 const retrieveProductRatingsById = (id) => {
-  url = `${urlStart}/reviews/meta?product_id=${id}`;
+  let url = `${urlStart}/reviews/meta?product_id=${id}`;
   return getData(url);
 };
 
@@ -67,10 +67,19 @@ const generateProductCardData = (id) => {
     calculateStarRatingById(id)
   ])
   .then(elements => {
-    console.log('returned promise elements', elements[1].data.features);
     const productStyles = elements[0].data.results[0];
     const product = elements[1].data;
     const starRating = elements[2];
+    const defaultPrice = `$${Math.round(product.default_price)}`;
+    const originalPrice = `$${Math.round(productStyles.original_price)}`;
+    let salePrice;
+
+    if (productStyles.sale_price) {
+      salePrice = `$${Math.round(productStyles.sale_price)}`;
+    } else {
+      salePrice = null;
+    }
+
     const productCardData = {
       id: product.id,
       styleInfo: {
@@ -80,8 +89,9 @@ const generateProductCardData = (id) => {
       },
       category: product.category,
       name: product.name,
-      // expandedName: `${product.name} \u2014 ${product.slogan}`,
-      defaultPrice: `$${Math.round(product.default_price)}`,
+      defaultPrice: defaultPrice,
+      salePrice: salePrice,
+      originalPrice: originalPrice,
       starRating: starRating,
       features: product.features
     };

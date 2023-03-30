@@ -5,7 +5,7 @@ const axios = require('axios');
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
 
-const Gallery = () => {
+const Gallery = ({ currentId }) => {
   // lets make a state for the incoming gallery list
   // Might move this to an overarching components since the styles need this as well
   const [galleryList, setGalleryList] = React.useState([]);
@@ -20,7 +20,7 @@ const Gallery = () => {
   React.useEffect(() => {
     getGallery();
     setMainImage(0);
-  }, [currentStyle]);
+  }, [currentId, currentStyle]);
 
   let getGallery = () => {
     axios.get('/products/styles')

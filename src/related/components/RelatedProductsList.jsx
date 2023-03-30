@@ -1,17 +1,16 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import RelatedProductCard from './RelatedProductCard.jsx';
 
-const RelatedProductsList = ({ relatedProducts, handleProductCardClick, getComparisonModalContent }) => (
-
+const RelatedProductsList = ({ currentId, currentProductInfo, relatedProducts, handleProductCardClick }) => (
   <div className='related-products-list'>
     <h2>RELATED PRODUCTS</h2>
-        <div className='related-products-carousel'>
-          {relatedProducts.map(card =>
-          <RelatedProductCard card={card} handleProductCardClick={handleProductCardClick} getComparisonModalContent={getComparisonModalContent} />
-          )}
-        </div>
+    <div className='related-products-carousel'>
+      {relatedProducts.map(card =>
+      <RelatedProductCard currentId={currentId} currentProductInfo={currentProductInfo} card={card} handleProductCardClick={handleProductCardClick} />
+      )}
+    </div>
   </div>
-)
+);
 
 export default RelatedProductsList;
 

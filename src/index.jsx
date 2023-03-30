@@ -9,8 +9,6 @@ import RatingsReviews from './ratings-and-reviews/components/RatingsReviews.jsx'
 
 const root = createRoot(document.getElementById('root'));
 
-
-
 // Huzzah for jsx!
 const App = () => {
   const [currentId, setCurrentId] = useState('');
@@ -21,23 +19,16 @@ const App = () => {
       if (typeof result.data === 'number') {
         result.data = result.data.toString();
       }
-      return setCurrentId(result.data);
+      setCurrentId(result.data);
     })
     .catch(err => console.log(err));
   }
 
   return (
     <div>
-<<<<<<< HEAD
-      <Overview />
-      <RelatedAndCompModule />
-      <RatingsReviews />
-=======
-      <h1>Hello World. Yes, we're leaving this here.</h1>
       <Overview currentId={currentId} />
       <RelatedProductsComparisonsOutfit currentId={currentId} handleProductCardClick={handleProductCardClick} />
       <RatingsReviews currentId={currentId} />
->>>>>>> main
     </div>
     )
 }
