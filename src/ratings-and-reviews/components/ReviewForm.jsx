@@ -41,7 +41,7 @@ useEffect(() => {
 }, [])
 
 
-console.log(productName, 'this is the current product name');
+
 //get data to tell me what characteristics this product uses.
 //Create State variables for various parts of the form
   const [reviewSummary, setReviewSummary] = useState('');
