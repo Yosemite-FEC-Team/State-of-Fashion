@@ -70,19 +70,21 @@ const Gallery = ({ currentId }) => {
 
 
     let imageID = `slide${index}`;
+    let url = image.url || './assets/placeholder.png'
     return (
       <div id={imageID} className={ index === mainImage ? 'carousel-card' : 'inactive-card'}>
           {mainImage !== galleryList.length - 1 ? <button className="right-arrow btn btn-ghost" onClick={nextSlide}>❯</button> : ''}
           {mainImage !== 0 ? <button className="left-arrow btn btn-ghost" onClick={prevSlide}>❮</button> : ''}
-          {index === mainImage && (<img className='object-contain w-full h-550' src={image.url}  alt='../public/assets/placeholder.png' onClick={handleImageClick}></img>)}
+          {index === mainImage && (<img className='object-contain w-full h-550' src={url}  alt='product image' onClick={handleImageClick}></img>)}
       </div>)
   })
 
 
   let galleryThumbnails = galleryList.map(image => {
     let index = galleryList.indexOf(image);
+    let url = image.thumbnail_url || './assets/placeholder.png'
     return (
-    <span><img onClick={() => {handleMiniClick(index)}} className={index === mainImage ? 'mini-thumbnail object-contain p-1 isSelected' : 'mini-thumbnail object-contain p-1'} src={image.thumbnail_url} alt='../public/assets/placeholder.png'></img>
+    <span><img onClick={() => {handleMiniClick(index)}} className={index === mainImage ? 'mini-thumbnail object-contain p-1 isSelected' : 'mini-thumbnail object-contain p-1'} src={url} alt='product image'></img>
     </span>)
   })
 

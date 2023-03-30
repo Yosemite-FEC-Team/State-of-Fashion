@@ -27,7 +27,7 @@ const App = () => {
   return (
     <div>
       <Overview currentId={currentId} />
-      {/* <RelatedProductsComparisonsOutfit currentId={currentId} handleProductCardClick={handleProductCardClick} /> */}
+      <RelatedProductsComparisonsOutfit currentId={currentId} handleProductCardClick={handleProductCardClick} />
       <RatingsReviews currentId={currentId} />
     </div>
     )
