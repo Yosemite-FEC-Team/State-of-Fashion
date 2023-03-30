@@ -6,11 +6,29 @@ import QualityButtons from './QualityButtons.jsx'
 import LengthButtons from './LengthButtons.jsx'
 import FitButtons from './FitButtons.jsx'
 import PhotoUploader from './PhotoUploader.jsx'
+const axios = require('axios');
 
 
 const ReviewForm = ({formIsOpen, handleCloseForm}) => {
 //I will need different data here that gives me the product name
 
+const [objectOfChars, setObjectOfChars] = useState({});
+const [productName, setProductName] = useState('');
+useEffect(() => {
+  axios.get('/products/reviews/meta')
+  .then(data => {
+
+    setObjectOfChars(data.data.characteristics);
+    console.log('DO I HAVE A PRODUCT NAME', data.data);
+    })
+    .catch(err => {
+    console.log(err, 'Error getting review metadata from the server');
+    });
+
+}, [])
+
+console.log(objectOfChars);
+//get data to tell me what characteristics this product uses.
 //Create State variables for various parts of the form
   const [reviewSummary, setReviewSummary] = useState('');
   const [reviewBody, setReviewBody] = useState('');
@@ -100,12 +118,13 @@ const ReviewForm = ({formIsOpen, handleCloseForm}) => {
     </div>
     <h3 className='bold-titles'>Characteristics*</h3>
     {/*I'm going to need the data from the /reviews/meta endpoint here to see what characteristics are being gathered for a given product*/}
-       <SizeButtons />
-       <WidthButtons />
-       <ComfortButtons />
-       <QualityButtons />
-       <LengthButtons />
-       <FitButtons />
+    {objectOfChars.Size && (<SizeButtons />)}
+    {objectOfChars.Width && (<WidthButtons />)}
+    {objectOfChars.Comfort && (<ComfortButtons />)}
+    {objectOfChars.Quality && (<QualityButtons />)}
+    {objectOfChars.Length && (<LengthButtons />)}
+    {objectOfChars.Fit && (<FitButtons />)}
+
     <label className='bold-titles'>Review summary</label>
       <input
       className='review-summary-box'
