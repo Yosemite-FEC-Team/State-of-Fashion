@@ -77,6 +77,8 @@
   height: 420px;
   z-index: 4;
   overflow-y: scroll;
+  scroll-behavior: smooth;
+  scroll-snap-type: y mandatory;
 }
 
 .mini-thumbnail {
@@ -98,6 +100,13 @@
   height: 420px;
   z-index: 4;
   overflow-y: scroll;
+}
+
+.angle-down {
+  position: absolute;
+  top: 600px;
+  left: 85px;
+  z-index: 5;
 }
 
 .isSelected {

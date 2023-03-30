@@ -36,7 +36,7 @@ const Overview = ({ currentId }) => {
   let getProductDetails = () => {
     axios.get('/products')
       .then(data => {
-      console.log(data.data, 'product data');
+      //console.log(data.data, 'product data');
       setProductDetails(data.data);
       // this has all the styles and the photos for those styles
       })
@@ -48,7 +48,7 @@ const Overview = ({ currentId }) => {
   let getReviews = () => {
     axios.get('/products/reviews')
     .then(data => {
-      console.log(data.data, 'REVIEWS');
+      //console.log(data.data, 'REVIEWS');
       let reviewData = data.data;
       let total = 0;
       let reviews = 0;
