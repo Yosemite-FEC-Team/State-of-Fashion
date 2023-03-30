@@ -41,11 +41,16 @@ const Reviews = () => {
     console.log(selectedSort, 'selected Sort AFTER CHANGE')
 
     if (selectedOption === 'newest') {
-      console.log(results, 'this is the result array')
       newestResults = results.sort((a, b) => new Date(b.date) - new Date(a.date));
       setResults(newestResults);
-      console.log(results, 'results after newest sort')
-      console.log('DID THIS GET TRIGGERED')
+    }
+    if (selectedOption === 'helpful') {
+      helpfulResults = results.sort((a, b) => b.helpfulness - a.helpfulness);
+      setResults(helpfulResults);
+    }
+    if (selectedOption === 'relevance') {
+      relevantResults = results.sort((a, b) => b.helpfulness - a.helpfulness);
+      setResults(relevantResults);
     }
 
     console.log('Selected sort', event.target.value)
