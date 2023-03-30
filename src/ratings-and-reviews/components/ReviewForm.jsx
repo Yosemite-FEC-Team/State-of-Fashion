@@ -19,7 +19,7 @@ useEffect(() => {
   .then(data => {
 
     setObjectOfChars(data.data.characteristics);
-    console.log('DO I HAVE A PRODUCT NAME', data.data);
+
     })
     .catch(err => {
     console.log(err, 'Error getting review metadata from the server');
@@ -27,7 +27,21 @@ useEffect(() => {
 
 }, [])
 
-console.log(objectOfChars);
+
+useEffect(() => {
+  axios.get('/products')
+  .then(data => {
+    setProductName(data.data.name);
+
+    })
+    .catch(err => {
+    console.log(err, 'Error getting product data from the server, try again you goon');
+    });
+
+}, [])
+
+
+console.log(productName, 'this is the current product name');
 //get data to tell me what characteristics this product uses.
 //Create State variables for various parts of the form
   const [reviewSummary, setReviewSummary] = useState('');
@@ -87,7 +101,7 @@ console.log(objectOfChars);
   return (
   <form className='inside-review-form'>
     <h3 className='big-title'>Write Your Review</h3>
-    <h5>About this product</h5>
+    <h5>About {productName}</h5>
     <h5 className='bold-titles'>Overall Rating*</h5>
     <div>
       <div>
