@@ -27,6 +27,8 @@ const Gallery = ({ currentId }) => {
   React.useEffect(() => {
     if (galleryList.length > 7) {
       setMiniArrowShow(true);
+    } else {
+      setMiniArrowShow(false);
     }
   })
 
@@ -93,7 +95,7 @@ const Gallery = ({ currentId }) => {
         <div className='mini-thumbnail-flex items-center ml-2'>
           {galleryThumbnails}
         </div>
-        <div className='angle-down'><FontAwesomeIcon icon={faAngleDown} /></div>
+        {miniArrowShow && <div className='angle-down'><FontAwesomeIcon icon={faAngleDown} /></div>}
       </div>
       <div className="carousel-container ml-3 bg-white shadow-lg">
         {galleryCarousel}
