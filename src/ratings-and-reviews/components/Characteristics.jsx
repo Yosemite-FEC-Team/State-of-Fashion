@@ -67,11 +67,8 @@ const Characteristics = () => {
   }, [])
 
 
-  console.log(charObject, 'should be the charObject');
 
   var characteristicsRatings = charObject.characteristics
-
-  console.log('object of chars', characteristicsRatings)
 
 
   return (
