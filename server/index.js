@@ -92,6 +92,18 @@ app.get('/products', (req, res) => {
     })
 })
 
+app.get('/products/questions', (req, res) => {
+  axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/qa/questions', { params: {product_id: currentId, count: 10 }, headers: {'Authorization': `${config.TOKEN}` } })
+    .then(data => {
+      //console.log(data.data.results);
+      res.send(data.data.results);
+    })
+    .catch(err => {
+      console.log(err, 'error making call questions');
+      res.end();
+    })
+})
+
 //Lizz, do not modify this endpoint if you decide to use another product, cause Xiao Wen is using this MAY NEED TO REFORMAT CAUSE SHE IS JUST USING THE RATINGS!!!!
 app.get('/products/reviews', (req, res) => {
   axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/reviews/meta', { params: {product_id: currentId }, headers: {'Authorization': `${config.TOKEN}` } })
