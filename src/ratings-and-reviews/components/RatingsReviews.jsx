@@ -2,15 +2,15 @@ import React from 'react';
 import Ratings from './Ratings.jsx'
 import Reviews from './Reviews.jsx'
 
-const RatingsReviews = () => {
+const RatingsReviews = ({ currentId }) => {
 
 
 
   return (
     <div id='reviews' className='ratings-reviews' >
 
-   <Ratings />
-   <Reviews />
+   <Ratings currentId={currentId} />
+   <Reviews currentId={currentId} />
 
 
 
