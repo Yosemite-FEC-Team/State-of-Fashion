@@ -48,6 +48,8 @@ const Stars = ({data}) => {
     return rawAverage;
 
   }
+
+
   var averageNotRounded = createAverageRating(data);
   var bigRating = averageNotRounded.toFixed(1);
   console.log(bigRating, 'this is the big rating')
@@ -67,7 +69,7 @@ const Stars = ({data}) => {
     <div className='stars-component'>
     <div className='rating-container-with-star'>
     <span className='big-rating'>{bigRating}</span>
-    <DynamicStar rating={averageNotRounded} fullStarColor={'black'} outlined={true} width={15} height={15}/>
+    <DynamicStar rating={bigRating} fullStarColor={'black'} outlined={true} width={15} height={15}/>
     </div>
 
     <div className='small-text'>({sum} total reviews)</div>
