@@ -3,7 +3,7 @@ import { StyleContext } from './Overview.jsx';
 import Expanded from './Expanded.jsx';
 const axios = require('axios');
 
-const Gallery = () => {
+const Gallery = ({ currentId }) => {
   // lets make a state for the incoming gallery list
   // Might move this to an overarching components since the styles need this as well
   const [galleryList, setGalleryList] = React.useState([]);
@@ -17,7 +17,7 @@ const Gallery = () => {
   React.useEffect(() => {
     getGallery();
     setMainImage(0);
-  }, [currentStyle]);
+  }, [currentId, currentStyle]);
 
   React.useEffect(() => {
 

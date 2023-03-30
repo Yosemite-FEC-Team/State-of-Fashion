@@ -6,7 +6,7 @@ import { faBagShopping } from '@fortawesome/free-solid-svg-icons';
 const axios = require('axios');
 
 
-const Styles = ({ setCheckout, checkout, productDetails }) => {
+const Styles = ({ currentId, setCheckout, checkout, productDetails }) => {
 
   const [styles, setStyles] = React.useState([]);
   const [added, setAdded] = React.useState(false);
@@ -27,7 +27,7 @@ const Styles = ({ setCheckout, checkout, productDetails }) => {
 
   React.useEffect(() => {
     getGallery();
-  }, []);
+  }, [currentId]);
 
   React.useEffect(() => {
     quantityList();

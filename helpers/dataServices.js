@@ -67,10 +67,20 @@ const generateProductCardData = (id) => {
     calculateStarRatingById(id)
   ])
   .then(elements => {
-    console.log('returned promise elements', elements[1].data.features);
+    // console.log('returned promise elements', elements[0].data);
     const productStyles = elements[0].data.results[0];
     const product = elements[1].data;
     const starRating = elements[2];
+    const defaultPrice = `$${Math.round(product.default_price)}`;
+    const originalPrice = `$${Math.round(productStyles.original_price)}`;
+    let salePrice;
+
+    if (productStyles.sale_price) {
+      salePrice = `$${Math.round(productStyles.sale_price)}`;
+    } else {
+      salePrice = null;
+    }
+
     const productCardData = {
       id: product.id,
       styleInfo: {
@@ -80,8 +90,9 @@ const generateProductCardData = (id) => {
       },
       category: product.category,
       name: product.name,
-      // expandedName: `${product.name} \u2014 ${product.slogan}`,
-      defaultPrice: `$${Math.round(product.default_price)}`,
+      defaultPrice: defaultPrice,
+      salePrice: salePrice,
+      originalPrice: originalPrice,
       starRating: starRating,
       features: product.features
     };

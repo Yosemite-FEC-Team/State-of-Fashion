@@ -15,8 +15,8 @@ app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 app.use(express.static(path.join(__dirname, '../public')));
 
-let currentId = 37315;
-const outfitIds = ['37311', '37319', '37312', '37313'];
+let currentId = 37325;
+const outfitIds = ['37311', '37319'];
 
 app.post('/products', (req, res) => {
   currentId = req.body.id;

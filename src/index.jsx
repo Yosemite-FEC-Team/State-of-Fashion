@@ -21,7 +21,7 @@ const App = () => {
       if (typeof result.data === 'number') {
         result.data = result.data.toString();
       }
-      return setCurrentId(result.data);
+      setCurrentId(result.data);
     })
     .catch(err => console.log(err));
   }
@@ -29,9 +29,9 @@ const App = () => {
   return (
     <div>
       <h1>Hello World. Yes, we're leaving this here.</h1>
-      <Overview currentId={currentId} />
+      {/* <Overview currentId={currentId} /> */}
       <RelatedProductsComparisonsOutfit currentId={currentId} handleProductCardClick={handleProductCardClick} />
-      <RatingsReviews currentId={currentId} />
+      {/* <RatingsReviews currentId={currentId} /> */}
     </div>
     )
 }

@@ -6,7 +6,7 @@ import ReviewForm from './ReviewForm.jsx';
 
 
 
-const Reviews = () => {
+const Reviews = ({ currentId }) => {
 
   const [results, setResults] = useState([]);
   //this state variable will show whether the review form is open or not
@@ -28,7 +28,7 @@ const Reviews = () => {
     .catch(err => {
       console.log(err, 'Error getting reviews from the API')
     })
-  }, []);
+  }, [currentId]);
   //this state variable will dictate the reviews that are shown and be used in conjunction
   //Create state where we set the number of visible reviews
   const [numberOfReviews, setNumberOfReviews] = useState(2);
