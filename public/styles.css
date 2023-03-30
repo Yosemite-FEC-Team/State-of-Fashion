@@ -183,17 +183,31 @@
 }
  */
 
+ #related-and-outfit {
+  height: 1100px;
+ }
 
 .related-products-list {
-  margin-left: 20px;
-  padding-bottom: 30px;
-  margin-top: 20px;
+  /* position: relative; */
+  padding-left: 20px;
+  padding-bottom: 10px;
+  padding-top: 20px;
   z-index: 0;
+  height: 550px;
+  width: 100%;
 }
 
 .related-products-list h2 {
   padding: 15px 0;
 }
+
+/* .horizontal-center {
+  position: relative;
+  display: flex;
+  justify-content: flex-start;
+  max-width: 1200px;
+} */
+
 
 .related-products-carousel {
   position: relative;
@@ -204,18 +218,57 @@
   gap: 15px;
   text-align: center;
   z-index: 1;
-  /* overflow: scroll; */
+}
+/*
+.related-carousel-inner-container {
+  display: flex;
+  overflow-x: scroll;
+  scroll-snap-type: x mandatory;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  gap: 15px;
+}
+
+.related-carousel-inner-container::-webkit-scrollbar {
+    display: none;
+}
+
+.related-carousel-inner-container * {
+  scroll-snap-align: center;
+} */
+
+.swiper {
+  width: 1275px;
+  align-items: left;
+  margin-left: 0;
+}
+
+.swiper-button-prev {
+  color: rgb(60, 60, 60);
+}
+
+.swiper-button-next {
+  color: rgb(60, 60, 60);
+}
+
+.product-card-shadow-container {
+  position: relative;
+  height: 460px;
+  width: 315px;
 }
 
 .product-card {
+  top: 6px;
+  left: 6px;
   display: flex;
-  z-index: 2;
   justify-content: flex-start;
   align-items: center;
   flex-flow: column;
+  z-index: 2;
   width: 300px;
   box-shadow: 3px 3px 10px grey;
   position: relative;
+  max-height: 439.5px;
 }
 
 .product-card-button {
@@ -287,8 +340,8 @@
 
 .card-color {
   font-size: 12px;
-  color: rgb(110, 110, 110);
   padding-bottom: 7px;
+  color: rgb(110, 110, 110);
 }
 
 .card-price {
@@ -400,6 +453,7 @@
   display: flex;
   justify-content: flex-start;
   padding: 10px;
+  max-width: 1300px;
 }
 
 .ratings-component {

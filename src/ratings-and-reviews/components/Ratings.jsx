@@ -9,7 +9,7 @@ const Ratings = ({ currentId }) => {
   useEffect(() => {
   axios.get('/products/reviews')
   .then(data => {
-    console.log('data inside Ratings component', data)
+
     setMetadata(data.data);
   })
   .catch(err => {

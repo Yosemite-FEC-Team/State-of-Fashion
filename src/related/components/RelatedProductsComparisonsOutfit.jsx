@@ -63,7 +63,7 @@ const RelatedProductsComparisonsOutfit = ({ currentId, handleProductCardClick })
   };
 
   return (
-    <div>
+    <div id='related-and-outfit'>
       <RelatedProductsList currentId={currentId} currentProductInfo={currentProductInfo} relatedProducts={relatedProducts} handleProductCardClick={handleProductCardClick} />
       <OutfitList outfitProducts={outfitProducts} handleAddToOutfitButtonClick={handleAddToOutfitButtonClick} handleDeleteFromOutfitButtonClick={handleDeleteFromOutfitButtonClick} handleProductCardClick={handleProductCardClick} />
     </div>
