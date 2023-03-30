@@ -48,13 +48,15 @@ const Stars = ({data}) => {
     return rawAverage;
 
   }
+
+
   var averageNotRounded = createAverageRating(data);
   var bigRating = averageNotRounded.toFixed(1);
-  console.log(bigRating, 'this is the big rating')
-  var starRating =(averageNotRounded*4).toFixed(8)/4;
-  console.log(starRating, 'this is the star rating');
+
+  var starRating =(averageNotRounded*4).toFixed(0)/4;
+
   var arrayOfTotalRatings = Object.values(data);
-  console.log(arrayOfTotalRatings, 'array of all ratings');
+
 
   var fiveStarPercentage = ((Number(arrayOfTotalRatings[4])/sum)*100).toFixed(0);
   var fourStarPercentage = ((Number(arrayOfTotalRatings[3])/sum)*100).toFixed(0);
@@ -62,12 +64,12 @@ const Stars = ({data}) => {
   var twoStarPercentage = ((Number(arrayOfTotalRatings[1])/sum)*100).toFixed(0);
   var oneStarPercentage = ((Number(arrayOfTotalRatings[0])/sum)*100).toFixed(0);
 
-  console.log(fiveStarPercentage, 'five star percentage');
+
   return (
     <div className='stars-component'>
     <div className='rating-container-with-star'>
     <span className='big-rating'>{bigRating}</span>
-    <DynamicStar rating={averageNotRounded} fullStarColor={'black'} outlined={true} width={15} height={15}/>
+    <DynamicStar rating={bigRating} fullStarColor={'black'} outlined={true} width={15} height={15}/>
     </div>
 
     <div className='small-text'>({sum} total reviews)</div>

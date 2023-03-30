@@ -2,8 +2,7 @@ import React, {useState, useEffect} from 'react';
 import ReviewPhoto from './ReviewPhoto.jsx';
 
 const SingleReview = ({result}) => {
-  console.log('results  inside singlereview', result)
-  console.log('result.rating  inside singlereview', result.rating)
+
   //create a function to format in the desired format
   function formatDate(newDate) {
     const date = new Date(newDate);

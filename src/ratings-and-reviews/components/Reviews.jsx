@@ -22,7 +22,7 @@ const Reviews = ({ currentId }) => {
   useEffect(() => {
     axios.get('/products/review')
     .then(data => {
-      console.log('data from axios call in reviews', data.data);
+
       setResults(data.data);
     })
     .catch(err => {
@@ -38,17 +38,22 @@ const Reviews = ({ currentId }) => {
     const selectedOption = event.target.value;
     setSelectedSort(selectedOption);
 
-    console.log(selectedSort, 'selected Sort AFTER CHANGE')
+
 
     if (selectedOption === 'newest') {
-      console.log(results, 'this is the result array')
       newestResults = results.sort((a, b) => new Date(b.date) - new Date(a.date));
       setResults(newestResults);
-      console.log(results, 'results after newest sort')
-      console.log('DID THIS GET TRIGGERED')
+    }
+    if (selectedOption === 'helpful') {
+      helpfulResults = results.sort((a, b) => b.helpfulness - a.helpfulness);
+      setResults(helpfulResults);
+    }
+    if (selectedOption === 'relevance') {
+      relevantResults = results.sort((a, b) => b.helpfulness - a.helpfulness);
+      setResults(relevantResults);
     }
 
-    console.log('Selected sort', event.target.value)
+
   }
 
   return (
