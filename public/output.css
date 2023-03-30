@@ -4443,6 +4443,14 @@ html {
   width: 100%;
 }
 
+.w-4\/5 {
+  width: 80%;
+}
+
+.w-5\/6 {
+  width: 83.333333%;
+}
+
 .max-w-xs {
   max-width: 20rem;
 }

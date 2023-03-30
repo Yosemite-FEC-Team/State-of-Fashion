@@ -65,7 +65,7 @@ const Styles = ({ currentId, setCheckout, checkout, productDetails }) => {
   let handleAddToBagClick = (event) => {
     event.preventDefault();
     if (pickedSize !== 'Select size') {
-      console.log(productDetails);
+      //console.log(productDetails);
       let price = 0;
       if (styles[currentStyle].sale_price !== null) {
         price = styles[currentStyle].sale_price;
@@ -79,7 +79,7 @@ const Styles = ({ currentId, setCheckout, checkout, productDetails }) => {
       } else {
         currentItems[productToAdd]+= amount;
       }
-      console.log(currentItems);
+      //console.log(currentItems);
       localStorage.setItem('products', JSON.stringify(currentItems));
       setAdded(true);
       setTimeout(() => {

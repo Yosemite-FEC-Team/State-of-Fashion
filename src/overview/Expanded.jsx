@@ -10,7 +10,7 @@ const Expanded = ({galleryThumbnails, revert, galleryList, mainImage, setMainIma
   const handleMouseEvent = (event) => {
     const {left, top, width, height} = event.target.getBoundingClientRect();
     const x = (event.pageX - left ) / width * 100;
-    console.log('working?');
+    //console.log('working?');
     const y = (event.pageY - top) / height * 100;
     setPosition(`${x}% ${y}%`);
   }

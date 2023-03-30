@@ -14,10 +14,11 @@ const MainQNA = ({ currentId }) => {
   let getQuestions = () => {
     axios.get('products/questions')
       .then((data) => {
-        console.log(data.data, 'QUESTIONS DATA');
+        //console.log(data.data, 'QUESTIONS DATA');
         if (data.data.length > 4) {
           data.data.splice(4);
         }
+        //console.log(data.data, 'SPLICED');
         setQuestions(data.data);
       })
       .catch((err) => {
@@ -61,7 +62,7 @@ const MainQNA = ({ currentId }) => {
   return(
     <div className='mt-10 ml-5 mb-5'>
       <h1 className='ml-5'>QUESTIONS & ANSWERS</h1>
-      <div className='mt-5 ml-5 border border-solid border-black font-bold w-3/5 h-16'>
+      <div className='mt-5 ml-5 border border-solid border-black font-bold w-5/6 h-16'>
         <input className='bg-transparent ml-5 mt-5 w-11/12 text-black' placeholder='HAVE A QUESTION? SEARCH FOR ANSWERS'></input>
         <FontAwesomeIcon icon={faMagnifyingGlass} />
       </div>

@@ -93,14 +93,13 @@ app.get('/products', (req, res) => {
 })
 
 app.get('/products/questions', (req, res) => {
-  axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/qa/questions', { params: {product_id: currentId, count: 10 }, headers: {'Authorization': `${config.TOKEN}` } })
+  axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/qa/questions', { params: {product_id: currentId }, headers: {'Authorization': `${config.TOKEN}` } })
     .then(data => {
-      //console.log(data.data.results);
+      // console.log(data.data);
       res.send(data.data.results);
     })
     .catch(err => {
       console.log(err, 'error making call questions');
-      res.end();
     })
 })
 
