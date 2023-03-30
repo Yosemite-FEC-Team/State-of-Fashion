@@ -1,4 +1,4 @@
-const config = require('../config.js');
+const config = require('../server/config.js');
 const axios = require('axios');
 const Promise = require('bluebird');
 const options = { headers: { 'Authorization': `${config.TOKEN}` } };

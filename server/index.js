@@ -4,7 +4,7 @@ const morgan = require('morgan');
 const cors = require('cors');
 const axios = require('axios');
 const Promise = require('bluebird');
-const config = require('../config.js');
+const config = require('./config.js');
 const dataServices = require('../helpers/dataServices.js');
 
 const app = express();
@@ -15,7 +15,7 @@ app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 app.use(express.static(path.join(__dirname, '../public')));
 
-let currentId = 37315;
+let currentId = 37311;
 const outfitIds = ['37311', '37319', '37312', '37313'];
 
 app.post('/products', (req, res) => {
@@ -155,7 +155,7 @@ app.get('/products/review', (req, res) => {
 
 //HAVE SARAH CHANGE THIS IS MERGE TO USE CURRENT ID
 app.get('/products/reviews/meta', (req, res) => {
-  axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/reviews/meta', { params: {product_id: '37315' }, headers: {'Authorization': `${config.TOKEN}` } })
+  axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/reviews/meta', { params: {product_id: currentId }, headers: {'Authorization': `${config.TOKEN}` } })
     .then(data => {
       res.send(data.data);
     })
