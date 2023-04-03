@@ -242,6 +242,13 @@
   color: rgb(60, 60, 60);
 }
 
+.swiper-button-prev.swiper-button-disabled,
+.swiper-button-next.swiper-button-disabled {
+  opacity: 0;
+  cursor: auto;
+  pointer-events: none;
+}
+
 .product-card-shadow-container {
   position: relative;
   height: 460px;
