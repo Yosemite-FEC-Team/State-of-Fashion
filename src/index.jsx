@@ -6,6 +6,7 @@ import { Overview } from './overview/Overview.jsx';
 import axios from 'axios';
 import RelatedProductsComparisonsOutfit from './related/components/RelatedProductsComparisonsOutfit.jsx';
 import RatingsReviews from './ratings-and-reviews/components/RatingsReviews.jsx';
+import MainQNA from './questions-and-answers/MainQNA.jsx';
 
 const root = createRoot(document.getElementById('root'));
 
@@ -28,6 +29,7 @@ const App = () => {
     <div>
       <Overview currentId={currentId} />
       <RelatedProductsComparisonsOutfit currentId={currentId} handleProductCardClick={handleProductCardClick} />
+      <MainQNA currentId={currentId}/>
       <RatingsReviews currentId={currentId} />
     </div>
     )

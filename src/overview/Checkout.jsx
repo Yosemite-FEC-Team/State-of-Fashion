@@ -36,7 +36,7 @@ const Checkout = ({ added, styles, setCheckout }) => {
   const checkoutList = () => {
     let cart = JSON.parse(localStorage.getItem('products'));
     setRegCart(cart);
-    console.log(regCart);
+    //console.log(regCart);
     if (cart !== null && cart !== undefined) {
       let cartItems = Object.keys(cart);
       let cartAmounts = Object.values(cart);

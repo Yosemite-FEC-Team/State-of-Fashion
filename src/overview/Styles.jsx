@@ -65,7 +65,7 @@ const Styles = ({ currentId, setCheckout, checkout, productDetails }) => {
   let handleAddToBagClick = (event) => {
     event.preventDefault();
     if (pickedSize !== 'Select size') {
-      console.log(productDetails);
+      //console.log(productDetails);
       let price = 0;
       if (styles[currentStyle].sale_price !== null) {
         price = styles[currentStyle].sale_price;
@@ -79,7 +79,7 @@ const Styles = ({ currentId, setCheckout, checkout, productDetails }) => {
       } else {
         currentItems[productToAdd]+= amount;
       }
-      console.log(currentItems);
+      //console.log(currentItems);
       localStorage.setItem('products', JSON.stringify(currentItems));
       setAdded(true);
       setTimeout(() => {
@@ -92,7 +92,8 @@ const Styles = ({ currentId, setCheckout, checkout, productDetails }) => {
 
   let styleList = styles.map(style => {
     let index = styles.indexOf(style);
-    return(<>{currentStyle === index ? <div><img id='style-image' className='selectedStyle mb-2 h-12 w-12 rounded-full' src={style.photos[0].thumbnail_url}></img><span className='absolute z-4 check' ><FontAwesomeIcon icon={faCircleCheck} style={{color: "#daa520",}} /></span></div> : <img id='style-image' className='mb-2 h-12 w-12 rounded-full' onClick={() => {handleStyleClick(index)}} src={style.photos[0].thumbnail_url}></img>}</>
+    let url = style.photos[0].thumbnail_url || './assets/placeholder.png'
+    return(<>{currentStyle === index ? <div><img id='style-image' className='selectedStyle mb-2 h-12 w-12 rounded-full' src={url}></img><span className='absolute z-4 check' ><FontAwesomeIcon icon={faCircleCheck} style={{color: "#daa520",}} /></span></div> : <img id='style-image' className='mb-2 h-12 w-12 rounded-full' onClick={() => {handleStyleClick(index)}} src={url}></img>}</>
     )
   })
 
@@ -105,7 +106,6 @@ const Styles = ({ currentId, setCheckout, checkout, productDetails }) => {
     if (sizes.length !== 0) {
       let stock = 0;
       for (let i = 0; i < sizes.length; i++) {
-        console.log(sizes[i], pickedSize, 'SIZE COMPARE');
         if (sizes[i].size === pickedSize) {
           stock = Number(sizes[i].quantity);
         }
