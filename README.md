@@ -23,12 +23,17 @@ Given a business document and visual design, we worked as a group of three softw
 Group Name: Yosemite
 
 * Xiao Wen Wu - Product Overview Module
-![screenshot of Overview module](https://github.com/Yosemite-FEC-Team/fec/blob/main/public/assets/Overview.png"Product Overview")
+
+![screenshot of Overview module](https://github.com/Yosemite-FEC-Team/fec/blob/main/public/assets/Overview.png "Product Overview")
+
 
 * Sarah Folk - Related Products Module
+
 ![screenshot of Related Products module](https://github.com/Yosemite-FEC-Team/fec/blob/main/public/assets/Related-Products.png "Related Products")
 
+
 * Lizz Mullowney - Ratings and Reviews Module
+
 ![screenshot of Ratings and Reviews module](https://github.com/Yosemite-FEC-Team/fec/blob/main/public/assets/Ratings-and-Reviews.png "Ratings and Reviews")
 
 
