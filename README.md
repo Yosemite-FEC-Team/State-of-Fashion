@@ -39,7 +39,7 @@ Group Name: Yosemite
 
 ## Installation Requirements
 
-This project utilizes webpack, babel, React, Express, Axios... should I include more?
+This project utilizes webpack, babel, React, Express, Axios
 
 From within the root directory:
 1. Run the following command in the terminal to install all necessary packages.
